@@ -1,0 +1,43 @@
+{
+	"name": "dnd-5e",
+	"version": "1.0.0",
+	"description": "",
+	"keywords": [],
+	"author": "",
+	"scripts": {
+		"test": "jest --watchAll --verbose --setupFilesAfterEnv ./src/test/setupTests.js",
+		"coverage": "jest --setupFilesAfterEnv ./src/test/setupTests.js --coverage --watchAll=false",
+		"dev": "webpack-cli serve --mode development --config config/webpack.config.dev.js",
+		"build": "webpack --config config/webpack.config.prod.js"
+	},
+	"devDependencies": {
+		"@babel/core": "*",
+		"@babel/plugin-proposal-class-properties": "*",
+		"@babel/plugin-transform-runtime": "*",
+		"@babel/preset-env": "*",
+		"@babel/preset-react": "*",
+		"@testing-library/jest-dom": "*",
+		"@testing-library/react": "*",
+		"@testing-library/user-event": "*",
+		"babel-loader": "*",
+		"css-loader": "*",
+		"eslint": "*",
+		"eslint-plugin-react": "*",
+		"file-loader": "*",
+		"html-webpack-plugin": "*",
+		"jest": "*",
+		"style-loader": "*",
+		"url-loader": "*",
+		"webpack": "*",
+		"webpack-cli": "*",
+		"webpack-dev-server": "*"
+	},
+	"dependencies": {
+		"ajax": "^0.0.4",
+		"npm": "^8.17.0",
+		"react": "*",
+		"react-dom": "*",
+		"react-router-dom": "*",
+		"update": "^0.7.4"
+	}
+}
