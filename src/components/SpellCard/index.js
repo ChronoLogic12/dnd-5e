@@ -4,8 +4,11 @@ export default (props) => {
 	return (
 		<>
 			<div>
-				<h1>{props.name}</h1>
+				<h2>{props.spell.name}</h2>
+				<em>{props.spell.level}</em>
 			</div>
+			<em>Components {props.spell.components}</em>
+			<p>{props.spell.desc}</p>
 		</>
 	);
 };

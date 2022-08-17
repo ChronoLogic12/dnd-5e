@@ -1,5 +1,4 @@
 import React from 'react';
-import { SpellCard } from '../../components';
 
 export default () => {
 	return (
