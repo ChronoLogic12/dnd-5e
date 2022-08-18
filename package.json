@@ -34,6 +34,7 @@
 	},
 	"dependencies": {
 		"axios": "^0.27.2",
+		"materialize-css": "^1.0.0-rc.2",
 		"npm": "^8.17.0",
 		"react": "*",
 		"react-dom": "*",
