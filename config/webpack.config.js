@@ -21,6 +21,7 @@ const config = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: path.join(PUBLIC_DIRECTORY, 'index.html'),
+			favicon: './public/favicon.ico',
 		}),
 	],
 	module: {
