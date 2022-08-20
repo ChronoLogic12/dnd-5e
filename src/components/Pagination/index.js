@@ -1,17 +1,36 @@
 import React from 'react';
 import M from 'materialize-css';
 
-export default ({ spellsPerPage, totalPosts, paginate, currentPage }) => {
+export default ({ spellsPerPage, totalSpells, paginate, currentPage }) => {
 	const pageNumbers = [];
 
-	for (let i = 1; i <= Math.ceil(totalPosts / spellsPerPage); i++) {
+	for (let i = 1; i <= Math.ceil(totalSpells / spellsPerPage); i++) {
 		pageNumbers.push(i);
 	}
 
+	const handleNextPageClick = () => {
+		if (currentPage == pageNumbers.length) {
+			return null;
+		}
+		paginate(currentPage + 1);
+	};
+
+	const handlePrevPageClick = () => {
+		if (currentPage == 1) {
+			return null;
+		}
+		paginate(currentPage - 1);
+	};
+
 	return (
-		<ul className="pagination">
+		<ul className="pagination center">
 			<li className={currentPage == 1 ? 'disabled' : 'wave-effect'}>
-				<a href="#!">
+				<a
+					href="#!"
+					onClick={() => {
+						handlePrevPageClick();
+					}}
+				>
 					<i className="material-icons">chevron_left</i>
 				</a>
 			</li>
@@ -19,7 +38,7 @@ export default ({ spellsPerPage, totalPosts, paginate, currentPage }) => {
 				return (
 					<li key={number}>
 						<a
-							className={currentPage == number ? 'z-depth-2 grey darken-3 red-text' : 'wave-effect'}
+							className={currentPage == number ? 'red-text' : 'wave-effect'}
 							onClick={() => {
 								paginate(number);
 							}}
@@ -31,7 +50,12 @@ export default ({ spellsPerPage, totalPosts, paginate, currentPage }) => {
 				);
 			})}
 			<li className={currentPage == pageNumbers.length ? 'disabled' : 'waves-effect'}>
-				<a href="#!">
+				<a
+					href="#!"
+					onClick={() => {
+						handleNextPageClick();
+					}}
+				>
 					<i className="material-icons">chevron_right</i>
 				</a>
 			</li>
