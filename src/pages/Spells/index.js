@@ -56,6 +56,8 @@ export default () => {
 		setFilteredSpells(spellsFromSearch);
 	};
 
+	console.log(filteredSpells);
+
 	return (
 		<>
 			<main>
@@ -64,13 +66,7 @@ export default () => {
 					<div className="input-field">
 						<i className="material-icons prefix">search</i>
 						<label htmlFor="search">Search: </label>
-						<input
-							type="text"
-							value={search}
-							id="id-search"
-							name="search"
-							onChange={handleChange}
-						/>
+						<input type="text" value={search} id="search" name="search" onChange={handleChange} />
 					</div>
 					<p>Results found: {filteredSpells.length}</p>
 				</form>

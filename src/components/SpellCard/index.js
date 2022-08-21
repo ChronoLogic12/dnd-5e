@@ -43,7 +43,7 @@ export default (props) => {
 					</em>
 					<br />
 					<em>
-						School: <strong>{props.spell.school}</strong>
+						School: <strong className="capitalize">{props.spell.school}</strong>
 					</em>
 					<br />
 				</div>
