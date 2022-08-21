@@ -36,6 +36,8 @@ export default () => {
 		const instance = materialize.Collapsible.init(elements);
 	}, [filteredSpells]);
 
+	console.log(filteredSpells);
+
 	//Get current spells
 	const indexOfLastSpell = currentPage * spellsPerPage;
 	const indexOfFirstSpell = indexOfLastSpell - spellsPerPage;

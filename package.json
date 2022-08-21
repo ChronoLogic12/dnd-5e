@@ -26,6 +26,7 @@
 		"file-loader": "*",
 		"html-webpack-plugin": "*",
 		"jest": "*",
+		"netlify-cli": "^11.3.0",
 		"style-loader": "*",
 		"url-loader": "*",
 		"webpack": "*",
