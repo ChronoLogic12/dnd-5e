@@ -1,3 +1,7 @@
 .level {
 	margin: 0 0 0 auto !important;
 }
+
+.spellInfo strong {
+	font-weight: bold !important;
+}
