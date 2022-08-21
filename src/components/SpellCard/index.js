@@ -9,7 +9,7 @@ export default (props) => {
 			<header className="collapsible-header valign-wrapper">
 				{colourPicker(props.spell.school)}
 				<h6>{props.spell.name}</h6>
-				<em className={css.level}>{props.spell.level}</em>
+				<p className={css.level}>{props.spell.level}</p>
 			</header>
 			<div className="collapsible-body white">
 				<div className={css.spellInfo}>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Baskervville&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 * {
 	box-sizing: border-box;
@@ -7,8 +7,8 @@
 body {
 	margin: 0;
 	min-height: 100vh;
-	font-family: 'Baskervville', serif;
-	background-color: #fffcf2;
+	font-family: 'Montserrat', sans-serif;
+	background-color: hsl(44, 100%, 98%);
 }
 
 .loader {

@@ -59,7 +59,7 @@ export default () => {
 	return (
 		<>
 			<main>
-				<h1>Spells</h1>
+				<h1>5e: Spells</h1>
 				<form action="" onSubmit={(event) => event.preventDefault()}>
 					<div className="input-field">
 						<i className="material-icons prefix">search</i>
@@ -72,8 +72,8 @@ export default () => {
 							onChange={handleChange}
 						/>
 					</div>
+					<p>Results found: {filteredSpells.length}</p>
 				</form>
-				<p>Results found: {filteredSpells.length}</p>
 				<hr />
 				{currentSpells.length ? (
 					<ul className="collapsible">
