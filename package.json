@@ -39,6 +39,7 @@
 		"npm": "*",
 		"react": "*",
 		"react-dom": "*",
+		"react-icons": "^4.4.0",
 		"react-router-dom": "*",
 		"update": "*"
 	}

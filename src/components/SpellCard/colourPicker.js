@@ -1,29 +1,39 @@
+import React from 'react';
+
+import css from './style.module.css';
+
+import { FaEye } from 'react-icons/fa';
+import { BsMoonStarsFill } from 'react-icons/bs';
+import { GiWhiteTower, GiDoubleFaceMask, GiSnake } from 'react-icons/gi';
+import { IoShieldSharp, IoSkullSharp } from 'react-icons/io5';
+import { SiMediafire } from 'react-icons/si';
+
 export const colourPicker = (school) => {
 	let colour = '';
 	switch (school.toLowerCase()) {
 		case 'abjuration':
-			colour = 'amber accent-1';
+			colour = <IoShieldSharp className={`${css.spellIcon} cyan-text text-accent-3`} />;
 			break;
 		case 'enchantment':
-			colour = 'grey lighten-3';
+			colour = <BsMoonStarsFill className={`${css.spellIcon} pink-text`} />;
 			break;
 		case 'conjuration':
-			colour = 'orange lighten-4';
+			colour = <GiWhiteTower className={`${css.spellIcon} purple-text text-lighten-2`} />;
 			break;
 		case 'divination':
-			colour = 'white';
+			colour = <FaEye className={`${css.spellIcon} amber-text `} />;
 			break;
 		case 'evocation':
-			colour = 'red lighten-4';
+			colour = <SiMediafire className={`${css.spellIcon} red-text`} />;
 			break;
 		case 'illusion':
-			colour = 'blue lighten-5';
+			colour = <GiDoubleFaceMask className={`${css.spellIcon} blue-text`} />;
 			break;
 		case 'necromancy':
-			colour = 'grey ';
+			colour = <IoSkullSharp className={`${css.spellIcon} grey-text text-darken-3`} />;
 			break;
 		case 'transmutation':
-			colour = 'deep-purple lighten-5';
+			colour = <GiSnake className={`${css.spellIcon} green-text`} />;
 			break;
 		default:
 			colour = null;

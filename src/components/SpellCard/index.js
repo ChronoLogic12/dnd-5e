@@ -6,7 +6,8 @@ import { colourPicker } from './colourPicker';
 export default (props) => {
 	return (
 		<li>
-			<header className={`collapsible-header valign-wrapper ${colourPicker(props.spell.school)}`}>
+			<header className="collapsible-header valign-wrapper">
+				{colourPicker(props.spell.school)}
 				<h6>{props.spell.name}</h6>
 				<em className={css.level}>{props.spell.level}</em>
 			</header>
