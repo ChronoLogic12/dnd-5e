@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baskervville&display=swap');
 
 * {
 	box-sizing: border-box;
@@ -7,7 +7,8 @@
 body {
 	margin: 0;
 	min-height: 100vh;
-	font-family: 'Roboto', sans-serif;
+	font-family: 'Baskervville', serif;
+	background-color: #fffcf2;
 }
 
 .loader {
@@ -17,6 +18,7 @@ body {
 	width: 120px;
 	height: 120px;
 	animation: spin 2s linear infinite;
+	margin: auto;
 }
 
 @keyframes spin {
