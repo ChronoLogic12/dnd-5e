@@ -46,6 +46,7 @@ export default () => {
 		setCurrentPage(number);
 	};
 
+	// Filter all spells against search term and set NoResults to true on 0 matches.
 	const handleChange = (e) => {
 		const inputText = e.target.value.toLowerCase();
 		setSearch(inputText);
@@ -54,16 +55,15 @@ export default () => {
 			return spellString.includes(inputText);
 		});
 		setFilteredSpells(spellsFromSearch);
+		spellsFromSearch.length == 0 ? setNoResults(true) : setNoResults(false);
 	};
-
-	console.log(filteredSpells);
 
 	return (
 		<>
 			<main>
 				<h1>5e: Spells</h1>
 				<form action="" onSubmit={(event) => event.preventDefault()}>
-					<div className="input-field">
+					<div className="input-field valign-wrapper">
 						<i className="material-icons prefix">search</i>
 						<label htmlFor="search">Search: </label>
 						<input type="text" value={search} id="search" name="search" onChange={handleChange} />
@@ -79,10 +79,9 @@ export default () => {
 					</ul>
 				) : error ? (
 					<p>{error}</p>
-				) : (
+				) : noResults ? null : (
 					<div className="loader"></div>
 				)}
-
 				<Pagination
 					spellsPerPage={spellsPerPage}
 					totalSpells={filteredSpells.length}

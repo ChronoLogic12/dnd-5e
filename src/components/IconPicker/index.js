@@ -8,7 +8,7 @@ import { GiWhiteTower, GiDoubleFaceMask, GiSnake } from 'react-icons/gi';
 import { IoShieldSharp, IoSkullSharp } from 'react-icons/io5';
 import { SiMediafire } from 'react-icons/si';
 
-export const colourPicker = (school) => {
+export const iconPicker = (school) => {
 	let colour = '';
 	switch (school.toLowerCase()) {
 		case 'abjuration':

@@ -1,13 +1,37 @@
 import React from 'react';
 import css from './style.module.css';
 
-import { colourPicker } from './colourPicker';
+import { iconPicker } from '../IconPicker';
 
 export default (props) => {
+	const renderDescription = () => {
+		return (
+			<p>
+				{props.spell.desc
+					.replace(/(\]{(1, 4)}|\[{(1, 4)}|\*{2}|\/{2})/g, '')
+					.split('\n')
+					.map((str, index) => (
+						<React.Fragment key={index}>
+							{str}
+							<br />
+						</React.Fragment>
+					))}
+			</p>
+		);
+	};
+
+	const renderBooleanIcon = (value) => {
+		return value == 'no' ? (
+			<i className="material-icons red-text">cancel</i>
+		) : (
+			<i className="material-icons green-text">check_circle</i>
+		);
+	};
+
 	return (
 		<li>
 			<header className="collapsible-header valign-wrapper">
-				{colourPicker(props.spell.school)}
+				{iconPicker(props.spell.school)}
 				<h6>{props.spell.name}</h6>
 				<p className={css.level}>{props.spell.level}</p>
 			</header>
@@ -24,19 +48,11 @@ export default (props) => {
 					<br />
 					<em className="valign-wrapper">
 						Concentration:
-						{props.spell.concentration == 'no' ? (
-							<i className="material-icons red-text">cancel</i>
-						) : (
-							<i className="material-icons green-text">check_circle</i>
-						)}
+						{renderBooleanIcon(props.spell.concentration)}
 					</em>
 					<em className="valign-wrapper">
 						Ritual:
-						{props.spell.ritual == 'no' ? (
-							<i className="material-icons red-text">cancel</i>
-						) : (
-							<i className="material-icons green-text">check_circle</i>
-						)}
+						{renderBooleanIcon(props.spell.ritual)}
 					</em>
 					<em>
 						Duration: <strong>{props.spell.duration}</strong>
@@ -47,7 +63,7 @@ export default (props) => {
 					</em>
 					<br />
 				</div>
-				<p>{props.spell.desc}</p>
+				{renderDescription()}
 				<br />
 				<em className={css.spellInfo}>
 					Classes: <strong>{props.spell.dnd_class}</strong>

@@ -11,6 +11,14 @@ body {
 	background-color: hsl(44, 100%, 97%);
 }
 
+p {
+	white-space: normal !important;
+}
+
+br {
+	display: block !important;
+}
+
 .capitalize {
 	text-transform: capitalize;
 }
