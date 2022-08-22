@@ -35,6 +35,7 @@
 	},
 	"dependencies": {
 		"axios": "*",
+		"jquery": "^3.6.0",
 		"materialize-css": "*",
 		"npm": "*",
 		"react": "*",

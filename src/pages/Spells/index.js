@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import materialize from 'materialize-css';
+import $ from 'jquery';
 
-import { SpellCard, Pagination } from '../../components';
+import { SpellCard, Pagination, SpellSearch } from '../../components';
 
 import style from '../../styles/styles.css';
 
@@ -13,6 +14,9 @@ export default () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [spellsPerPage] = useState(30);
 	const [search, setSearch] = useState('');
+	const [levelFilter, setLevelFilter] = useState([]);
+	const [classFilter, setClassFilter] = useState([]);
+	const [schoolFilter, setSchoolFilter] = useState([]);
 	const [noResults, setNoResults] = useState(false);
 
 	//Get Spells from API
@@ -36,6 +40,10 @@ export default () => {
 		const instance = materialize.Collapsible.init(elements);
 	}, [filteredSpells]);
 
+	useEffect(() => {
+		M.AutoInit();
+	}, []);
+
 	//Get current spells
 	const indexOfLastSpell = currentPage * spellsPerPage;
 	const indexOfFirstSpell = indexOfLastSpell - spellsPerPage;
@@ -49,10 +57,42 @@ export default () => {
 	// Filter all spells against search term and set NoResults to true on 0 matches.
 	const handleChange = (e) => {
 		const inputText = e.target.value.toLowerCase();
-		setSearch(inputText);
-		const spellsFromSearch = spells.filter((spell) => {
+		const levelArray = $('#level').val();
+		const classArray = $('#class').val();
+		const schoolArray = $('#school').val();
+
+		switch (e.target.id) {
+			case 'search':
+				setSearch(inputText);
+				break;
+			case 'level':
+				setLevelFilter($('#level').val());
+				break;
+			case 'class':
+				setClassFilter($('#class').val());
+				break;
+			case 'school':
+				setSchoolFilter($('#school').val());
+				break;
+			default:
+				return;
+		}
+
+		const filter = {
+			level_int: levelArray,
+			class: classArray,
+			school: schoolArray,
+		};
+
+		let spellsFromSearch = spells.filter((spell) => {
 			const spellString = JSON.stringify(spell).toLowerCase();
-			return spellString.includes(inputText);
+			const spellClasses = spell.dnd_class.split(', ').map((s) => s.toLowerCase());
+			return (
+				spellString.includes(inputText) &&
+				(filter.level_int.length ? filter.level_int.includes(spell.level_int.toString()) : true) &&
+				(filter.class.length ? filter.class.every((r) => spellClasses.includes(r)) : true) &&
+				(filter.school.length ? filter.school.includes(spell.school.toLowerCase()) : true)
+			);
 		});
 		setFilteredSpells(spellsFromSearch);
 		spellsFromSearch.length == 0 ? setNoResults(true) : setNoResults(false);
@@ -62,14 +102,14 @@ export default () => {
 		<>
 			<main>
 				<h1>5e: Spells</h1>
-				<form action="" onSubmit={(event) => event.preventDefault()}>
-					<div className="input-field valign-wrapper">
-						<i className="material-icons prefix">search</i>
-						<label htmlFor="search">Search: </label>
-						<input type="text" value={search} id="search" name="search" onChange={handleChange} />
-					</div>
-					<p>Results found: {filteredSpells.length}</p>
-				</form>
+				<SpellSearch
+					handleChange={handleChange}
+					search={search}
+					levelFilter={levelFilter}
+					classFilter={classFilter}
+					schoolFilter={schoolFilter}
+					filteredSpells={filteredSpells}
+				/>
 				<hr />
 				{currentSpells.length ? (
 					<ul className="collapsible">
