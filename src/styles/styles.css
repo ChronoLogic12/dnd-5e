@@ -11,8 +11,10 @@ body {
 	background-color: hsl(44, 100%, 97%);
 }
 
-p {
-	white-space: normal !important;
+p,
+em,
+strong {
+	color: rgba(0, 0, 0, 1);
 }
 
 br {
