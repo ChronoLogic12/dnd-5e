@@ -17,7 +17,7 @@ export default () => {
 	const [levelFilter, setLevelFilter] = useState([]);
 	const [classFilter, setClassFilter] = useState([]);
 	const [schoolFilter, setSchoolFilter] = useState([]);
-	const [noResults, setNoResults] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	//Get Spells from API
 	useEffect(() => {
@@ -29,6 +29,7 @@ export default () => {
 					: [response.data.results];
 				setSpells(data);
 				setFilteredSpells(data);
+				setIsLoading(false);
 			})
 			.catch((error) => {
 				setError(error.message);
@@ -57,9 +58,6 @@ export default () => {
 	// Filter all spells against search term and set NoResults to true on 0 matches.
 	const handleChange = (e) => {
 		const inputText = e.target.value.toLowerCase();
-		const levelArray = $('#level').val();
-		const classArray = $('#class').val();
-		const schoolArray = $('#school').val();
 
 		switch (e.target.id) {
 			case 'search':
@@ -77,26 +75,23 @@ export default () => {
 			default:
 				return;
 		}
+	};
 
-		const filter = {
-			level_int: levelArray,
-			class: classArray,
-			school: schoolArray,
-		};
-
+	useEffect(() => {
 		let spellsFromSearch = spells.filter((spell) => {
 			const spellString = JSON.stringify(spell).toLowerCase();
 			const spellClasses = spell.dnd_class.split(', ').map((s) => s.toLowerCase());
 			return (
-				spellString.includes(inputText) &&
-				(filter.level_int.length ? filter.level_int.includes(spell.level_int.toString()) : true) &&
-				(filter.class.length ? filter.class.every((r) => spellClasses.includes(r)) : true) &&
-				(filter.school.length ? filter.school.includes(spell.school.toLowerCase()) : true)
+				(search.length > 0 ? spellString.includes(search) : true) &&
+				(levelFilter.length ? levelFilter.includes(spell.level_int.toString()) : true) &&
+				(classFilter.length ? classFilter.some((r) => spellClasses.includes(r)) : true) &&
+				(schoolFilter.length ? schoolFilter.includes(spell.school.toLowerCase()) : true)
 			);
 		});
+
 		setFilteredSpells(spellsFromSearch);
-		spellsFromSearch.length == 0 ? setNoResults(true) : setNoResults(false);
-	};
+		setCurrentPage(1);
+	}, [search, levelFilter, classFilter, schoolFilter]);
 
 	return (
 		<>
@@ -119,9 +114,9 @@ export default () => {
 					</ul>
 				) : error ? (
 					<p>{error}</p>
-				) : noResults ? null : (
+				) : isLoading ? (
 					<div className="loader"></div>
-				)}
+				) : null}
 				<Pagination
 					spellsPerPage={spellsPerPage}
 					totalSpells={filteredSpells.length}
