@@ -72,6 +72,11 @@ export default (props) => {
 				<em className={css.spellInfo}>
 					Classes: <strong>{props.spell.dnd_class}</strong>
 				</em>
+				<br />
+				<br />
+				<div className="center">
+					<small className="grey-text">Source: {props.spell.document__title}</small>
+				</div>
 			</div>
 		</li>
 	);
