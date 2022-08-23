@@ -46,6 +46,10 @@ export default (props) => {
 						Casting Time: <strong>{props.spell.casting_time}</strong>
 					</em>
 					<br />
+					<em>
+						Range: <strong>{props.spell.range}</strong>
+					</em>
+					<br />
 					<em className="valign-wrapper">
 						Concentration:
 						{renderBooleanIcon(props.spell.concentration)}
@@ -64,7 +68,7 @@ export default (props) => {
 					<br />
 				</div>
 				{renderDescription()}
-				<br />
+				{props.spell.higher_level ? <p>{props.spell.higher_level}</p> : null}
 				<em className={css.spellInfo}>
 					Classes: <strong>{props.spell.dnd_class}</strong>
 				</em>
