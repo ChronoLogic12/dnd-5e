@@ -8,7 +8,7 @@ export default (props) => {
 		return (
 			<p>
 				{props.spell.desc
-					.replace(/(\]{(1, 4)}|\[{(1, 4)}|\*{2}|\/{2})/g, '')
+					.replace(/(\]{1,4}|\[{1,4}|\*{2}|\/{2})/g, '')
 					.split('\n')
 					.map((str, index) => (
 						<React.Fragment key={index}>
