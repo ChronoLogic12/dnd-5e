@@ -4,7 +4,7 @@ import css from './style.module.css';
 
 import { FaEye } from 'react-icons/fa';
 import { BsMoonStarsFill } from 'react-icons/bs';
-import { GiWhiteTower, GiDoubleFaceMask, GiSnake } from 'react-icons/gi';
+import { GiWhiteTower, GiDoubleFaceMask, GiSnake, GiChessKnight } from 'react-icons/gi';
 import { IoShieldSharp, IoSkullSharp } from 'react-icons/io5';
 import { SiMediafire } from 'react-icons/si';
 
@@ -18,7 +18,7 @@ export const iconPicker = (school) => {
 			colour = <BsMoonStarsFill className={`${css.spellIcon} pink-text`} />;
 			break;
 		case 'conjuration':
-			colour = <GiWhiteTower className={`${css.spellIcon} purple-text text-lighten-2`} />;
+			colour = <GiChessKnight className={`${css.spellIcon} purple-text text-lighten-2`} />;
 			break;
 		case 'divination':
 			colour = <FaEye className={`${css.spellIcon} amber-text `} />;
