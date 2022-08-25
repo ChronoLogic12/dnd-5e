@@ -4,6 +4,7 @@ import materialize from 'materialize-css';
 import $ from 'jquery';
 
 import { SpellCard, Pagination, SpellSearch } from '../../components';
+import jsonSpells from '../../spells.json';
 
 import style from '../../styles/styles.css';
 
@@ -27,6 +28,7 @@ export default () => {
 				const data = Array.isArray(response.data.results)
 					? response.data.results
 					: [response.data.results];
+				Array.prototype.push.apply(data, jsonSpells);
 				setSpells(data);
 				setFilteredSpells(data);
 				setIsLoading(false);
@@ -93,6 +95,16 @@ export default () => {
 		setCurrentPage(1);
 	}, [search, levelFilter, classFilter, schoolFilter]);
 
+	// Reset all search filters
+	const resetSearchFilters = (e) => {
+		e.preventDefault();
+		setSearch('');
+		setLevelFilter([]);
+		setClassFilter([]);
+		setSchoolFilter([]);
+		console.log(levelFilter);
+	};
+
 	return (
 		<>
 			<main>
@@ -104,6 +116,7 @@ export default () => {
 					classFilter={classFilter}
 					schoolFilter={schoolFilter}
 					filteredSpells={filteredSpells}
+					resetSearchFilters={resetSearchFilters}
 				/>
 				<hr />
 				{currentSpells.length ? (
