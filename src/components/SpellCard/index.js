@@ -51,12 +51,12 @@ export default (props) => {
 					</em>
 					<br />
 					<em className="valign-wrapper">
-						Concentration:
-						{renderBooleanIcon(props.spell.concentration)}
-					</em>
-					<em className="valign-wrapper">
 						Ritual:
 						{renderBooleanIcon(props.spell.ritual)}
+					</em>
+					<em className="valign-wrapper">
+						Concentration:
+						{renderBooleanIcon(props.spell.concentration)}
 					</em>
 					<em>
 						Duration: <strong>{props.spell.duration}</strong>
