@@ -33,6 +33,7 @@ br {
 	height: 120px;
 	animation: spin 2s linear infinite;
 	margin: auto;
+	margin-top: 25vh;
 }
 
 @keyframes spin {
