@@ -2,9 +2,37 @@ import React from 'react';
 
 import css from './style.module.css';
 
+import { getSelectedOptionValues } from '../../utils';
 import { IoFilter } from 'react-icons/io5';
 
 export default (props) => {
+	const handleSearchInputChange = ({ target }) => {
+		props.setSearch(target.value);
+	};
+
+	const handleLevelInputChange = ({ target }) => {
+		let value = getSelectedOptionValues(target.options);
+		props.setLevelFilter(value);
+	};
+
+	const handleClassInputChange = ({ target }) => {
+		let value = getSelectedOptionValues(target.options);
+		props.setClassFilter(value);
+	};
+
+	const handleSchoolInputChange = ({ target }) => {
+		let value = getSelectedOptionValues(target.options);
+		props.setSchoolFilter(value);
+	};
+
+	const handleConcentrationCheckboxChange = () => {
+		props.setConcentrationFilter((prevState) => !prevState);
+	};
+
+	const handleRitualCheckboxChange = () => {
+		props.setRitualFilter((prevState) => !prevState);
+	};
+
 	return (
 		<>
 			<form className="" action="" onSubmit={(event) => event.preventDefault()}>
@@ -16,7 +44,7 @@ export default (props) => {
 						value={props.search}
 						id="search"
 						name="search"
-						onChange={props.handleChange}
+						onChange={handleSearchInputChange}
 					/>
 				</div>
 				<ul className="collapsible col m6 s12">
@@ -34,7 +62,7 @@ export default (props) => {
 									id="level"
 									value={props.levelFilter}
 									className={css.dropdown}
-									onChange={props.handleChange}
+									onChange={handleLevelInputChange}
 									multiple
 								>
 									<option defaultValue="" disabled>
@@ -59,7 +87,7 @@ export default (props) => {
 									name="class"
 									id="class"
 									value={props.classFilter}
-									onChange={props.handleChange}
+									onChange={handleClassInputChange}
 									multiple
 								>
 									<option defaultValue="" disabled>
@@ -82,7 +110,7 @@ export default (props) => {
 									name="school"
 									id="school"
 									value={props.schoolFilter}
-									onChange={props.handleChange}
+									onChange={handleSchoolInputChange}
 									multiple
 								>
 									<option defaultValue="" disabled>
@@ -106,8 +134,8 @@ export default (props) => {
 											name="concentration"
 											id="concentration"
 											value={props.concentrationFilter}
-											onChange={props.handleChange}
-											checked={props.concentrationFilter ? 'checked' : ''}
+											onChange={handleConcentrationCheckboxChange}
+											checked={props.concentrationFilter}
 										/>
 										<span>Concentration</span>
 									</label>
@@ -119,8 +147,8 @@ export default (props) => {
 											name="ritual"
 											id="ritual"
 											value={props.ritualFilter}
-											onChange={props.handleChange}
-											checked={props.ritualFilter ? 'checked' : ''}
+											onChange={handleRitualCheckboxChange}
+											checked={props.ritualFilter}
 										/>
 										<span>Ritual</span>
 									</label>
@@ -130,7 +158,7 @@ export default (props) => {
 					</li>
 				</ul>
 			</form>
-			<p>Results found: {props.filteredSpells.length}</p>
+			<p>Results found: {props.spellCount}</p>
 		</>
 	);
 };
