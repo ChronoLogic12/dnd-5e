@@ -98,6 +98,34 @@ export default (props) => {
 									<option value="transmutation">Transmutation</option>
 								</select>
 							</div>
+							<div className="container">
+								<p>
+									<label>
+										<input
+											type="checkbox"
+											name="concentration"
+											id="concentration"
+											value={props.concentrationFilter}
+											onChange={props.handleChange}
+											checked={props.concentrationFilter ? 'checked' : ''}
+										/>
+										<span>Concentration</span>
+									</label>
+								</p>
+								<p>
+									<label>
+										<input
+											type="checkbox"
+											name="ritual"
+											id="ritual"
+											value={props.ritualFilter}
+											onChange={props.handleChange}
+											checked={props.ritualFilter ? 'checked' : ''}
+										/>
+										<span>Ritual</span>
+									</label>
+								</p>
+							</div>
 						</div>
 					</li>
 				</ul>

@@ -18,6 +18,8 @@ export default () => {
 	const [levelFilter, setLevelFilter] = useState([]);
 	const [classFilter, setClassFilter] = useState([]);
 	const [schoolFilter, setSchoolFilter] = useState([]);
+	const [concentrationFilter, setConcentrationFilter] = useState(false);
+	const [ritualFilter, setRitualFilter] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 
 	//Get Spells from API
@@ -45,7 +47,7 @@ export default () => {
 
 	useEffect(() => {
 		M.AutoInit();
-	}, []);
+	}, [isLoading]);
 
 	//Get current spells
 	const indexOfLastSpell = currentPage * spellsPerPage;
@@ -60,6 +62,8 @@ export default () => {
 	// Filter all spells against search term and set NoResults to true on 0 matches.
 	const handleChange = (e) => {
 		const inputText = e.target.value.toLowerCase();
+		const checked = e.target.checked;
+		console.log(e.target);
 
 		switch (e.target.id) {
 			case 'search':
@@ -74,6 +78,12 @@ export default () => {
 			case 'school':
 				setSchoolFilter($('#school').val());
 				break;
+			case 'concentration':
+				setConcentrationFilter(checked);
+				break;
+			case 'ritual':
+				setRitualFilter(checked);
+				break;
 			default:
 				return;
 		}
@@ -87,13 +97,15 @@ export default () => {
 				(search.length > 0 ? spellString.includes(search) : true) &&
 				(levelFilter.length ? levelFilter.includes(spell.level_int.toString()) : true) &&
 				(classFilter.length ? classFilter.some((r) => spellClasses.includes(r)) : true) &&
-				(schoolFilter.length ? schoolFilter.includes(spell.school.toLowerCase()) : true)
+				(schoolFilter.length ? schoolFilter.includes(spell.school.toLowerCase()) : true) &&
+				(concentrationFilter ? spell.concentration == 'yes' : true) &&
+				(ritualFilter ? spell.ritual == 'yes' : true)
 			);
 		});
 
 		setFilteredSpells(spellsFromSearch);
 		setCurrentPage(1);
-	}, [search, levelFilter, classFilter, schoolFilter]);
+	}, [search, levelFilter, classFilter, schoolFilter, concentrationFilter, ritualFilter]);
 
 	// Reset all search filters
 	const resetSearchFilters = (e) => {
@@ -109,33 +121,37 @@ export default () => {
 		<>
 			<main>
 				<h1>5e: Spells</h1>
-				<SpellSearch
-					handleChange={handleChange}
-					search={search}
-					levelFilter={levelFilter}
-					classFilter={classFilter}
-					schoolFilter={schoolFilter}
-					filteredSpells={filteredSpells}
-					resetSearchFilters={resetSearchFilters}
-				/>
-				<hr />
 				{currentSpells.length ? (
-					<ul className="collapsible">
-						{currentSpells.map((spell) => (
-							<SpellCard key={spell.name} spell={spell} />
-						))}
-					</ul>
+					<>
+						<SpellSearch
+							handleChange={handleChange}
+							search={search}
+							levelFilter={levelFilter}
+							classFilter={classFilter}
+							schoolFilter={schoolFilter}
+							concentrationFilter={concentrationFilter}
+							ritualFilter={ritualFilter}
+							filteredSpells={filteredSpells}
+							resetSearchFilters={resetSearchFilters}
+						/>
+						<hr />
+						<ul className="collapsible">
+							{currentSpells.map((spell) => (
+								<SpellCard key={spell.name} spell={spell} />
+							))}
+						</ul>
+						<Pagination
+							spellsPerPage={spellsPerPage}
+							totalSpells={filteredSpells.length}
+							paginate={paginate}
+							currentPage={currentPage}
+						/>
+					</>
 				) : error ? (
 					<p>{error}</p>
 				) : isLoading ? (
 					<div className="loader"></div>
 				) : null}
-				<Pagination
-					spellsPerPage={spellsPerPage}
-					totalSpells={filteredSpells.length}
-					paginate={paginate}
-					currentPage={currentPage}
-				/>
 			</main>
 		</>
 	);
