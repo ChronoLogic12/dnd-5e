@@ -1,0 +1,19 @@
+main {
+	height: 95vh;
+}
+
+section {
+	height: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+h4 {
+	margin-top: 0 !important;
+}
+
+.hover:hover > h4 {
+	filter: drop-shadow(2px 8px 8px rgb(0 0 0 / 0.3));
+	transition: all 0.2s;
+}
