@@ -9,6 +9,7 @@ function App() {
 			<Route exact path="/" element={<Pages.Landing />} />
 			<Route path="*" element={<Pages.NotFound />} />
 			<Route path="/spells" element={<Pages.Spells />} />
+			<Route path="/conditions" element={<Pages.Conditions />} />
 		</Routes>
 	);
 }
