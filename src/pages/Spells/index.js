@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import materialize from 'materialize-css';
-import $ from 'jquery';
 
-import { SpellCard, Pagination, SpellSearch } from '../../components';
+import { SpellCard, Pagination, SpellSearch, Navbar } from '../../components';
 import jsonSpells from '../../spells.json';
 
 export default () => {
@@ -36,7 +36,7 @@ export default () => {
 	}, []);
 
 	useEffect(() => {
-		M.AutoInit();
+		materialize.AutoInit();
 	}, [isLoading]);
 
 	useEffect(() => {
@@ -113,11 +113,16 @@ export default () => {
 
 	return (
 		<>
-			<main>
+			{/* <Navbar /> */}
+			<main className="container">
 				<h1>
-					<span className="red-text">5e:</span> Spells
+					<Link to="/">
+						<span className="red-text">5e:</span>
+					</Link>{' '}
+					Spells
 				</h1>
 				{renderSearchResults()}
+				<div className="spacing"></div>
 			</main>
 		</>
 	);
