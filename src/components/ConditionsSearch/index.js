@@ -1,7 +1,5 @@
 import React from 'react';
 
-import css from './style.module.css';
-
 import { IoFilter } from 'react-icons/io5';
 
 export default (props) => {
