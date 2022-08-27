@@ -42,7 +42,15 @@ export default () => {
 
 	useEffect(() => {
 		setCurrentPage(1);
-	}, [search, levelFilter, classFilter, schoolFilter, concentrationFilter, ritualFilter]);
+	}, [
+		search,
+		levelFilter,
+		classFilter,
+		schoolFilter,
+		concentrationFilter,
+		ritualFilter,
+		castingFilter,
+	]);
 
 	const getSearchResults = () => {
 		return spells.filter((spell) => {
