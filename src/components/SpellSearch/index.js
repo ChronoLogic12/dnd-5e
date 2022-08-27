@@ -144,8 +144,8 @@ export default (props) => {
 									<option defaultValue="" disabled>
 										Select Casting Time
 									</option>
-									<option value="action">Action</option>
-									<option value="bonus">Bonus Action</option>
+									<option value="1 action">Action</option>
+									<option value="1 bonus action">Bonus Action</option>
 									<option value="reaction">Reaction</option>
 								</select>
 							</div>
