@@ -15,6 +15,7 @@ export default () => {
 	const [levelFilter, setLevelFilter] = useState([]);
 	const [classFilter, setClassFilter] = useState([]);
 	const [schoolFilter, setSchoolFilter] = useState([]);
+	const [castingFilter, setCastingFilter] = useState([]);
 	const [concentrationFilter, setConcentrationFilter] = useState(false);
 	const [ritualFilter, setRitualFilter] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
@@ -52,6 +53,7 @@ export default () => {
 				(levelFilter.length ? levelFilter.includes(spell.level_int.toString()) : true) &&
 				(classFilter.length ? classFilter.some((r) => spellClasses.includes(r)) : true) &&
 				(schoolFilter.length ? schoolFilter.includes(spell.school.toLowerCase()) : true) &&
+				(castingFilter.length ? castingFilter.some((r) => spell.casting_time.includes(r)) : true) &&
 				(concentrationFilter ? spell.concentration == 'yes' : true) &&
 				(ritualFilter ? spell.ritual == 'yes' : true)
 			);
@@ -75,12 +77,14 @@ export default () => {
 					levelFilter={levelFilter}
 					classFilter={classFilter}
 					schoolFilter={schoolFilter}
+					castingFilter={castingFilter}
 					concentrationFilter={concentrationFilter}
 					ritualFilter={ritualFilter}
 					setSearch={setSearch}
 					setLevelFilter={setLevelFilter}
 					setClassFilter={setClassFilter}
 					setSchoolFilter={setSchoolFilter}
+					setCastingFilter={setCastingFilter}
 					setConcentrationFilter={setConcentrationFilter}
 					setRitualFilter={setRitualFilter}
 					spellCount={spellCount}

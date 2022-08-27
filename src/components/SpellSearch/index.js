@@ -25,6 +25,11 @@ export default (props) => {
 		props.setSchoolFilter(value);
 	};
 
+	const handleCastingInputChange = ({ target }) => {
+		let value = getSelectedOptionValues(target.options);
+		props.setCastingFilter(value);
+	};
+
 	const handleConcentrationCheckboxChange = () => {
 		props.setConcentrationFilter((prevState) => !prevState);
 	};
@@ -124,6 +129,24 @@ export default (props) => {
 									<option value="illusion">Illusion</option>
 									<option value="necromancy">Necromancy</option>
 									<option value="transmutation">Transmutation</option>
+								</select>
+							</div>
+							{/* Casting time */}
+							<div className="container">
+								<label htmlFor="casting">Casting Time:</label>
+								<select
+									name="casting"
+									id="casting"
+									value={props.castingFilter}
+									onChange={handleCastingInputChange}
+									multiple
+								>
+									<option defaultValue="" disabled>
+										Select Casting Time
+									</option>
+									<option value="action">Action</option>
+									<option value="bonus">Bonus Action</option>
+									<option value="reaction">Reaction</option>
 								</select>
 							</div>
 							<div className="container">
