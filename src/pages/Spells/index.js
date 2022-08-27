@@ -48,12 +48,13 @@ export default () => {
 		return spells.filter((spell) => {
 			const spellString = JSON.stringify(spell).toLowerCase();
 			const spellClasses = spell.dnd_class.split(', ').map((s) => s.toLowerCase());
+			const castingTime = spell.casting_time.replaceAll(',', '').split(' ');
 			return (
 				(search.length > 0 ? spellString.includes(search) : true) &&
 				(levelFilter.length ? levelFilter.includes(spell.level_int.toString()) : true) &&
 				(classFilter.length ? classFilter.some((r) => spellClasses.includes(r)) : true) &&
 				(schoolFilter.length ? schoolFilter.includes(spell.school.toLowerCase()) : true) &&
-				(castingFilter.length ? castingFilter.some((r) => spell.casting_time.includes(r)) : true) &&
+				(castingFilter.length ? castingFilter.some((r) => castingTime.includes(r)) : true) &&
 				(concentrationFilter ? spell.concentration == 'yes' : true) &&
 				(ritualFilter ? spell.ritual == 'yes' : true)
 			);
