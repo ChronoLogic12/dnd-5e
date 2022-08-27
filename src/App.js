@@ -10,6 +10,7 @@ function App() {
 			<Route path="*" element={<Pages.NotFound />} />
 			<Route path="/spells" element={<Pages.Spells />} />
 			<Route path="/conditions" element={<Pages.Conditions />} />
+			<Route path="/feats" element={<Pages.Feats />} />
 		</Routes>
 	);
 }

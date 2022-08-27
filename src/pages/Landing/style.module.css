@@ -17,3 +17,7 @@ h4 {
 	filter: drop-shadow(2px 8px 8px rgb(0 0 0 / 0.3));
 	transition: all 0.2s;
 }
+
+.icon {
+	margin-left: 1rem;
+}
