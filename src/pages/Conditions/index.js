@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import materialize from 'materialize-css';
 
-import css from './style.module.css';
-
 import { ConditionCard, ConditionsSearch } from '../../components';
 
 export default () => {
@@ -13,7 +11,7 @@ export default () => {
 	const [search, setSearch] = useState('');
 	const [isLoading, setIsLoading] = useState(true);
 
-	//Get Spells from API
+	//Get Conditions from API
 	useEffect(() => {
 		axios
 			.get('https://api.open5e.com/conditions')
@@ -43,7 +41,6 @@ export default () => {
 	const renderSearchResults = () => {
 		const currentConditions = getSearchResults();
 		const conditionsCount = currentConditions.length;
-		console.log(currentConditions[0]);
 
 		return (
 			<>
@@ -51,7 +48,7 @@ export default () => {
 				<hr />
 				{currentConditions.length ? (
 					<>
-						<ul className={`${css.bottomSpacing} collapsible`}>
+						<ul className="collapsible">
 							{currentConditions.map((condition) => (
 								<ConditionCard key={condition.name} condition={condition} />
 							))}
