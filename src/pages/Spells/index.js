@@ -53,7 +53,7 @@ export default () => {
 	]);
 
 	const getSearchResults = () => {
-		return spells.filter((spell) => {
+		const searchResults = spells.filter((spell) => {
 			const spellString = JSON.stringify(spell).toLowerCase();
 			const spellClasses = spell.dnd_class.split(', ').map((s) => s.toLowerCase());
 			const castingTime = spell.casting_time.replaceAll('reaction,', 'reaction');
@@ -67,6 +67,7 @@ export default () => {
 				(ritualFilter ? spell.ritual == 'yes' : true)
 			);
 		});
+		return searchResults.sort((a, b) => a.level_int - b.level_int);
 	};
 
 	const getCurrentPageSearchResults = () => {
