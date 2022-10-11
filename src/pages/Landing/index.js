@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { IoChevronForwardSharp } from 'react-icons/io5';
 import { BsStars } from 'react-icons/bs';
-import { GiFalling, GiStrong } from 'react-icons/gi';
+import { GiFalling, GiStrong, GiFishMonster } from 'react-icons/gi';
 
 import css from './style.module.css';
 
@@ -36,6 +36,13 @@ export default () => {
 							<IoChevronForwardSharp />
 							<span>Feats</span>
 							<GiStrong className={`${css.icon} indigo-text`} />
+						</h4>
+					</Link>
+					<Link to="/monsters" className={`${css.hover}`}>
+						<h4 className="black-text valign-wrapper">
+							<IoChevronForwardSharp />
+							<span>Monsters</span>
+							<GiFishMonster className={`${css.icon} teal-text`} />
 						</h4>
 					</Link>
 					<Link to="/" className={`${css.hover}`}>

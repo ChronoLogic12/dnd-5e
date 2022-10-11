@@ -3,3 +3,4 @@ export { default as NotFound } from './NotFound';
 export { default as Spells } from './Spells';
 export { default as Conditions } from './Conditions';
 export { default as Feats } from './Feats';
+export { default as Monsters } from './Monsters';

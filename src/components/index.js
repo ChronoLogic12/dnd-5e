@@ -5,3 +5,4 @@ export { default as ConditionCard } from './ConditionCard';
 export { default as ConditionsSearch } from './ConditionsSearch';
 export { default as FeatCard } from './FeatCard';
 export { default as FeatsSearch } from './FeatsSearch';
+export { default as MonsterCard } from './MonsterCard';

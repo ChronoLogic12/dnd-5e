@@ -11,6 +11,7 @@ function App() {
 			<Route path="/spells" element={<Pages.Spells />} />
 			<Route path="/conditions" element={<Pages.Conditions />} />
 			<Route path="/feats" element={<Pages.Feats />} />
+			<Route path="/monsters" element={<Pages.Monsters />} />
 		</Routes>
 	);
 }
