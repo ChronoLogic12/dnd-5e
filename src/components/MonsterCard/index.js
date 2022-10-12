@@ -14,7 +14,7 @@ const calculateModifier = (score) => {
 };
 
 const calculateSavingThrow = (score, stat) => {
-	return prependPlusSymbol(+calculateModifier(score) + (stat != null ? +stat : 0));
+	return prependPlusSymbol(stat === null ? +calculateModifier(score) : +stat);
 };
 
 export default (props) => {
