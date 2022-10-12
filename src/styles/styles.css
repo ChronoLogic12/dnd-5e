@@ -47,3 +47,7 @@ br {
 .spacing {
 	height: 2rem;
 }
+
+tr {
+	border-bottom: none;
+}
