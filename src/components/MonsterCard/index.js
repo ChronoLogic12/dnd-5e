@@ -35,14 +35,22 @@ export default (props) => {
 					<strong>Hit Points: </strong>
 					{props.monster.hit_points} ({props.monster.hit_dice})
 				</p>
-				<p>
+				<div>
 					<strong>Speed: </strong>
-					{Object.entries(props.monster.speed).map(([key, value]) => (
-						<span key={key} className="capitalize">
-							{key}: {value}.{' '}
-						</span>
-					))}
-				</p>
+					<div className={css.speed}>
+						{Object.entries(props.monster.speed).map(([key, value]) => (
+							<ul key={key} className="capitalize">
+								{key === 'hover' ? (
+									<li>Hover: True</li>
+								) : (
+									<li>
+										{key}: {value}
+									</li>
+								)}
+							</ul>
+						))}
+					</div>
+				</div>
 				<hr className={css.rule} />
 				<table>
 					<tbody>

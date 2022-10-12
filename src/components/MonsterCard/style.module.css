@@ -18,3 +18,12 @@ td {
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
 }
+
+.speed {
+	display: flex;
+	flex-direction: column;
+}
+.speed li {
+	list-style-type: disc !important;
+	list-style-position: inside;
+}
