@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { MonsterCard } from '../../components';
+import materialize from 'materialize-css';
+
+import { MonsterCard, MonstersPagination } from '../../components';
 
 export default () => {
 	const [monsters, setMonsters] = useState([]);
@@ -26,7 +28,11 @@ export default () => {
 			.catch((error) => {
 				setError(error.message);
 			});
-	}, []);
+	}, [currentPage]);
+
+	useEffect(() => {
+		materialize.AutoInit();
+	}, [isLoading]);
 
 	const renderSearchResults = () => {
 		return (
@@ -39,6 +45,11 @@ export default () => {
 								<MonsterCard key={monster.name} monster={monster} />
 							))}
 						</ul>
+						<MonstersPagination
+							totalMonsters={count}
+							paginate={setCurrentPage}
+							currentPage={currentPage}
+						/>
 					</>
 				) : error ? (
 					<p>{error}</p>
