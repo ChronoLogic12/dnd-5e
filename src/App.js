@@ -12,6 +12,7 @@ function App() {
 			<Route path="/conditions" element={<Pages.Conditions />} />
 			<Route path="/feats" element={<Pages.Feats />} />
 			<Route path="/monsters" element={<Pages.Monsters />} />
+			<Route path="/about" element={<Pages.About />} />
 		</Routes>
 	);
 }

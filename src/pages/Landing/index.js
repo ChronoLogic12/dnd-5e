@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { IoChevronForwardSharp } from 'react-icons/io5';
 import { BsStars } from 'react-icons/bs';
-import { GiBackPain, GiStrong, GiIceCube } from 'react-icons/gi';
+import { GiBackPain, GiStrong, GiIceCube, GiBookmark } from 'react-icons/gi';
 
 import css from './style.module.css';
 
@@ -45,10 +45,11 @@ export default () => {
 							<GiIceCube className={`${css.icon} green-text`} />
 						</h4>
 					</Link>
-					<Link to="/" className={`${css.hover}`}>
-						<h4 className="grey-text valign-wrapper">
+					<Link to="/about" className={`${css.hover}`}>
+						<h4 className="black-text valign-wrapper">
 							<IoChevronForwardSharp />
 							About
+							<GiBookmark className={`${css.icon} brown-text`} />
 						</h4>
 					</Link>
 				</section>
