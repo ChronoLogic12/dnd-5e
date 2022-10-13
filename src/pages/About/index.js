@@ -39,7 +39,7 @@ export default () => {
 								allow you to clarify rules for specific conditions and feats or to check a monster's
 								stats (Unless you're currently a player in combat with it! You wouldn't cheat now
 								would you?) I've attempted to bring more of what you need together in one place so
-								you focus on the fun part, playing the game.
+								you can focus on the fun part, playing the game.
 							</p>
 							<h5>
 								<strong>Credits</strong>
