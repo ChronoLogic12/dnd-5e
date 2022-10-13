@@ -2,12 +2,6 @@
 	margin: 0 0 0 auto !important;
 }
 
-.rule {
-	border: 0;
-	background: linear-gradient(to right, rgb(187, 2, 2), rgba(187, 2, 2, 0));
-	height: 2px;
-}
-
 h5 {
 	margin-top: 0 !important;
 }

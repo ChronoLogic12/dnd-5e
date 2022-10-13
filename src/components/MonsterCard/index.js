@@ -29,7 +29,7 @@ export default (props) => {
 					<strong>{props.monster.name}</strong>
 				</h5>
 				{props.monster.size} {props.monster.type}, {props.monster.alignment}
-				<hr className={css.rule} />
+				<hr className="rule" />
 				<p>
 					<strong>Armor Class: </strong>
 					{props.monster.armor_class}
@@ -52,7 +52,7 @@ export default (props) => {
 						)}
 					</ul>
 				</div>
-				<hr className={css.rule} />
+				<hr className="rule" />
 				<table>
 					<tbody>
 						<tr>
@@ -97,7 +97,7 @@ export default (props) => {
 						</tr>
 					</tbody>
 				</table>
-				<hr className={css.rule} />
+				<hr className="rule" />
 				<p>
 					<strong>Saving Throws: </strong>
 					Str {calculateSavingThrow(props.monster.strength, props.monster.strength_save)}, Dex{' '}
@@ -148,7 +148,7 @@ export default (props) => {
 					<strong>Challenge Rating: </strong>
 					{props.monster.challenge_rating}
 				</p>
-				<hr className={css.rule} />
+				<hr className="rule" />
 				{/* Special Abilities */}
 				{props.monster.special_abilities.length ? (
 					<>
@@ -169,7 +169,7 @@ export default (props) => {
 						<h5>
 							<strong>Actions</strong>
 						</h5>
-						<hr className={css.rule} />
+						<hr className="rule" />
 						{props.monster.actions.map((action) => {
 							return (
 								<p key={action.name}>
@@ -187,7 +187,7 @@ export default (props) => {
 						<h5>
 							<strong>Reactions</strong>
 						</h5>
-						<hr className={css.rule} />
+						<hr className="rule" />
 						{props.monster.reactions.map((reaction) => {
 							return (
 								<p key={reaction.name}>
@@ -205,7 +205,7 @@ export default (props) => {
 						<h5>
 							<strong>Legendary Actions</strong>
 						</h5>
-						<hr className={css.rule} />
+						<hr className="rule" />
 						<p>{props.monster.legendary_desc}</p>
 						{props.monster.legendary_actions.map((action) => {
 							return (
