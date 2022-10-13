@@ -69,3 +69,7 @@ label {
 	color: #fff !important;
 	box-shadow: inset 200px 0 0 0 #e20000;
 }
+
+.bold {
+	font-weight: bold !important;
+}

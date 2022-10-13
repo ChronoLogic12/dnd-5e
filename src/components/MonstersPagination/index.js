@@ -38,7 +38,7 @@ export default ({ totalMonsters, paginate, currentPage }) => {
 				return (
 					<li key={number}>
 						<a
-							className={currentPage == number ? 'red-text' : 'wave-effect'}
+							className={currentPage == number ? 'red-text bold' : 'wave-effect'}
 							onClick={() => {
 								paginate(number);
 							}}
