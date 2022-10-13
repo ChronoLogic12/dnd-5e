@@ -19,7 +19,7 @@ const calculateSavingThrow = (score, stat) => {
 
 export default (props) => {
 	return (
-		<li>
+		<li key={props.monster.name}>
 			<header className="collapsible-header valign-wrapper">
 				<h6>{props.monster.name}</h6>
 				<p className={css.cr}>{props.monster.challenge_rating}</p>
@@ -40,19 +40,17 @@ export default (props) => {
 				</p>
 				<div>
 					<strong>Speed: </strong>
-					<div className={css.speed}>
-						{Object.entries(props.monster.speed).map(([key, value]) => (
-							<ul key={key} className="capitalize">
-								{key === 'hover' ? (
-									<li>Hover: True</li>
-								) : (
-									<li>
-										{key}: {value}
-									</li>
-								)}
-							</ul>
-						))}
-					</div>
+					<ul className={`capitalize ${css.speed}`}>
+						{Object.entries(props.monster.speed).map(([key, value]) =>
+							key === 'hover' ? (
+								<li key={key}>Hover: True</li>
+							) : (
+								<li key={key}>
+									{key}: {value}
+								</li>
+							)
+						)}
+					</ul>
 				</div>
 				<hr className={css.rule} />
 				<table>
@@ -156,7 +154,7 @@ export default (props) => {
 					<>
 						{props.monster.special_abilities.map((ability) => {
 							return (
-								<p>
+								<p key={ability.name}>
 									<strong key={ability.name}>{ability.name}: </strong>
 									<span>{ability.desc}</span>
 									<br />
@@ -174,7 +172,7 @@ export default (props) => {
 						<hr className={css.rule} />
 						{props.monster.actions.map((action) => {
 							return (
-								<p>
+								<p key={action.name}>
 									<strong key={action.name}>{action.name}: </strong>
 									<span>{action.desc}</span>
 									<br />
@@ -192,7 +190,7 @@ export default (props) => {
 						<hr className={css.rule} />
 						{props.monster.reactions.map((reaction) => {
 							return (
-								<p>
+								<p key={reaction.name}>
 									<strong key={reaction.name}>{reaction.name}: </strong>
 									<span>{reaction.desc}</span>
 									<br />
@@ -211,7 +209,7 @@ export default (props) => {
 						<p>{props.monster.legendary_desc}</p>
 						{props.monster.legendary_actions.map((action) => {
 							return (
-								<p>
+								<p key={action.name}>
 									<strong key={action.name}>{action.name}: </strong>
 									<span>{action.desc}</span>
 									<br />

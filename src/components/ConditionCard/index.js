@@ -18,7 +18,7 @@ export default (props) => {
 	};
 
 	return (
-		<li>
+		<li key={props.condition.name}>
 			<header className="collapsible-header valign-wrapper">
 				<h6>{props.condition.name}</h6>
 			</header>
