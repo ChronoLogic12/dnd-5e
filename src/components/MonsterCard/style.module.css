@@ -8,6 +8,14 @@
 	height: 2px;
 }
 
+h5 {
+	margin-top: 0 !important;
+}
+
+h5 > strong {
+	color: rgb(187, 2, 2) !important;
+}
+
 p {
 	margin-top: 0.5rem;
 	margin-bottom: 0.5rem;

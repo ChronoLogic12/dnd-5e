@@ -25,6 +25,9 @@ export default (props) => {
 				<p className={css.cr}>{props.monster.challenge_rating}</p>
 			</header>
 			<div className="collapsible-body white">
+				<h5>
+					<strong>{props.monster.name}</strong>
+				</h5>
 				{props.monster.size} {props.monster.type}, {props.monster.alignment}
 				<hr className={css.rule} />
 				<p>
@@ -106,34 +109,35 @@ export default (props) => {
 					{calculateSavingThrow(props.monster.wisdom, props.monster.wisdom_save)}, Cha{' '}
 					{calculateSavingThrow(props.monster.charisma, props.monster.charisma_save)}
 				</p>
-				<p>
-					<strong>Skills: </strong>
-					{Object.keys(props.monster.skills).length != 0 ? (
-						Object.entries(props.monster.skills).map(([key, value]) => (
+				{/* Skills */}
+				{Object.keys(props.monster.skills).length ? (
+					<p>
+						<strong>Skills: </strong>
+						{Object.entries(props.monster.skills).map(([key, value]) => (
 							<span key={key} className="capitalize">
 								{key}: {prependPlusSymbol(value)}.{' '}
 							</span>
-						))
-					) : (
-						<em>none</em>
-					)}
-				</p>
-				<p>
-					<strong>Damage Resistances: </strong>
-					{props.monster.damage_resistances.length != 0 ? (
-						<span>{props.monster.damage_resistances}</span>
-					) : (
-						<em>none</em>
-					)}
-				</p>
-				<p>
-					<strong>Damage Immunities: </strong>
-					{props.monster.damage_immunities.length != 0 ? (
-						props.monster.damage_immunities
-					) : (
-						<em>none</em>
-					)}
-				</p>
+						))}
+					</p>
+				) : null}
+				{/* Vulnerabilities */}
+				{props.monster.damage_vulnerabilities.length ? (
+					<p>
+						<strong>Damage Vulnerabilities: </strong> {props.monster.damage_vulnerabilities}
+					</p>
+				) : null}
+				{/* Resistances */}
+				{props.monster.damage_resistances.length ? (
+					<p>
+						<strong>Damage Resistances: </strong> {props.monster.damage_resistances}
+					</p>
+				) : null}
+				{/* Immunities */}
+				{props.monster.damage_immunities.length ? (
+					<p>
+						<strong>Damage Immunities: </strong> {props.monster.damage_immunities}
+					</p>
+				) : null}
 				<p>
 					<strong>Senses: </strong>
 					{props.monster.senses.length != 0 ? props.monster.senses : <em>none</em>}
@@ -147,6 +151,78 @@ export default (props) => {
 					{props.monster.challenge_rating}
 				</p>
 				<hr className={css.rule} />
+				{/* Special Abilities */}
+				{props.monster.special_abilities.length ? (
+					<>
+						{props.monster.special_abilities.map((ability) => {
+							return (
+								<p>
+									<strong key={ability.name}>{ability.name}: </strong>
+									<span>{ability.desc}</span>
+									<br />
+								</p>
+							);
+						})}
+					</>
+				) : null}
+				{/* Actions */}
+				{props.monster.actions.length ? (
+					<>
+						<h5>
+							<strong>Actions</strong>
+						</h5>
+						<hr className={css.rule} />
+						{props.monster.actions.map((action) => {
+							return (
+								<p>
+									<strong key={action.name}>{action.name}: </strong>
+									<span>{action.desc}</span>
+									<br />
+								</p>
+							);
+						})}
+					</>
+				) : null}
+				{/* Reactions */}
+				{props.monster.reactions.length ? (
+					<>
+						<h5>
+							<strong>Reactions</strong>
+						</h5>
+						<hr className={css.rule} />
+						{props.monster.reactions.map((reaction) => {
+							return (
+								<p>
+									<strong key={reaction.name}>{reaction.name}: </strong>
+									<span>{reaction.desc}</span>
+									<br />
+								</p>
+							);
+						})}
+					</>
+				) : null}
+				{/* Legendary Actions */}
+				{props.monster.legendary_actions.length ? (
+					<>
+						<h5>
+							<strong>Legendary Actions</strong>
+						</h5>
+						<hr className={css.rule} />
+						<p>{props.monster.legendary_desc}</p>
+						{props.monster.legendary_actions.map((action) => {
+							return (
+								<p>
+									<strong key={action.name}>{action.name}: </strong>
+									<span>{action.desc}</span>
+									<br />
+								</p>
+							);
+						})}
+					</>
+				) : null}
+				<div className="center">
+					<small className="grey-text">Source: {props.monster.document__title}</small>
+				</div>
 			</div>
 		</li>
 	);
