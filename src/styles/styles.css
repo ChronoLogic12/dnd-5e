@@ -51,3 +51,7 @@ br {
 tr {
 	border-bottom: none;
 }
+
+li > :is(p, span, strong, div) {
+	font-size: 16px;
+}
