@@ -9,13 +9,21 @@ section {
 	justify-content: space-evenly;
 }
 
+a {
+	width: fit-content;
+}
+
 h4 {
 	margin-top: 0 !important;
+	transition: all 0.2s ease-out;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
 }
 
 .hover:hover > h4 {
-	filter: drop-shadow(2px 8px 8px rgb(0 0 0 / 0.3));
-	transition: all 0.2s;
+	margin-left: 1rem;
 }
 
 .icon {

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { IoChevronForwardSharp } from 'react-icons/io5';
 import { BsStars } from 'react-icons/bs';
-import { GiFalling, GiStrong, GiFishMonster } from 'react-icons/gi';
+import { GiBackPain, GiStrong, GiIceCube } from 'react-icons/gi';
 
 import css from './style.module.css';
 
@@ -28,7 +28,7 @@ export default () => {
 						<h4 className="black-text valign-wrapper">
 							<IoChevronForwardSharp />
 							<span>Conditions</span>
-							<GiFalling className={`${css.icon} red-text`} />
+							<GiBackPain className={`${css.icon} red-text`} />
 						</h4>
 					</Link>
 					<Link to="/feats" className={`${css.hover}`}>
@@ -42,7 +42,7 @@ export default () => {
 						<h4 className="black-text valign-wrapper">
 							<IoChevronForwardSharp />
 							<span>Monsters</span>
-							<GiFishMonster className={`${css.icon} teal-text`} />
+							<GiIceCube className={`${css.icon} green-text`} />
 						</h4>
 					</Link>
 					<Link to="/" className={`${css.hover}`}>

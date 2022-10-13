@@ -57,7 +57,7 @@ export default () => {
 			<main className="container">
 				<h1>
 					<Link to="/">
-						<span className="red-text">5e:</span>
+						<span className="red-text home">5e:</span>
 					</Link>{' '}
 					Feats
 				</h1>
