@@ -161,3 +161,15 @@ h4 {
 .hover:hover > h4 {
 	margin-left: 1rem;
 }
+
+@media only screen and (max-width: 750px) {
+	input#search {
+		width: 88% !important;
+	}
+}
+
+@media only screen and (max-width: 480px) {
+	input#search {
+		width: 80% !important;
+	}
+}
