@@ -168,6 +168,12 @@ h4 {
 	}
 }
 
+@media only screen and (max-height: 660px) {
+	.custombtn {
+		padding: 1.4rem !important;
+	}
+}
+
 @media only screen and (max-width: 480px) {
 	input#search {
 		width: 80% !important;
