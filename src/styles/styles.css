@@ -129,6 +129,8 @@ label {
 	-ms-transition: color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
 	-o-transition: color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
 	transition: color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
 }
 
 .home:hover {
