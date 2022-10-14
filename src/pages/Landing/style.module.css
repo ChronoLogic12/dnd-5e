@@ -1,9 +1,10 @@
 section {
-	height: 50%;
+	height: 88vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
 	align-items: center;
+	padding: 8rem 0;
 }
 
 a {
