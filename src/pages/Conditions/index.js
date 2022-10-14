@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import materialize from 'materialize-css';
 
-import { ConditionCard, ConditionsSearch } from '../../components';
+import { ConditionCard, ConditionsSearch, Banner } from '../../components';
 
 export default () => {
 	const [conditions, setConditions] = useState([]);
@@ -45,7 +45,7 @@ export default () => {
 		return (
 			<>
 				<ConditionsSearch search={search} setSearch={setSearch} conditionsCount={conditionsCount} />
-				<hr />
+				<hr className="rule" />
 				{currentConditions.length ? (
 					<>
 						<ul className="collapsible">
@@ -67,13 +67,8 @@ export default () => {
 
 	return (
 		<>
+			<Banner page="Conditions" />
 			<main className="container">
-				<h1>
-					<Link to="/">
-						<span className="red-text home">5e:</span>
-					</Link>{' '}
-					Conditions
-				</h1>
 				{renderSearchResults()}
 				<div className="spacing"></div>
 			</main>

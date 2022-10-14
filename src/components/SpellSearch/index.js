@@ -181,7 +181,7 @@ export default (props) => {
 					</li>
 				</ul>
 			</form>
-			<p>Results found: {props.spellCount}</p>
+			<p className="results">Results found: {props.spellCount}</p>
 		</>
 	);
 };

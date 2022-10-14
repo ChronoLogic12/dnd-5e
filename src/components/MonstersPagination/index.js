@@ -49,7 +49,7 @@ export default ({ totalMonsters, paginate, currentPage }) => {
 					</li>
 				);
 			})}
-			<li className={currentPage == pageNumbers.length ? 'disabled' : 'waves-effect'}>
+			<li className={currentPage == pageNumbers.length ? 'disabled' : 'wave-effect'}>
 				<a
 					href="#!"
 					onClick={() => {

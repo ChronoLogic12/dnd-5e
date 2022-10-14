@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import materialize from 'materialize-css';
 
-import { SpellCard, Pagination, SpellSearch, Navbar } from '../../components';
+import { SpellCard, Pagination, SpellSearch, Banner } from '../../components';
 import jsonSpells from '../../spells.json';
 
 export default () => {
@@ -99,7 +99,7 @@ export default () => {
 					setRitualFilter={setRitualFilter}
 					spellCount={spellCount}
 				/>
-				<hr />
+				<hr className="rule" />
 				{currentSpells.length ? (
 					<>
 						<ul className="collapsible">
@@ -127,14 +127,8 @@ export default () => {
 
 	return (
 		<>
-			{/* <Navbar /> */}
+			<Banner page="Spells" />
 			<main className="container">
-				<h1>
-					<Link to="/">
-						<span className="red-text home">5e:</span>
-					</Link>{' '}
-					Spells
-				</h1>
 				{renderSearchResults()}
 				<div className="spacing"></div>
 			</main>

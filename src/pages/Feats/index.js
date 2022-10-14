@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import materialize from 'materialize-css';
 
 import jsonFeats from '../../feats.json';
-import { FeatCard, FeatsSearch } from '../../components';
+import { FeatCard, FeatsSearch, Banner } from '../../components';
 
 export default () => {
 	const [feats, setFeats] = useState([]);
@@ -34,7 +34,8 @@ export default () => {
 		return (
 			<>
 				<FeatsSearch search={search} setSearch={setSearch} featsCount={featsCount} />
-				<hr />
+				<hr className="rule" />
+
 				{currentFeats.length ? (
 					<>
 						<ul className="collapsible">
@@ -54,13 +55,8 @@ export default () => {
 
 	return (
 		<>
+			<Banner page="Feats" />
 			<main className="container">
-				<h1>
-					<Link to="/">
-						<span className="red-text home">5e:</span>
-					</Link>{' '}
-					Feats
-				</h1>
 				{renderSearchResults()}
 				<div className="spacing"></div>
 			</main>

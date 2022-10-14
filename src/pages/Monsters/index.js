@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import materialize from 'materialize-css';
 
-import { MonsterCard, MonstersPagination } from '../../components';
+import { MonsterCard, MonstersPagination, Banner } from '../../components';
 
 export default () => {
 	const [monsters, setMonsters] = useState([]);
@@ -37,7 +37,7 @@ export default () => {
 	const renderSearchResults = () => {
 		return (
 			<>
-				<hr />
+				<hr className="rule" />
 				{monsters.length ? (
 					<>
 						<ul className="collapsible">
@@ -64,14 +64,8 @@ export default () => {
 
 	return (
 		<>
-			{/* <Navbar /> */}
+			<Banner page="Monsters" />
 			<main className="container">
-				<h1>
-					<Link to="/">
-						<span className="red-text home">5e:</span>
-					</Link>{' '}
-					Monsters
-				</h1>
 				{renderSearchResults()}
 				<div className="spacing"></div>
 			</main>

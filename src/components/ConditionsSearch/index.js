@@ -22,7 +22,7 @@ export default (props) => {
 					/>
 				</div>
 			</form>
-			<p>Results found: {props.conditionsCount}</p>
+			<p className="results">Results found: {props.conditionsCount}</p>
 		</>
 	);
 };

@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+import { Banner } from '../../components';
+
 export default () => {
 	return (
 		<>
+			<Banner page="About" />
 			<main className="container">
-				<h1>
-					<Link to="/">
-						<span className="red-text home">5e:</span>
-					</Link>{' '}
-					About
-				</h1>
 				<div className="container-fluid row">
 					<div className="col s12">
 						<div className="card-panel">
