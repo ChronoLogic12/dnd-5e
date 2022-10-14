@@ -1,0 +1,48 @@
+.banner {
+	background-color: #da0037;
+	color: #ededed;
+	height: 12vh;
+	padding-left: 2rem;
+}
+
+a {
+	color: #ededed;
+}
+
+.banner h2 {
+	margin: 0;
+}
+
+.banner div {
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.banner svg {
+	margin: -0.5rem;
+	margin-right: -1rem;
+}
+
+.page {
+	color: #171717;
+	margin-left: 0.5rem;
+}
+
+.slide {
+	width: 100%;
+	overflow: hidden;
+	max-width: 500px;
+}
+
+.slide .page {
+	animation: 1s slide-right 0.5s forwards;
+	transform: translateX(-110%);
+}
+
+@keyframes slide-right {
+	to {
+		transform: translateX(0);
+	}
+}
