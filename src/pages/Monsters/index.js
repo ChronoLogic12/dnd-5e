@@ -4,19 +4,25 @@ import axios from 'axios';
 
 import materialize from 'materialize-css';
 
-import { MonsterCard, MonstersPagination, Banner } from '../../components';
+import { MonsterCard, MonstersPagination, MonstersSearch, Banner } from '../../components';
 
 export default () => {
 	const [monsters, setMonsters] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
+	const [search, setSearch] = useState('');
+	const [challengeRatingFilter, setChallengeRatingFilter] = useState('null');
 	const [count, setCount] = useState(0);
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	//Get Spells from API
 	useEffect(() => {
+		let url =
+			`https://api.open5e.com/monsters/?page=${currentPage}` +
+			(search ? `&search=${search}` : '') +
+			(challengeRatingFilter != 'null' ? `&challenge_rating=${challengeRatingFilter}` : '');
 		axios
-			.get(`https://api.open5e.com/monsters/?page=${currentPage}`)
+			.get(url)
 			.then((response) => {
 				const data = Array.isArray(response.data.results)
 					? response.data.results
@@ -28,7 +34,11 @@ export default () => {
 			.catch((error) => {
 				setError(error.message);
 			});
-	}, [currentPage]);
+	}, [currentPage, search, challengeRatingFilter]);
+
+	useEffect(() => {
+		setCurrentPage(1);
+	}, [search, challengeRatingFilter]);
 
 	useEffect(() => {
 		materialize.AutoInit();
@@ -37,6 +47,11 @@ export default () => {
 	const renderSearchResults = () => {
 		return (
 			<>
+				<MonstersSearch
+					count={count}
+					setSearch={setSearch}
+					setChallengeRatingFilter={setChallengeRatingFilter}
+				/>
 				<hr className="rule" />
 				{monsters.length ? (
 					<>
