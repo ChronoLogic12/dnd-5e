@@ -46,6 +46,18 @@ input#search {
 	color: #ededed !important;
 }
 
+.subList {
+	counter-reset: list;
+}
+
+.subList > li {
+	list-style: none;
+}
+.subList > li:before {
+	content: counter(list, lower-alpha) ') ';
+	counter-increment: list;
+}
+
 .loader {
 	color: #ededed;
 	font-size: 80px;
