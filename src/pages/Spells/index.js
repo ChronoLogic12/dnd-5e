@@ -130,6 +130,7 @@ export default () => {
 			<Banner page="Spells" />
 			<main className="container">
 				{renderSearchResults()}
+				{materialize.AutoInit()}
 				<div className="spacing"></div>
 			</main>
 		</>
