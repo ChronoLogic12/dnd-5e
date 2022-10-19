@@ -75,10 +75,10 @@ button:focus {
 	margin-bottom: 0.5rem;
 	box-shadow: 0 0 0 2px #171717;
 	transition: all 0.2s ease-in-out;
-	-webkit-transition: all 0.2s ease-out;
-	-moz-transition: all 0.2s ease-out;
-	-ms-transition: all 0.2s ease-out;
-	-o-transition: all 0.2s ease-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-ms-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
 }
 
 .icon:nth-child(5) {
@@ -108,6 +108,8 @@ button:focus {
 	margin: auto;
 	margin-top: 25%;
 }
+
+/* Media queries for smaller screen sizes */
 
 @media only screen and (max-width: 995px) {
 	.burger {
