@@ -57,6 +57,10 @@ br {
 	background-color: #ededed !important;
 }
 
+:is(.collapsible-body, .collapsible-header) :is(p, em, strong) {
+	color: #000 !important;
+}
+
 .input-field {
 	border-radius: 60px;
 }
