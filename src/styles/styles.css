@@ -24,6 +24,33 @@ br {
 	display: block !important;
 }
 
+.hidden {
+	position: fixed;
+	bottom: 4rem !important;
+}
+
+/* burger icon to close icon animation */
+
+#navMenu > * {
+	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+}
+
+.close > *:nth-child(1) {
+	transform: rotate(45deg) !important;
+}
+
+.close > *:nth-child(2) {
+	opacity: 0;
+}
+
+.close > *:nth-child(3) {
+	transform: rotate(-45deg) !important;
+}
+
 .collapsible-header,
 .collapsible-body,
 .input-field {
@@ -180,6 +207,12 @@ h4 {
 	margin-left: 1rem;
 }
 
+@media only screen and (max-width: 995px) {
+	.hidden {
+		bottom: 2rem !important;
+	}
+}
+
 @media only screen and (max-width: 750px) {
 	input#search {
 		width: 88% !important;
@@ -189,6 +222,12 @@ h4 {
 @media only screen and (max-height: 660px) {
 	.custombtn {
 		padding: 1.4rem !important;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.hidden {
+		bottom: 1rem !important;
 	}
 }
 

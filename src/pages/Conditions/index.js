@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import materialize from 'materialize-css';
 
-import { ConditionCard, ConditionsSearch, Banner } from '../../components';
+import { ConditionCard, ConditionsSearch, Banner, Nav } from '../../components';
 
 export default () => {
 	const [conditions, setConditions] = useState([]);
@@ -72,6 +72,7 @@ export default () => {
 				{renderSearchResults()}
 				<div className="spacing"></div>
 			</main>
+			<Nav />
 		</>
 	);
 };

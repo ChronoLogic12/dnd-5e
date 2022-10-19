@@ -1,0 +1,188 @@
+nav {
+	height: 0 !important;
+	display: flex;
+	flex-direction: column;
+}
+
+button,
+button:focus {
+	outline: 2px solid #171717;
+	background-color: #171717;
+}
+
+.burger {
+	width: 4rem !important;
+	height: 4rem !important;
+	border-radius: 50% !important;
+	position: fixed;
+	bottom: 4rem;
+	left: 4rem;
+	background-color: #171717;
+	border: 2px solid #ededed;
+	transition: all 0.2s ease-out;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+	z-index: 2;
+}
+
+.burger:hover {
+	transform: scale(1.15, 1.15) translate3d(0, 0, 0);
+	cursor: pointer;
+}
+
+.burger > * {
+	background-color: #ededed;
+	width: 25px;
+	height: 2px;
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: calc(-25px / 2);
+}
+
+.burger > *:nth-child(1) {
+	transform: translate3d(0, -8px, 0);
+}
+
+.burger > *:nth-child(2) {
+	transform: translate3d(0, 0, 0);
+}
+
+.burger > *:nth-child(3) {
+	transform: translate3d(0, 8px, 0);
+}
+
+/* Page links */
+
+.iconContainer {
+	position: fixed;
+	left: 4rem;
+	bottom: 4rem;
+	z-index: 1;
+}
+
+.icon {
+	position: fixed;
+	width: 3rem !important;
+	height: 3rem !important;
+	margin-left: 0.5rem;
+	border-radius: 50% !important;
+	background-color: #171717;
+	border: 2px solid #ededed;
+	margin-bottom: 0.5rem;
+	outline: 2px solid #171717;
+	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+}
+
+.icon:nth-child(5) {
+	bottom: 9rem;
+}
+.icon:nth-child(4) {
+	bottom: 12.5rem;
+}
+.icon:nth-child(3) {
+	bottom: 16rem;
+}
+.icon:nth-child(2) {
+	bottom: 19.5rem;
+}
+.icon:nth-child(1) {
+	bottom: 23rem;
+}
+
+.icon:hover {
+	margin-left: 1rem !important;
+}
+
+.icon svg {
+	width: 20px;
+	height: 20px;
+	display: block;
+	margin: auto;
+	margin-top: 25%;
+}
+
+@media only screen and (max-width: 995px) {
+	.burger {
+		width: 3.5rem !important;
+		height: 3.5rem !important;
+		bottom: 2rem;
+		left: 2rem;
+	}
+
+	.one,
+	.two,
+	.three {
+		width: 20px;
+		height: 2px;
+		margin-left: calc(-20px / 2);
+	}
+
+	.iconContainer {
+		left: 2.25rem;
+		bottom: 0;
+	}
+
+	.icon {
+		width: 2.5rem !important;
+		height: 2.5rem !important;
+		margin-left: 0.25rem;
+		margin-bottom: 0.5rem;
+	}
+
+	.icon:nth-child(5) {
+		bottom: 7rem;
+	}
+	.icon:nth-child(4) {
+		bottom: 10rem;
+	}
+	.icon:nth-child(3) {
+		bottom: 13rem;
+	}
+	.icon:nth-child(2) {
+		bottom: 16rem;
+	}
+	.icon:nth-child(1) {
+		bottom: 19rem;
+	}
+
+	.icon svg {
+		width: 17px;
+		height: 17px;
+		margin-top: 22%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.burger {
+		bottom: 1rem;
+		left: 1rem;
+	}
+
+	.iconContainer {
+		left: 1.25rem;
+	}
+
+	.icon:nth-child(5) {
+		bottom: 6rem;
+	}
+	.icon:nth-child(4) {
+		bottom: 9rem;
+	}
+	.icon:nth-child(3) {
+		bottom: 12rem;
+	}
+	.icon:nth-child(2) {
+		bottom: 15rem;
+	}
+	.icon:nth-child(1) {
+		bottom: 18rem;
+	}
+}

@@ -9,3 +9,4 @@ export { default as MonsterCard } from './MonsterCard';
 export { default as MonstersPagination } from './MonstersPagination';
 export { default as MonstersSearch } from './MonstersSearch';
 export { default as Banner } from './Banner';
+export { default as Nav } from './Nav';

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import materialize from 'materialize-css';
 
 import jsonFeats from '../../feats.json';
-import { FeatCard, FeatsSearch, Banner } from '../../components';
+import { FeatCard, FeatsSearch, Banner, Nav } from '../../components';
 
 export default () => {
 	const [feats, setFeats] = useState([]);
@@ -60,6 +60,7 @@ export default () => {
 				{renderSearchResults()}
 				<div className="spacing"></div>
 			</main>
+			<Nav />
 		</>
 	);
 };

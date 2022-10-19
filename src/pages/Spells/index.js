@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import materialize from 'materialize-css';
 
-import { SpellCard, Pagination, SpellSearch, Banner } from '../../components';
+import { SpellCard, Pagination, SpellSearch, Banner, Nav } from '../../components';
 import jsonSpells from '../../spells.json';
 
 export default () => {
@@ -133,6 +133,7 @@ export default () => {
 				{materialize.AutoInit()}
 				<div className="spacing"></div>
 			</main>
+			<Nav />
 		</>
 	);
 };

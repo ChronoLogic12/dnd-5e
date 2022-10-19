@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import materialize from 'materialize-css';
 
-import { MonsterCard, MonstersPagination, MonstersSearch, Banner } from '../../components';
+import { MonsterCard, MonstersPagination, MonstersSearch, Banner, Nav } from '../../components';
 
 export default () => {
 	const [monsters, setMonsters] = useState([]);
@@ -84,6 +84,7 @@ export default () => {
 				{renderSearchResults()}
 				<div className="spacing"></div>
 			</main>
+			<Nav />
 		</>
 	);
 };
