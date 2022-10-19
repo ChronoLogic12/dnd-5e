@@ -3,10 +3,12 @@
 	color: #ededed;
 	height: 12vh;
 	padding-left: 2rem;
+	z-index: 2;
 }
 
 .banner a {
 	color: #ededed;
+	z-index: 1;
 }
 
 .banner h2 {
