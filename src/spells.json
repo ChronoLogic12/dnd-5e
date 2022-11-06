@@ -898,5 +898,25 @@
 		"dnd_class": "Sorcerer, Warlock, Wizard",
 		"document__title": "Xanathar's Guide to Everything",
 		"document__license_url": "http://open5e.com/legal"
+	},
+	{
+		"slug": "sword-burst",
+		"name": "Sword Burst",
+		"desc": "You create a momentary circle of spectral blades that sweep around you. All other creatures within 5 feet of you must succeed on a Dexterity saving throw or take 1d6 force damage.",
+		"higher_level": "This spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).",
+		"page": "",
+		"range": "Self (5-foot radius)",
+		"components": "V",
+		"material": "",
+		"ritual": "no",
+		"duration": "Instantaneous",
+		"concentration": "no",
+		"casting_time": "1 action",
+		"level": "Cantrip",
+		"level_int": 0,
+		"school": "Conjuration",
+		"dnd_class": "Artificer, Sorcerer, Warlock, Wizard",
+		"document__title": "Tasha's Cauldron of Everything",
+		"document__license_url": "http://open5e.com/legal"
 	}
 ]
