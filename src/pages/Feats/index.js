@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import materialize from 'materialize-css';
 
-import jsonFeats from '../../feats.json';
+import jsonFeats from '../../data/feats.json';
 import { FeatCard, FeatsSearch, Banner, Nav } from '../../components';
 
 export default () => {

@@ -30,6 +30,11 @@ export default (props) => {
 		props.setCastingFilter(value);
 	};
 
+	const handleDocumentInputChange = ({ target }) => {
+		let value = getSelectedOptionValues(target.options);
+		props.setDocumentFilter(value);
+	};
+
 	const handleConcentrationCheckboxChange = () => {
 		props.setConcentrationFilter((prevState) => !prevState);
 	};
@@ -147,6 +152,34 @@ export default (props) => {
 									<option value="1 action">Action</option>
 									<option value="1 bonus action">Bonus Action</option>
 									<option value="reaction">Reaction</option>
+								</select>
+							</div>
+							{/* Document */}
+							<div className="container">
+								<label htmlFor="document">Document:</label>
+								<select
+									name="document"
+									id="document"
+									value={props.DocumentFilter}
+									className={css.dropdown}
+									onChange={handleDocumentInputChange}
+									multiple
+								>
+									<option defaultValue="" disabled>
+										Select document sources
+									</option>
+									<option value="Systems Reference Document">Systems Reference Document</option>
+									<option value="Open5e OGL">Open5e OGL</option>
+									<option value="Level Up Advanced 5th Edition SRD">
+										Level Up Advanced 5th Edition SRD
+									</option>
+									<option value="Deep Magic for 5th Edition">Deep Magic for 5th Edition</option>
+									<option value="Deep Magic Extended OGL Content">
+										Deep Magic Extended OGL Content
+									</option>
+									<option value="Warlock Archives OGL Content">Warlock Archives OGL Content</option>
+									<option value="Kobold Press OGL Content">Kobold Press OGL Content</option>
+									<option value="Tome of Heroes OGL">Tome of Heroes OGL</option>
 								</select>
 							</div>
 							<div className="container">

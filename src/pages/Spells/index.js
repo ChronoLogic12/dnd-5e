@@ -4,7 +4,7 @@ import axios from 'axios';
 import materialize from 'materialize-css';
 
 import { SpellCard, Pagination, SpellSearch, Banner, Nav } from '../../components';
-import jsonSpells from '../../spells.json';
+import jsonSpells from '../../../src/data/spells.json';
 
 export default () => {
 	const [spells, setSpells] = useState([]);
@@ -18,17 +18,31 @@ export default () => {
 	const [castingFilter, setCastingFilter] = useState([]);
 	const [concentrationFilter, setConcentrationFilter] = useState(false);
 	const [ritualFilter, setRitualFilter] = useState(false);
+	const [documentFilter, setDocumentFilter] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	//Get Spells from API
 	useEffect(() => {
 		axios
-			.get('https://api.open5e.com/spells/?ordering=level_int&limit=1000')
+			.get('https://api.open5e.com/spells/?ordering=level_int&limit=2000')
 			.then((response) => {
 				const data = Array.isArray(response.data.results)
 					? response.data.results
 					: [response.data.results];
-				setSpells([...data, ...jsonSpells]);
+				const uniqueData = [];
+				const map = new Map();
+				for (const spell of data) {
+					if (!map.has(spell.name)) {
+						map.set(spell.name, true);
+						uniqueData.push({
+							...spell,
+						});
+					}
+				}
+				console.log(data);
+				console.log(uniqueData);
+				console.log(jsonSpells);
+				setSpells([...uniqueData, ...jsonSpells]);
 				setIsLoading(false);
 			})
 			.catch((error) => {
@@ -50,6 +64,7 @@ export default () => {
 		concentrationFilter,
 		ritualFilter,
 		castingFilter,
+		documentFilter,
 	]);
 
 	const getSearchResults = () => {
@@ -63,6 +78,7 @@ export default () => {
 				(classFilter.length ? classFilter.some((r) => spellClasses.includes(r)) : true) &&
 				(schoolFilter.length ? schoolFilter.includes(spell.school.toLowerCase()) : true) &&
 				(castingFilter.length ? castingFilter.some((r) => castingTime.includes(r)) : true) &&
+				(documentFilter.length ? documentFilter.includes(spell.document__title) : true) &&
 				(concentrationFilter ? spell.concentration == 'yes' : true) &&
 				(ritualFilter ? spell.ritual == 'yes' : true)
 			);
@@ -97,6 +113,7 @@ export default () => {
 					setCastingFilter={setCastingFilter}
 					setConcentrationFilter={setConcentrationFilter}
 					setRitualFilter={setRitualFilter}
+					setDocumentFilter={setDocumentFilter}
 					spellCount={spellCount}
 				/>
 				<hr className="rule" />
