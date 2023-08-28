@@ -31,7 +31,7 @@ export default () => {
 					: [response.data.results];
 				const uniqueData = [];
 				const map = new Map();
-				for (const spell of data) {
+				for (const spell of [...jsonSpells, ...data]) {
 					if (!map.has(spell.name)) {
 						map.set(spell.name, true);
 						uniqueData.push({
@@ -42,7 +42,7 @@ export default () => {
 				console.log(data);
 				console.log(uniqueData);
 				console.log(jsonSpells);
-				setSpells([...uniqueData, ...jsonSpells]);
+				setSpells(uniqueData);
 				setIsLoading(false);
 			})
 			.catch((error) => {
