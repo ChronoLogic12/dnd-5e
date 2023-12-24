@@ -169,6 +169,7 @@ export default (props) => {
 										Select document sources
 									</option>
 									<option value="Systems Reference Document">Systems Reference Document</option>
+									<option value="5e Core Rules">5e Core Rules</option>
 									<option value="Open5e OGL">Open5e OGL</option>
 									<option value="Level Up Advanced 5th Edition SRD">
 										Level Up Advanced 5th Edition SRD
