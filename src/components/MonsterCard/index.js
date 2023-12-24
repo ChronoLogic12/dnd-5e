@@ -150,7 +150,7 @@ export default (props) => {
 				</p>
 				<hr className="rule" />
 				{/* Special Abilities */}
-				{props.monster.special_abilities.length ? (
+				{props.monster.special_abilities ? (
 					<>
 						{props.monster.special_abilities.map((ability) => {
 							return (
@@ -182,7 +182,7 @@ export default (props) => {
 					</>
 				) : null}
 				{/* Reactions */}
-				{props.monster.reactions.length ? (
+				{props.monster.reactions ? (
 					<>
 						<h5>
 							<strong>Reactions</strong>
@@ -200,7 +200,7 @@ export default (props) => {
 					</>
 				) : null}
 				{/* Legendary Actions */}
-				{props.monster.legendary_actions.length ? (
+				{props.monster.legendary_actions ? (
 					<>
 						<h5>
 							<strong>Legendary Actions</strong>

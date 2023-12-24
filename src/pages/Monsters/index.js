@@ -18,9 +18,9 @@ export default () => {
 	//Get Spells from API
 	useEffect(() => {
 		let url =
-			`https://api.open5e.com/monsters/?page=${currentPage}` +
+			`https://api.open5e.com/v1/monsters/?page=${currentPage}` +
 			(search ? `&search=${search}` : '') +
-			(challengeRatingFilter != 'null' ? `&challenge_rating=${challengeRatingFilter}` : '');
+			(challengeRatingFilter != 'null' ? `&cr=${challengeRatingFilter}` : '');
 		axios
 			.get(url)
 			.then((response) => {
