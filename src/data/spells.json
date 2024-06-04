@@ -16,7 +16,7 @@
 		"level_int": 6,
 		"school": "Conjuration",
 		"dnd_class": "Sorcerer, Warlock, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -36,7 +36,7 @@
 		"level_int": 1,
 		"school": "Abjuration",
 		"dnd_class": "Warlock",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -56,7 +56,7 @@
 		"level_int": 1,
 		"school": "Conjuration",
 		"dnd_class": "Warlock",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -76,7 +76,7 @@
 		"level_int": 4,
 		"school": "Abjuration",
 		"dnd_class": "Cleric, Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -96,7 +96,7 @@
 		"level_int": 4,
 		"school": "Abjuration",
 		"dnd_class": "Cleric, Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -116,7 +116,7 @@
 		"level_int": 3,
 		"school": "Evocation",
 		"dnd_class": "Cleric, Druid, Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -136,7 +136,7 @@
 		"level_int": 5,
 		"school": "Abjuration",
 		"dnd_class": "Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -156,7 +156,7 @@
 		"level_int": 2,
 		"school": "Divination",
 		"dnd_class": "Druid, Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -176,7 +176,7 @@
 		"level_int": 3,
 		"school": "Necromancy",
 		"dnd_class": "Bard, Cleric, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -196,7 +196,7 @@
 		"level_int": 0,
 		"school": "Abjuration",
 		"dnd_class": "Bard, Sorcerer, Warlock, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -216,7 +216,7 @@
 		"level_int": 3,
 		"school": "Evocation",
 		"dnd_class": "Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -236,7 +236,7 @@
 		"level_int": 1,
 		"school": "Evocation",
 		"dnd_class": "Sorcerer, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -256,7 +256,7 @@
 		"level_int": 5,
 		"school": "Abjuration",
 		"dnd_class": "Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -276,7 +276,7 @@
 		"level_int": 2,
 		"school": "Conjuration",
 		"dnd_class": "Bard, Sorcerer, Warlock, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -296,7 +296,7 @@
 		"level_int": 1,
 		"school": "Enchantment",
 		"dnd_class": "Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -316,7 +316,7 @@
 		"level_int": 3,
 		"school": "Conjuration",
 		"dnd_class": "Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -336,7 +336,7 @@
 		"level_int": 5,
 		"school": "Conjuration",
 		"dnd_class": "Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -356,7 +356,7 @@
 		"level_int": 2,
 		"school": "Transmutation",
 		"dnd_class": "Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -376,7 +376,7 @@
 		"level_int": 2,
 		"school": "Enchantment",
 		"dnd_class": "Bard, Sorcerer, Warlock, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -396,7 +396,7 @@
 		"level_int": 3,
 		"school": "Evocation",
 		"dnd_class": "Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -416,7 +416,7 @@
 		"level_int": 5,
 		"school": "Evocation",
 		"dnd_class": "Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -436,7 +436,7 @@
 		"level_int": 1,
 		"school": "Enchantment",
 		"dnd_class": "Bard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -456,7 +456,7 @@
 		"level_int": 3,
 		"school": "Transmutation",
 		"dnd_class": "Artificer, Druid, Paladin, Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -476,7 +476,7 @@
 		"level_int": 1,
 		"school": "Conjuration",
 		"dnd_class": "Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -496,7 +496,7 @@
 		"level_int": 3,
 		"school": "Necromancy",
 		"dnd_class": "Bard, Cleric, Druid, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -516,7 +516,7 @@
 		"level_int": 0,
 		"school": "Enchantment",
 		"dnd_class": "Bard, Sorcerer, Warlock, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -536,7 +536,7 @@
 		"level_int": 4,
 		"school": "Conjuration",
 		"dnd_class": "Druid, Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -556,7 +556,7 @@
 		"level_int": 1,
 		"school": "Conjuration",
 		"dnd_class": "Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -576,7 +576,7 @@
 		"level_int": 1,
 		"school": "Enchantment",
 		"dnd_class": "Warlock",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -596,7 +596,7 @@
 		"level_int": 3,
 		"school": "Conjuration",
 		"dnd_class": "Warlock",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -616,7 +616,7 @@
 		"level_int": 3,
 		"school": "Transmutation",
 		"dnd_class": "Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -636,7 +636,7 @@
 		"level_int": 2,
 		"school": "Illusion",
 		"dnd_class": "Bard, Sorcerer, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -656,7 +656,7 @@
 		"level_int": 9,
 		"school": "Evocation",
 		"dnd_class": "Bard, Cleric",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -676,7 +676,7 @@
 		"level_int": 1,
 		"school": "Necromancy",
 		"dnd_class": "Sorcerer, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -696,7 +696,7 @@
 		"level_int": 1,
 		"school": "Evocation",
 		"dnd_class": "Paladin, Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -716,7 +716,7 @@
 		"level_int": 4,
 		"school": "Evocation",
 		"dnd_class": "Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -736,7 +736,7 @@
 		"level_int": 5,
 		"school": "Transmutation",
 		"dnd_class": "Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -756,7 +756,7 @@
 		"level_int": 8,
 		"school": "Evocation",
 		"dnd_class": "Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -776,7 +776,7 @@
 		"level_int": 0,
 		"school": "Transmutation",
 		"dnd_class": "Artificer, Druid",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -796,7 +796,7 @@
 		"level_int": 1,
 		"school": "Evocation",
 		"dnd_class": "Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -816,7 +816,7 @@
 		"level_int": 8,
 		"school": "Conjuration",
 		"dnd_class": "Druid",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -836,7 +836,7 @@
 		"level_int": 1,
 		"school": "Evocation",
 		"dnd_class": "Sorcerer, Warlock, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -856,7 +856,7 @@
 		"level_int": 1,
 		"school": "Evocation",
 		"dnd_class": "Paladin",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -876,7 +876,7 @@
 		"level_int": 3,
 		"school": "Conjuration",
 		"dnd_class": "Druid, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -896,7 +896,7 @@
 		"level_int": 2,
 		"school": "Illusion",
 		"dnd_class": "Sorcerer, Warlock, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -916,7 +916,7 @@
 		"level_int": 0,
 		"school": "Conjuration",
 		"dnd_class": "Artificer, Sorcerer, Warlock, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -936,7 +936,7 @@
 		"level_int": 5,
 		"school": "Transmutation",
 		"dnd_class": "Druid, Sorcerer, Wizard",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -956,7 +956,7 @@
 		"level_int": 5,
 		"school": "Evocation",
 		"dnd_class": "Druid",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -976,7 +976,7 @@
 		"level_int": 5,
 		"school": "Evocation",
 		"dnd_class": "Druid, Ranger",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	},
 	{
@@ -996,7 +996,7 @@
 		"level_int": 5,
 		"school": "Transmutation",
 		"dnd_class": "Druid, Wizard, Artificer",
-		"document__title": "Systems Reference Document",
+		"document__title": "5e Core Rules",
 		"document__license_url": "http://open5e.com/legal"
 	}
 ]

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import axios from 'axios';
 import materialize from 'materialize-css';
 
 import { SpellCard, Pagination, SpellSearch, Banner, Nav } from '../../components';
 import jsonSpells from '../../../src/data/spells.json';
+import spellsFromAPI from '../../../src/data/spells_from_api.json';
 
 export default () => {
 	const [spells, setSpells] = useState([]);
@@ -18,36 +19,55 @@ export default () => {
 	const [castingFilter, setCastingFilter] = useState([]);
 	const [concentrationFilter, setConcentrationFilter] = useState(false);
 	const [ritualFilter, setRitualFilter] = useState(false);
-	const [documentFilter, setDocumentFilter] = useState([]);
+	const [documentFilter, setDocumentFilter] = useState(['5e Core Rules']);
 	const [isLoading, setIsLoading] = useState(true);
 
 	//Get Spells from API
+	// useEffect(() => {
+	// 	axios
+	// 		.get('https://api.open5e.com/spells/?ordering=level_int&limit=2000')
+	// 		.then((response) => {
+	// 			const data = Array.isArray(response.data.results)
+	// 				? response.data.results
+	// 				: [response.data.results];
+	// 			const uniqueData = [];
+	// 			const map = new Map();
+	// 			for (const spell of [...jsonSpells, ...data]) {
+	// 				if (!map.has(spell.name)) {
+	// 					map.set(spell.name, true);
+	// 					uniqueData.push({
+	// 						...spell,
+	// 					});
+	// 				}
+	// 			}
+	// 			console.log(data);
+	// 			console.log(uniqueData);
+	// 			console.log(jsonSpells);
+	// 			setSpells(uniqueData);
+	// 			setIsLoading(false);
+	// 		})
+	// 		.catch((error) => {
+	// 			setError(error.message);
+	// 		});
+	// }, []);
+
+	//Set spell list to all unique spells
 	useEffect(() => {
-		axios
-			.get('https://api.open5e.com/spells/?ordering=level_int&limit=2000')
-			.then((response) => {
-				const data = Array.isArray(response.data.results)
-					? response.data.results
-					: [response.data.results];
-				const uniqueData = [];
-				const map = new Map();
-				for (const spell of [...jsonSpells, ...data]) {
-					if (!map.has(spell.name)) {
-						map.set(spell.name, true);
-						uniqueData.push({
-							...spell,
-						});
-					}
-				}
-				console.log(data);
-				console.log(uniqueData);
-				console.log(jsonSpells);
-				setSpells(uniqueData);
-				setIsLoading(false);
-			})
-			.catch((error) => {
-				setError(error.message);
-			});
+		const uniqueData = [];
+		const map = new Map();
+		for (const spell of [...jsonSpells, ...spellsFromAPI]) {
+			if (!map.has(spell.name)) {
+				map.set(spell.name, true);
+				uniqueData.push({
+					...spell,
+				});
+			}
+		}
+		// console.log(data);
+		console.log(uniqueData);
+		console.log(jsonSpells);
+		setSpells(uniqueData);
+		setIsLoading(false);
 	}, []);
 
 	useEffect(() => {
@@ -104,6 +124,7 @@ export default () => {
 					classFilter={classFilter}
 					schoolFilter={schoolFilter}
 					castingFilter={castingFilter}
+					documentFilter={documentFilter}
 					concentrationFilter={concentrationFilter}
 					ritualFilter={ritualFilter}
 					setSearch={setSearch}
