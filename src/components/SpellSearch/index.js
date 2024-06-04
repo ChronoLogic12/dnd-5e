@@ -160,7 +160,7 @@ export default (props) => {
 								<select
 									name="document"
 									id="document"
-									value={props.DocumentFilter}
+									value={props.documentFilter}
 									className={css.dropdown}
 									onChange={handleDocumentInputChange}
 									multiple
@@ -168,19 +168,13 @@ export default (props) => {
 									<option defaultValue="" disabled>
 										Select document sources
 									</option>
-									<option value="Systems Reference Document">Systems Reference Document</option>
 									<option value="5e Core Rules">5e Core Rules</option>
-									<option value="Open5e OGL">Open5e OGL</option>
-									<option value="Level Up Advanced 5th Edition SRD">
-										Level Up Advanced 5th Edition SRD
-									</option>
-									<option value="Deep Magic for 5th Edition">Deep Magic for 5th Edition</option>
-									<option value="Deep Magic Extended OGL Content">
-										Deep Magic Extended OGL Content
-									</option>
-									<option value="Warlock Archives OGL Content">Warlock Archives OGL Content</option>
-									<option value="Kobold Press OGL Content">Kobold Press OGL Content</option>
-									<option value="Tome of Heroes OGL">Tome of Heroes OGL</option>
+									<option value="Level Up Advanced 5e">Level Up Advanced 5e</option>
+									<option value="Deep Magic 5e">Deep Magic 5e</option>
+									<option value="Deep Magic Extended">Deep Magic Extended</option>
+									<option value="Warlock Archives">Warlock Archives</option>
+									<option value="Kobold Press Compilation">Kobold Press Compilation</option>
+									<option value="Tome of Heroes">Tome of Heroes</option>
 								</select>
 							</div>
 							<div className="container">
