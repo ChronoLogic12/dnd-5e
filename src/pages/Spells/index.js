@@ -93,7 +93,7 @@ export default () => {
 			const spellClasses = spell.dnd_class.split(', ').map((s) => s.toLowerCase());
 			const castingTime = spell.casting_time.replaceAll('reaction,', 'reaction');
 			return (
-				(search.length > 0 ? spellString.includes(search) : true) &&
+				(search.length > 0 ? spellString.includes(search.toLocaleLowerCase()) : true) &&
 				(levelFilter.length ? levelFilter.includes(spell.level_int.toString()) : true) &&
 				(classFilter.length ? classFilter.some((r) => spellClasses.includes(r)) : true) &&
 				(schoolFilter.length ? schoolFilter.includes(spell.school.toLowerCase()) : true) &&

@@ -7,7 +7,7 @@ import { IoFilter } from 'react-icons/io5';
 
 export default (props) => {
 	const handleSearchInputChange = ({ target }) => {
-		props.setSearch(target.value.toLowerCase());
+		props.setSearch(target.value);
 	};
 
 	const handleLevelInputChange = ({ target }) => {
