@@ -103,6 +103,7 @@ export default (props) => {
 									<option defaultValue="" disabled>
 										Select Class
 									</option>
+									<option value="artificer">Artificer</option>
 									<option value="bard">Bard</option>
 									<option value="cleric">Cleric</option>
 									<option value="druid">Druid</option>
@@ -175,6 +176,7 @@ export default (props) => {
 									<option value="Warlock Archives">Warlock Archives</option>
 									<option value="Kobold Press Compilation">Kobold Press Compilation</option>
 									<option value="Tome of Heroes">Tome of Heroes</option>
+									<option value="Open5e Original Content">Open5e Original Content</option>
 								</select>
 							</div>
 							<div className="container">

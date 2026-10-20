@@ -22,8 +22,8 @@ export default () => {
 
 	const getSearchResults = () => {
 		return feats.filter((feat) => {
-			const conditionString = JSON.stringify(feat).toLowerCase();
-			return search.length > 0 ? conditionString.includes(search) : true;
+			const featString = JSON.stringify(feat).toLowerCase();
+			return search.length > 0 ? featString.includes(search.toLowerCase()) : true;
 		});
 	};
 

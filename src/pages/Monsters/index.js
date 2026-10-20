@@ -57,7 +57,7 @@ export default () => {
 					<>
 						<ul className="collapsible">
 							{monsters.map((monster) => (
-								<MonsterCard key={monster.name} monster={monster} />
+								<MonsterCard key={monster.slug} monster={monster} />
 							))}
 						</ul>
 						<MonstersPagination

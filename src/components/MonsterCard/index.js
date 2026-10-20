@@ -19,7 +19,7 @@ const calculateSavingThrow = (score, stat) => {
 
 export default (props) => {
 	return (
-		<li key={props.monster.name}>
+		<li>
 			<header className="collapsible-header valign-wrapper">
 				<h6>{props.monster.name}</h6>
 				<p className={css.cr}>{props.monster.challenge_rating}</p>
@@ -182,7 +182,7 @@ export default (props) => {
 					</>
 				) : null}
 				{/* Reactions */}
-				{props.monster.reactions ? (
+				{props.monster.reactions && props.monster.reactions.length ? (
 					<>
 						<h5>
 							<strong>Reactions</strong>
@@ -200,7 +200,7 @@ export default (props) => {
 					</>
 				) : null}
 				{/* Legendary Actions */}
-				{props.monster.legendary_actions ? (
+				{props.monster.legendary_actions && props.monster.legendary_actions.length ? (
 					<>
 						<h5>
 							<strong>Legendary Actions</strong>

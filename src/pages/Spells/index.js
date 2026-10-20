@@ -7,6 +7,8 @@ import { SpellCard, Pagination, SpellSearch, Banner, Nav } from '../../component
 import jsonSpells from '../../../src/data/spells.json';
 import spellsFromAPI from '../../../src/data/spells_from_api.json';
 
+const getSpellKey = (spell) => `${spell.document__title}/${spell.name}`;
+
 export default () => {
 	const [spells, setSpells] = useState([]);
 	const [error, setError] = useState(null);
@@ -51,21 +53,21 @@ export default () => {
 	// 		});
 	// }, []);
 
-	//Set spell list to all unique spells
+	//Set spell list to all unique spells. The same spell name can appear in more than one document.
 	useEffect(() => {
 		const uniqueData = [];
 		const map = new Map();
 		for (const spell of [...jsonSpells, ...spellsFromAPI]) {
-			if (!map.has(spell.name)) {
-				map.set(spell.name, true);
+			const key = getSpellKey(spell);
+			if (!map.has(key)) {
+				map.set(key, true);
 				uniqueData.push({
 					...spell,
+					// Some source documents misspell sorcerer
+					dnd_class: spell.dnd_class.replace(/sorceror/gi, 'Sorcerer'),
 				});
 			}
 		}
-		// console.log(data);
-		console.log(uniqueData);
-		console.log(jsonSpells);
 		setSpells(uniqueData);
 		setIsLoading(false);
 	}, []);
@@ -91,7 +93,7 @@ export default () => {
 		const searchResults = spells.filter((spell) => {
 			const spellString = JSON.stringify(spell).toLowerCase();
 			const spellClasses = spell.dnd_class.split(', ').map((s) => s.toLowerCase());
-			const castingTime = spell.casting_time.replaceAll('reaction,', 'reaction');
+			const castingTime = spell.casting_time.toLowerCase().replaceAll('reaction,', 'reaction');
 			return (
 				(search.length > 0 ? spellString.includes(search.toLocaleLowerCase()) : true) &&
 				(levelFilter.length ? levelFilter.includes(spell.level_int.toString()) : true) &&
@@ -142,7 +144,7 @@ export default () => {
 					<>
 						<ul className="collapsible">
 							{currentSpells.map((spell) => (
-								<SpellCard key={spell.name} spell={spell} />
+								<SpellCard key={getSpellKey(spell)} spell={spell} />
 							))}
 						</ul>
 						<Pagination
