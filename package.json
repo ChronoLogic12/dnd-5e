@@ -32,8 +32,8 @@
 		"netlify-cli": "^11.8.3",
 		"style-loader": "^3.3.4",
 		"webpack": "^5.111.1",
-		"webpack-cli": "^4.10.0",
-		"webpack-dev-server": "^4.15.2"
+		"webpack-cli": "^7.2.3",
+		"webpack-dev-server": "^6.0.0"
 	},
 	"dependencies": {
 		"materialize-css": "^1.0.0",
