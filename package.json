@@ -10,6 +10,7 @@
 		"dev": "webpack-cli serve --mode development --config config/webpack.config.dev.js",
 		"build": "webpack --config config/webpack.config.prod.js",
 		"lint": "eslint src --ext .js",
+		"data:update": "node scripts/update-data.js",
 		"test:ci": "jest --verbose"
 	},
 	"devDependencies": {
