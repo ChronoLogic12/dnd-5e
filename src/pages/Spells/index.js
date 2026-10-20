@@ -72,18 +72,36 @@ export default () => {
 				(ritualFilter ? spell.ritual == 'yes' : true)
 			);
 		});
-		return searchResults.sort((a, b) => a.level_int - b.level_int);
+		return searchResults.sort(
+			(a, b) =>
+				a.level_int - b.level_int ||
+				a.name.localeCompare(b.name) ||
+				a.document__title.localeCompare(b.document__title)
+		);
+	};
+
+	const getSharedSpellNames = (searchResults) => {
+		const seenNames = new Set();
+		const sharedNames = new Set();
+		for (const { name } of searchResults) {
+			(seenNames.has(name) ? sharedNames : seenNames).add(name);
+		}
+		return sharedNames;
 	};
 
 	const getCurrentPageSearchResults = () => {
 		const allSearchResults = getSearchResults();
 		const indexOfLastSpell = currentPage * spellsPerPage;
 		const indexOfFirstSpell = indexOfLastSpell - spellsPerPage;
-		return [allSearchResults.slice(indexOfFirstSpell, indexOfLastSpell), allSearchResults.length];
+		return [
+			allSearchResults.slice(indexOfFirstSpell, indexOfLastSpell),
+			allSearchResults.length,
+			getSharedSpellNames(allSearchResults),
+		];
 	};
 
 	const renderSearchResults = () => {
-		const [currentSpells, spellCount] = getCurrentPageSearchResults();
+		const [currentSpells, spellCount, sharedSpellNames] = getCurrentPageSearchResults();
 
 		return (
 			<>
@@ -111,7 +129,11 @@ export default () => {
 					<>
 						<CollapsibleList>
 							{currentSpells.map((spell) => (
-								<SpellCard key={getSpellKey(spell)} spell={spell} />
+								<SpellCard
+									key={getSpellKey(spell)}
+									spell={spell}
+									showSource={sharedSpellNames.has(spell.name)}
+								/>
 							))}
 						</CollapsibleList>
 						<Pagination

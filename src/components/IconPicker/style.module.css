@@ -2,4 +2,5 @@
 	height: 2rem;
 	width: 2rem;
 	margin-right: 1rem;
+	flex-shrink: 0;
 }

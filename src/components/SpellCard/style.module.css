@@ -1,5 +1,31 @@
 .level {
 	margin: 0 0 0 auto !important;
+	padding-left: 0.75rem;
+	white-space: nowrap;
+}
+
+.source {
+	margin-left: 0.75rem;
+	padding: 0 0.6rem;
+	border-radius: 60px;
+	font-size: 0.75rem;
+	line-height: 1.4rem;
+	white-space: nowrap;
+}
+
+.core {
+	background-color: #171717;
+	color: #ededed;
+}
+
+.a5e {
+	background-color: rgb(187, 2, 2);
+	color: #fff;
+}
+
+.otherSource {
+	background-color: #757575;
+	color: #fff;
 }
 
 .spellInfo strong {
