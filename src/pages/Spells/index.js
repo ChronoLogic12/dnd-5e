@@ -4,8 +4,7 @@ import materialize from 'materialize-css';
 import { SpellCard, Pagination, SpellSearch, Banner, Nav, CollapsibleList } from '../../components';
 import jsonSpells from '../../../src/data/spells.json';
 import spellsFromAPI from '../../../src/data/spells_from_api.json';
-
-const getSpellKey = (spell) => `${spell.document__title}/${spell.name}`;
+import { getSpellKey, getUniqueSpells, filterSpells, getSharedSpellNames } from '../../utils/spells';
 
 export default () => {
 	const [spells, setSpells] = useState([]);
@@ -23,19 +22,7 @@ export default () => {
 
 	//Set spell list to all unique spells
 	useEffect(() => {
-		const uniqueData = [];
-		const map = new Map();
-		for (const spell of [...jsonSpells, ...spellsFromAPI]) {
-			const key = getSpellKey(spell);
-			if (!map.has(key)) {
-				map.set(key, true);
-				uniqueData.push({
-					...spell,
-					dnd_class: spell.dnd_class.replace(/sorceror/gi, 'Sorcerer'),
-				});
-			}
-		}
-		setSpells(uniqueData);
+		setSpells(getUniqueSpells(jsonSpells, spellsFromAPI));
 		setIsLoading(false);
 	}, []);
 
@@ -56,38 +43,17 @@ export default () => {
 		documentFilter,
 	]);
 
-	const getSearchResults = () => {
-		const searchResults = spells.filter((spell) => {
-			const spellString = JSON.stringify(spell).toLowerCase();
-			const spellClasses = spell.dnd_class.split(', ').map((s) => s.toLowerCase());
-			const castingTime = spell.casting_time.toLowerCase().replaceAll('reaction,', 'reaction');
-			return (
-				(search.length > 0 ? spellString.includes(search.toLocaleLowerCase()) : true) &&
-				(levelFilter.length ? levelFilter.includes(spell.level_int.toString()) : true) &&
-				(classFilter.length ? classFilter.some((r) => spellClasses.includes(r)) : true) &&
-				(schoolFilter.length ? schoolFilter.includes(spell.school.toLowerCase()) : true) &&
-				(castingFilter.length ? castingFilter.some((r) => castingTime.includes(r)) : true) &&
-				(documentFilter.length ? documentFilter.includes(spell.document__title) : true) &&
-				(concentrationFilter ? spell.concentration == 'yes' : true) &&
-				(ritualFilter ? spell.ritual == 'yes' : true)
-			);
+	const getSearchResults = () =>
+		filterSpells(spells, {
+			search,
+			levelFilter,
+			classFilter,
+			schoolFilter,
+			castingFilter,
+			documentFilter,
+			concentrationFilter,
+			ritualFilter,
 		});
-		return searchResults.sort(
-			(a, b) =>
-				a.level_int - b.level_int ||
-				a.name.localeCompare(b.name) ||
-				a.document__title.localeCompare(b.document__title)
-		);
-	};
-
-	const getSharedSpellNames = (searchResults) => {
-		const seenNames = new Set();
-		const sharedNames = new Set();
-		for (const { name } of searchResults) {
-			(seenNames.has(name) ? sharedNames : seenNames).add(name);
-		}
-		return sharedNames;
-	};
 
 	const getCurrentPageSearchResults = () => {
 		const allSearchResults = getSearchResults();
