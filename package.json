@@ -35,13 +35,11 @@
 		"webpack-dev-server": "*"
 	},
 	"dependencies": {
-		"axios": "*",
+		"axios": "^1.20.0",
 		"materialize-css": "*",
-		"npm": "*",
 		"react": "*",
 		"react-dom": "*",
 		"react-icons": "^4.4.0",
-		"react-router-dom": "*",
-		"update": "*"
+		"react-router-dom": "*"
 	}
 }
