@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import materialize from 'materialize-css';
 
-import { ConditionCard, ConditionsSearch, Banner, Nav } from '../../components';
+import { ConditionCard, ConditionsSearch, Banner, Nav, CollapsibleList } from '../../components';
 import conditions from '../../data/conditions.json';
 
 export default () => {
@@ -28,11 +28,11 @@ export default () => {
 				<hr className="rule" />
 				{currentConditions.length ? (
 					<>
-						<ul className="collapsible">
+						<CollapsibleList>
 							{currentConditions.map((condition) => (
 								<ConditionCard key={condition.name} condition={condition} />
 							))}
-						</ul>
+						</CollapsibleList>
 					</>
 				) : (
 					<div>No results found</div>

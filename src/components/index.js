@@ -10,3 +10,4 @@ export { default as MonstersPagination } from './MonstersPagination';
 export { default as MonstersSearch } from './MonstersSearch';
 export { default as Banner } from './Banner';
 export { default as Nav } from './Nav';
+export { default as CollapsibleList } from './CollapsibleList';

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import materialize from 'materialize-css';
 
-import { SpellCard, Pagination, SpellSearch, Banner, Nav } from '../../components';
+import { SpellCard, Pagination, SpellSearch, Banner, Nav, CollapsibleList } from '../../components';
 import jsonSpells from '../../../src/data/spells.json';
 import spellsFromAPI from '../../../src/data/spells_from_api.json';
 
@@ -109,11 +109,11 @@ export default () => {
 				<hr className="rule" />
 				{currentSpells.length ? (
 					<>
-						<ul className="collapsible">
+						<CollapsibleList>
 							{currentSpells.map((spell) => (
 								<SpellCard key={getSpellKey(spell)} spell={spell} />
 							))}
-						</ul>
+						</CollapsibleList>
 						<Pagination
 							spellsPerPage={spellsPerPage}
 							totalSpells={spellCount}
@@ -135,7 +135,6 @@ export default () => {
 			<Banner page="Spells" />
 			<main className="container">
 				{renderSearchResults()}
-				{materialize.AutoInit()}
 				<div className="spacing"></div>
 			</main>
 			<Nav />

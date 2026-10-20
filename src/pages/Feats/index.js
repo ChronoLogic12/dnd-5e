@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import materialize from 'materialize-css';
 
 import jsonFeats from '../../data/feats.json';
-import { FeatCard, FeatsSearch, Banner, Nav } from '../../components';
+import { FeatCard, FeatsSearch, Banner, Nav, CollapsibleList } from '../../components';
 
 export default () => {
 	const [feats, setFeats] = useState([]);
@@ -37,11 +37,11 @@ export default () => {
 
 				{currentFeats.length ? (
 					<>
-						<ul className="collapsible">
+						<CollapsibleList>
 							{currentFeats.map((feat) => (
 								<FeatCard key={feat.name} feat={feat} />
 							))}
-						</ul>
+						</CollapsibleList>
 					</>
 				) : isLoading ? (
 					<div className="loader"></div>
