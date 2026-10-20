@@ -13,6 +13,9 @@ module.exports = {
 		sourceType: "module",
 	},
 	plugins: ["react"],
+	settings: {
+		react: { version: "detect" },
+	},
 	ignorePatterns: ["**/*.test.js"],
 	rules: {
 		curly: "error",
@@ -22,7 +25,9 @@ module.exports = {
 		"no-use-before-define": "error",
 		"no-undef": "error",
 		"no-multi-spaces": "warn",
-		indent: ["warn", "tab"],
-		ignoreTranspilerName: true,
+		"react/prop-types": "off",
+		"react/display-name": "off",
+		"react/no-unescaped-entities": "off",
+		indent: ["warn", "tab", { SwitchCase: 1 }],
 	},
 };

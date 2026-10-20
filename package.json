@@ -8,7 +8,8 @@
 		"test": "jest --watchAll --verbose --setupFilesAfterEnv ./src/test/setupTests.js",
 		"coverage": "jest --setupFilesAfterEnv ./src/test/setupTests.js --coverage --watchAll=false",
 		"dev": "webpack-cli serve --mode development --config config/webpack.config.dev.js",
-		"build": "webpack --config config/webpack.config.prod.js"
+		"build": "webpack --config config/webpack.config.prod.js",
+		"lint": "eslint src --ext .js"
 	},
 	"devDependencies": {
 		"@babel/core": "*",

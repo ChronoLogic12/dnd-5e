@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 
 import { Banner, Nav } from '../../components';
 
@@ -44,7 +43,7 @@ export default () => {
 							<hr className="rule" />
 							<p>
 								Dungeons and Dragons 5th Edition (D&D5e) is the property of{' '}
-								<a href="https://dnd.wizards.com/" target="_blank">
+								<a href="https://dnd.wizards.com/" target="_blank" rel="noreferrer">
 									Wizards of the Coast LLC.
 								</a>{' '}
 								Please visit their website and support the official release.
@@ -54,7 +53,7 @@ export default () => {
 							</h6>
 							<p>
 								Most of the info on the site comes from the{' '}
-								<a href="https://open5e.com/" target="_blank">
+								<a href="https://open5e.com/" target="_blank" rel="noreferrer">
 									Open5e
 								</a>{' '}
 								API. For full details visit their website. Please consider supporting their work.
@@ -68,27 +67,27 @@ export default () => {
 							</p>
 							<ul>
 								<li>
-									<a href="https://reactjs.org/" target="_blank">
+									<a href="https://reactjs.org/" target="_blank" rel="noreferrer">
 										React
 									</a>
 								</li>
 								<li>
-									<a href="https://react-icons.github.io/react-icons/" target="_blank">
+									<a href="https://react-icons.github.io/react-icons/" target="_blank" rel="noreferrer">
 										React Icons
 									</a>
 								</li>
 								<li>
-									<a href="https://materializecss.com/" target="_blank">
+									<a href="https://materializecss.com/" target="_blank" rel="noreferrer">
 										Materialize
 									</a>
 								</li>
 								<li>
-									<a href="https://axios-http.com/" target="_blank">
+									<a href="https://axios-http.com/" target="_blank" rel="noreferrer">
 										Axios
 									</a>
 								</li>
 								<li>
-									<a href="https://www.netlify.com/" target="_blank">
+									<a href="https://www.netlify.com/" target="_blank" rel="noreferrer">
 										Netlify
 									</a>
 								</li>
@@ -287,7 +286,7 @@ export default () => {
 							<div className="center-align">
 								<em className="grey-text">
 									Site created by Matthew Suttie (ChronoLogic){' '}
-									<a href="https://github.com/ChronoLogic12" target="_blank">
+									<a href="https://github.com/ChronoLogic12" target="_blank" rel="noreferrer">
 										GitHub.
 									</a>
 								</em>

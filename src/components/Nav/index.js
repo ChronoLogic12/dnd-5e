@@ -7,7 +7,7 @@ import { HiHome } from 'react-icons/hi';
 
 import css from './style.module.css';
 
-export default (props) => {
+export default () => {
 	const handleClick = () => {
 		const elements = document.getElementById('iconContainer').childNodes;
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import css from './style.module.css';
+import './style.module.css';
 
 export default (props) => {
 	const renderDescription = () => {

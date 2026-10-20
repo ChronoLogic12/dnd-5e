@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
-import axios from 'axios';
 import materialize from 'materialize-css';
 
 import { SpellCard, Pagination, SpellSearch, Banner, Nav } from '../../components';
@@ -11,7 +9,6 @@ const getSpellKey = (spell) => `${spell.document__title}/${spell.name}`;
 
 export default () => {
 	const [spells, setSpells] = useState([]);
-	const [error, setError] = useState(null);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [spellsPerPage] = useState(30);
 	const [search, setSearch] = useState('');
@@ -24,36 +21,7 @@ export default () => {
 	const [documentFilter, setDocumentFilter] = useState(['5e Core Rules']);
 	const [isLoading, setIsLoading] = useState(true);
 
-	//Get Spells from API
-	// useEffect(() => {
-	// 	axios
-	// 		.get('https://api.open5e.com/spells/?ordering=level_int&limit=2000')
-	// 		.then((response) => {
-	// 			const data = Array.isArray(response.data.results)
-	// 				? response.data.results
-	// 				: [response.data.results];
-	// 			const uniqueData = [];
-	// 			const map = new Map();
-	// 			for (const spell of [...jsonSpells, ...data]) {
-	// 				if (!map.has(spell.name)) {
-	// 					map.set(spell.name, true);
-	// 					uniqueData.push({
-	// 						...spell,
-	// 					});
-	// 				}
-	// 			}
-	// 			console.log(data);
-	// 			console.log(uniqueData);
-	// 			console.log(jsonSpells);
-	// 			setSpells(uniqueData);
-	// 			setIsLoading(false);
-	// 		})
-	// 		.catch((error) => {
-	// 			setError(error.message);
-	// 		});
-	// }, []);
-
-	//Set spell list to all unique spells. The same spell name can appear in more than one document.
+	//Set spell list to all unique spells
 	useEffect(() => {
 		const uniqueData = [];
 		const map = new Map();
@@ -63,7 +31,6 @@ export default () => {
 				map.set(key, true);
 				uniqueData.push({
 					...spell,
-					// Some source documents misspell sorcerer
 					dnd_class: spell.dnd_class.replace(/sorceror/gi, 'Sorcerer'),
 				});
 			}
@@ -154,8 +121,6 @@ export default () => {
 							currentPage={currentPage}
 						/>
 					</>
-				) : error ? (
-					<p>{error}</p>
 				) : isLoading ? (
 					<div className="loader"></div>
 				) : (

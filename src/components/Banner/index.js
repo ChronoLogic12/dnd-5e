@@ -1,10 +1,8 @@
 import React from 'react';
-import M from 'materialize-css';
 import { Link, useLocation } from 'react-router-dom';
 
 import css from './style.module.css';
 
-import { IoChevronForwardSharp } from 'react-icons/io5';
 
 export default (props) => {
 	return (

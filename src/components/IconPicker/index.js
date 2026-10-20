@@ -4,7 +4,7 @@ import css from './style.module.css';
 
 import { FaEye } from 'react-icons/fa';
 import { BsMoonStarsFill } from 'react-icons/bs';
-import { GiWhiteTower, GiDoubleFaceMask, GiSnake, GiChessKnight } from 'react-icons/gi';
+import { GiDoubleFaceMask, GiSnake, GiChessKnight } from 'react-icons/gi';
 import { IoShieldSharp, IoSkullSharp } from 'react-icons/io5';
 import { SiMediafire } from 'react-icons/si';
 

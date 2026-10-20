@@ -1,5 +1,4 @@
 import React from 'react';
-import M from 'materialize-css';
 
 export default ({ totalMonsters, paginate, currentPage }) => {
 	const pageNumbers = [];
