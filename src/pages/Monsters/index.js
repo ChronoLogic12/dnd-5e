@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-
 import materialize from 'materialize-css';
 
 import {
@@ -11,36 +9,24 @@ import {
 	Nav,
 	CollapsibleList,
 } from '../../components';
+import { prepareMonsters, filterMonsters } from '../../utils/monsters';
+
+const MONSTERS_PER_PAGE = 50;
 
 export default () => {
 	const [monsters, setMonsters] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [search, setSearch] = useState('');
-	const [challengeRatingFilter, setChallengeRatingFilter] = useState('null');
-	const [count, setCount] = useState(0);
+	const [challengeRatingFilter, setChallengeRatingFilter] = useState('');
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
-	//Get Spells from API
 	useEffect(() => {
-		let url =
-			`https://api.open5e.com/v1/monsters/?page=${currentPage}` +
-			(search ? `&search=${search}` : '') +
-			(challengeRatingFilter != 'null' ? `&cr=${challengeRatingFilter}` : '');
-		axios
-			.get(url)
-			.then((response) => {
-				const data = Array.isArray(response.data.results)
-					? response.data.results
-					: [response.data.results];
-				setMonsters(data);
-				setCount(response.data.count);
-				setIsLoading(false);
-			})
-			.catch((error) => {
-				setError(error.message);
-			});
-	}, [currentPage, search, challengeRatingFilter]);
+		import('../../data/monsters.json')
+			.then(({ default: data }) => setMonsters(prepareMonsters(data)))
+			.catch(() => setError('Monsters could not be loaded. Try refreshing the page.'))
+			.finally(() => setIsLoading(false));
+	}, []);
 
 	useEffect(() => {
 		setCurrentPage(1);
@@ -48,26 +34,35 @@ export default () => {
 
 	useEffect(() => {
 		materialize.AutoInit();
-	}, [isLoading]);
+	}, []);
 
 	const renderSearchResults = () => {
+		const searchResults = filterMonsters(monsters, { search, challengeRatingFilter });
+		const indexOfLastMonster = currentPage * MONSTERS_PER_PAGE;
+		const currentMonsters = searchResults.slice(
+			indexOfLastMonster - MONSTERS_PER_PAGE,
+			indexOfLastMonster
+		);
+
 		return (
 			<>
 				<MonstersSearch
-					count={count}
+					count={searchResults.length}
+					search={search}
 					setSearch={setSearch}
+					challengeRatingFilter={challengeRatingFilter}
 					setChallengeRatingFilter={setChallengeRatingFilter}
 				/>
 				<hr className="rule" />
-				{monsters.length ? (
+				{currentMonsters.length ? (
 					<>
 						<CollapsibleList>
-							{monsters.map((monster) => (
+							{currentMonsters.map((monster) => (
 								<MonsterCard key={monster.slug} monster={monster} />
 							))}
 						</CollapsibleList>
 						<MonstersPagination
-							totalMonsters={count}
+							totalMonsters={searchResults.length}
 							paginate={setCurrentPage}
 							currentPage={currentPage}
 						/>

@@ -2,7 +2,6 @@ import React from 'react';
 
 import css from './style.module.css';
 
-import { getSelectedOptionValues } from '../../utils/getSelectedOptionValues';
 import { IoFilter } from 'react-icons/io5';
 
 const cRValues = [
@@ -46,8 +45,7 @@ export default (props) => {
 	};
 
 	const handleChallengeRatingInputChange = ({ target }) => {
-		let value = getSelectedOptionValues(target.options);
-		props.setChallengeRatingFilter(value);
+		props.setChallengeRatingFilter(target.value);
 	};
 
 	return (
@@ -84,7 +82,7 @@ export default (props) => {
 									<option defaultValue="" disabled>
 										Select Challenge Rating
 									</option>
-									<option value="null">-No filter-</option>
+									<option value="">-No filter-</option>
 									{cRValues.map((n) => {
 										return (
 											<option key={n} value={n}>

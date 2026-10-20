@@ -82,11 +82,6 @@ export default () => {
 									</a>
 								</li>
 								<li>
-									<a href="https://axios-http.com/" target="_blank" rel="noreferrer">
-										Axios
-									</a>
-								</li>
-								<li>
 									<a href="https://www.netlify.com/" target="_blank" rel="noreferrer">
 										Netlify
 									</a>
