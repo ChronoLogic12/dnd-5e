@@ -1,4 +1,5 @@
-import '@testing-library/jest-dom';
-import { TextEncoder } from 'util';
+import '@testing-library/jest-dom/vitest';
+import { cleanup } from '@testing-library/react';
+import { afterEach } from 'vitest';
 
-global.TextEncoder = TextEncoder;
+afterEach(cleanup);
