@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { screen } from '@testing-library/react';
 
-import { Conditions, Feats } from '../pages';
-import { renderPage, search, resultsList, resultNames } from './pageHelpers';
+import Conditions from '..';
+import { renderPage, search, resultsList, resultNames } from '../../../test/pageHelpers';
 
 describe('Conditions page', () => {
 	it('searches regardless of letter case', () => {
@@ -17,13 +17,5 @@ describe('Conditions page', () => {
 		expect(screen.getByText('No results found')).toBeInTheDocument();
 		search('');
 		expect((resultsList() as HTMLElement & { M_Collapsible?: unknown }).M_Collapsible).toBeDefined();
-	});
-});
-
-describe('Feats page', () => {
-	it('searches regardless of letter case', () => {
-		renderPage(Feats);
-		search('GRAPPLER');
-		expect(resultNames()).toEqual(['Grappler']);
 	});
 });

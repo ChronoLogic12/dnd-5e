@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import materialize from 'materialize-css';
 
-import { ConditionCard, ConditionsSearch, Banner, Nav, CollapsibleList } from '../../components';
+import { Banner, Nav, CollapsibleList } from '../../components';
+import ConditionCard from './components/ConditionCard';
+import ConditionsSearch from './components/ConditionsSearch';
 import conditions from '../../data/conditions.json';
 
 export default function Conditions() {
