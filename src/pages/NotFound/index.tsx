@@ -6,7 +6,7 @@ import { IoHomeSharp } from 'react-icons/io5';
 
 import { Banner } from '../../components';
 
-export default () => {
+export default function NotFound() {
 	return (
 		<>
 			<Banner page="Error" />
@@ -21,4 +21,4 @@ export default () => {
 			</main>
 		</>
 	);
-};
+}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Banner, Nav } from '../../components';
 
-export default () => {
+export default function About() {
 	return (
 		<>
 			<Banner page="About" />
@@ -294,4 +294,4 @@ export default () => {
 			<Nav />
 		</>
 	);
-};
+}
