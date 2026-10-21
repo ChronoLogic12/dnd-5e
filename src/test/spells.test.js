@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import { getUniqueSpells, filterSpells } from '../utils/spells';
 import { getSharedNames } from '../utils/getSharedNames';
 

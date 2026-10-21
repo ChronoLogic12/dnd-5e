@@ -4,7 +4,7 @@ const globals = require('globals');
 
 module.exports = [
 	{
-		ignores: ['build/**', 'coverage/**', '**/*.test.js'],
+		ignores: ['build/**', 'coverage/**', '**/*.test.{js,jsx}'],
 	},
 	js.configs.recommended,
 	react.configs.flat.recommended,

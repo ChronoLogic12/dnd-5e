@@ -5,20 +5,17 @@
 	"keywords": [],
 	"author": "",
 	"scripts": {
-		"test": "jest --watchAll --verbose",
-		"coverage": "jest --coverage --watchAll=false",
+		"test": "vitest",
+		"coverage": "vitest run --coverage",
 		"dev": "vite",
 		"build": "vite build",
 		"preview": "vite preview",
 		"lint": "eslint .",
 		"data:update": "node scripts/update-data.js",
-		"test:ci": "jest --verbose",
+		"test:ci": "vitest run",
 		"test:e2e": "playwright test"
 	},
 	"devDependencies": {
-		"@babel/core": "^8.0.6",
-		"@babel/preset-env": "^8.0.6",
-		"@babel/preset-react": "^8.0.1",
 		"@eslint/js": "^9.39.5",
 		"@playwright/test": "^1.63.0",
 		"@testing-library/dom": "^10.4.2",
@@ -26,14 +23,14 @@
 		"@testing-library/react": "^16.3.3",
 		"@testing-library/user-event": "^14.6.7",
 		"@vitejs/plugin-react": "^6.1.2",
+		"@vitest/coverage-v8": "^5.0.5",
 		"eslint": "^9.39.5",
 		"eslint-plugin-react": "^7.37.5",
 		"globals": "^17.13.0",
-		"identity-obj-proxy": "^3.0.0",
-		"jest": "^30.5.2",
-		"jest-environment-jsdom": "^30.5.2",
+		"jsdom": "^30.1.3",
 		"netlify-cli": "^27.11.1",
-		"vite": "^8.3.5"
+		"vite": "^8.3.5",
+		"vitest": "^5.0.5"
 	},
 	"dependencies": {
 		"materialize-css": "^1.0.0",
@@ -41,17 +38,5 @@
 		"react-dom": "^19.3.0",
 		"react-icons": "^5.7.0",
 		"react-router-dom": "^7.18.4"
-	},
-	"jest": {
-		"testEnvironment": "jsdom",
-		"setupFilesAfterEnv": [
-			"<rootDir>/src/test/setupTests.js"
-		],
-		"moduleNameMapper": {
-			"\\.css$": "identity-obj-proxy"
-		},
-		"roots": [
-			"<rootDir>/src"
-		]
 	}
 }
