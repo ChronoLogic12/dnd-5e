@@ -1,8 +1,22 @@
-export const getSpellKey = (spell) => `${spell.document__title}/${spell.name}`;
+import type { Spell } from '../types/data';
 
-export const getUniqueSpells = (...spellLists) => {
-	const uniqueSpells = [];
-	const seenKeys = new Set();
+export interface SpellFilters {
+	search?: string;
+	levelFilter?: string[];
+	classFilter?: string[];
+	schoolFilter?: string[];
+	castingFilter?: string[];
+	documentFilter?: string[];
+	concentrationFilter?: boolean;
+	ritualFilter?: boolean;
+}
+
+export const getSpellKey = (spell: Pick<Spell, 'name' | 'document__title'>) =>
+	`${spell.document__title}/${spell.name}`;
+
+export const getUniqueSpells = (...spellLists: Spell[][]): Spell[] => {
+	const uniqueSpells: Spell[] = [];
+	const seenKeys = new Set<string>();
 	for (const spell of spellLists.flat()) {
 		const key = getSpellKey(spell);
 		if (!seenKeys.has(key)) {
@@ -16,7 +30,7 @@ export const getUniqueSpells = (...spellLists) => {
 	return uniqueSpells;
 };
 
-export const filterSpells = (spells, filters) => {
+export const filterSpells = (spells: Spell[], filters: SpellFilters): Spell[] => {
 	const {
 		search = '',
 		levelFilter = [],
