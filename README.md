@@ -15,6 +15,10 @@
     - [Pagination](#pagination)
     - [Spells](#spells)
     - [Other pages](#other-pages)
+  - [**Development**](#development)
+    - [Setup](#setup)
+    - [Scripts](#scripts)
+    - [Making changes](#making-changes)
   - [**Credits**](#credits)
     - [API](#api)
     - [Technologies used](#technologies-used)
@@ -104,7 +108,35 @@ The conditions, feats and monsters pages follow a similar format to the spells p
 
 The About page contains a short description of the site and it's creation, credits and legal information.
 
-## **Credits**
+## **Development**
+
+### Setup
+
+Use the Node version in `.nvmrc` (Node 24), then install dependencies and Playwright's browser:
+
+```bash
+npm ci
+npx playwright install chromium
+```
+
+### Scripts
+
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Starts the dev server on http://localhost:8080 |
+| `npm run build` | Builds the site into `build` |
+| `npm run lint` | Runs ESLint |
+| `npm test` | Runs the unit tests in watch mode (`npm run test:ci` runs them once) |
+| `npm run test:e2e` | Runs the Playwright smoke tests against `build` (run `npm run build` first) |
+| `npm run data:update` | Refreshes spells, conditions and monsters from the Open5e API |
+
+### Making changes
+
+1. Create a branch from `main` and commit to it.
+2. Push the branch and open a pull request.
+3. GitHub Actions runs lint, unit tests, the production build and the smoke tests, and Netlify posts a deploy preview link on the pull request.
+4. Check the deploy preview, then merge once the checks pass. Netlify deploys `main` to the live site.
+
 
 - Dungeons and Dragons and all related trademarks are the property of [Wizards of the Coast](https://company.wizards.com/en)
 
@@ -119,7 +151,6 @@ The About page contains a short description of the site and it's creation, credi
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [Netlify](https://www.netlify.com/)
 - [Materialize](https://materializecss.com/)
-- [Axios](https://axios-http.com/)
 
 ### Media
 
