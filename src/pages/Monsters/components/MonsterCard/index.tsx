@@ -1,8 +1,8 @@
 import React from 'react';
 import css from './style.module.css';
 
-import SourcePill from '../SourcePill';
-import type { Monster } from '../../types/data';
+import SourcePill from '../../../../components/SourcePill';
+import type { Monster } from '../../types';
 
 const prependPlusSymbol = (value: number) => {
 	if (value > 0) {

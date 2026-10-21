@@ -1,4 +1,4 @@
-import type { Monster } from '../types/data';
+import type { Monster } from '../types';
 
 export const makeMonster = (overrides: Partial<Monster> = {}): Monster => ({
 	slug: 'goblin',

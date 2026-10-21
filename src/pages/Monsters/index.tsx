@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import materialize from 'materialize-css';
 
-import {
-	MonsterCard,
-	MonstersPagination,
-	MonstersSearch,
-	Banner,
-	Nav,
-	CollapsibleList,
-} from '../../components';
-import { prepareMonsters, filterMonsters } from '../../utils/monsters';
-import type { PreparedMonster } from '../../utils/monsters';
+import { Banner, Nav, CollapsibleList } from '../../components';
+import MonsterCard from './components/MonsterCard';
+import MonstersSearch from './components/MonstersSearch';
+import MonstersPagination from './components/MonstersPagination';
+import { prepareMonsters, filterMonsters } from './utils';
+import type { PreparedMonster } from './utils';
 import { getSharedNames } from '../../utils/getSharedNames';
 
 const MONSTERS_PER_PAGE = 50;
