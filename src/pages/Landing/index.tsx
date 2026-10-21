@@ -7,7 +7,7 @@ import { GiBackPain, GiStrong, GiIceCube, GiBookmark } from 'react-icons/gi';
 import { Banner } from '../../components';
 import css from './style.module.css';
 
-export default () => {
+export default function Landing() {
 	return (
 		<>
 			<Banner page="Home" />
@@ -47,4 +47,4 @@ export default () => {
 			</main>
 		</>
 	);
-};
+}

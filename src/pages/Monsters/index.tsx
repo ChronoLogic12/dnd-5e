@@ -10,16 +10,17 @@ import {
 	CollapsibleList,
 } from '../../components';
 import { prepareMonsters, filterMonsters } from '../../utils/monsters';
+import type { PreparedMonster } from '../../utils/monsters';
 import { getSharedNames } from '../../utils/getSharedNames';
 
 const MONSTERS_PER_PAGE = 50;
 
-export default () => {
-	const [monsters, setMonsters] = useState([]);
+export default function Monsters() {
+	const [monsters, setMonsters] = useState<PreparedMonster[]>([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [search, setSearch] = useState('');
 	const [challengeRatingFilter, setChallengeRatingFilter] = useState('');
-	const [error, setError] = useState(null);
+	const [error, setError] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -94,4 +95,4 @@ export default () => {
 			<Nav />
 		</>
 	);
-};
+}

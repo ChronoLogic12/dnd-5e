@@ -6,16 +6,17 @@ import jsonSpells from '../../../src/data/spells.json';
 import spellsFromAPI from '../../../src/data/spells_from_api.json';
 import { getSpellKey, getUniqueSpells, filterSpells } from '../../utils/spells';
 import { getSharedNames } from '../../utils/getSharedNames';
+import type { Spell } from '../../types/data';
 
-export default () => {
-	const [spells, setSpells] = useState([]);
+export default function Spells() {
+	const [spells, setSpells] = useState<Spell[]>([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [spellsPerPage] = useState(30);
 	const [search, setSearch] = useState('');
-	const [levelFilter, setLevelFilter] = useState([]);
-	const [classFilter, setClassFilter] = useState([]);
-	const [schoolFilter, setSchoolFilter] = useState([]);
-	const [castingFilter, setCastingFilter] = useState([]);
+	const [levelFilter, setLevelFilter] = useState<string[]>([]);
+	const [classFilter, setClassFilter] = useState<string[]>([]);
+	const [schoolFilter, setSchoolFilter] = useState<string[]>([]);
+	const [castingFilter, setCastingFilter] = useState<string[]>([]);
 	const [concentrationFilter, setConcentrationFilter] = useState(false);
 	const [ritualFilter, setRitualFilter] = useState(false);
 	const [documentFilter, setDocumentFilter] = useState(['5e Core Rules']);
@@ -56,7 +57,7 @@ export default () => {
 			ritualFilter,
 		});
 
-	const getCurrentPageSearchResults = () => {
+	const getCurrentPageSearchResults = (): [Spell[], number, Set<string>] => {
 		const allSearchResults = getSearchResults();
 		const indexOfLastSpell = currentPage * spellsPerPage;
 		const indexOfFirstSpell = indexOfLastSpell - spellsPerPage;
@@ -129,4 +130,4 @@ export default () => {
 			<Nav />
 		</>
 	);
-};
+}

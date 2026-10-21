@@ -4,7 +4,7 @@ import materialize from 'materialize-css';
 import { ConditionCard, ConditionsSearch, Banner, Nav, CollapsibleList } from '../../components';
 import conditions from '../../data/conditions.json';
 
-export default () => {
+export default function Conditions() {
 	const [search, setSearch] = useState('');
 
 	useEffect(() => {
@@ -51,4 +51,4 @@ export default () => {
 			<Nav />
 		</>
 	);
-};
+}

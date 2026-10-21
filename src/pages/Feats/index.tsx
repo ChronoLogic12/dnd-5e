@@ -3,9 +3,10 @@ import materialize from 'materialize-css';
 
 import jsonFeats from '../../data/feats.json';
 import { FeatCard, FeatsSearch, Banner, Nav, CollapsibleList } from '../../components';
+import type { Feat } from '../../types/data';
 
-export default () => {
-	const [feats, setFeats] = useState([]);
+export default function Feats() {
+	const [feats, setFeats] = useState<Feat[]>([]);
 	const [search, setSearch] = useState('');
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -62,4 +63,4 @@ export default () => {
 			<Nav />
 		</>
 	);
-};
+}
