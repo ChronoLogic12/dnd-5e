@@ -1,10 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+import type { Monster } from '../src/types/data';
+
+type ApiRecord = Record<string, unknown>;
+
 const API = 'https://api.open5e.com/v1';
 const DATA_DIRECTORY = path.join(import.meta.dirname, '../src/data');
 
-const MONSTER_FIELDS = [
+const MONSTER_FIELDS: (keyof Monster)[] = [
 	'slug',
 	'name',
 	'size',
@@ -41,21 +45,22 @@ const MONSTER_FIELDS = [
 	'document__title',
 ];
 
-const fetchAll = async (resource) => {
+const fetchAll = async (resource: string): Promise<ApiRecord[]> => {
 	const response = await fetch(`${API}/${resource}/?limit=10000`);
 	if (!response.ok) {
 		throw new Error(`${resource}: ${response.status} ${response.statusText}`);
 	}
-	const { count, results } = await response.json();
+	const { count, results } = (await response.json()) as { count: number; results: ApiRecord[] };
 	if (results.length !== count) {
 		throw new Error(`${resource}: received ${results.length} of ${count}`);
 	}
 	return results;
 };
 
-const pick = (item, fields) => Object.fromEntries(fields.map((field) => [field, item[field]]));
+const pick = (item: ApiRecord, fields: string[]) =>
+	Object.fromEntries(fields.map((field) => [field, item[field]]));
 
-const save = (fileName, data) => {
+const save = (fileName: string, data: unknown[]) => {
 	fs.writeFileSync(path.join(DATA_DIRECTORY, fileName), JSON.stringify(data, null, '\t') + '\n');
 	console.log(`${fileName}: ${data.length} entries`);
 };
@@ -70,7 +75,7 @@ const main = async () => {
 	);
 };
 
-main().catch((error) => {
+main().catch((error: Error) => {
 	console.error(error.message);
 	process.exit(1);
 });

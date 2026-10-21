@@ -5,13 +5,15 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { Monsters } from '../pages';
 import { prepareMonsters, filterMonsters } from '../utils/monsters';
+import { makeMonster } from './factories';
+import type { Monster } from '../types/data';
 
 const monsters = prepareMonsters([
-	{ name: 'Goblin', challenge_rating: '1/4', languages: 'Common, Goblin', document__title: 'Tome of Beasts' },
-	{ name: 'Aboleth', challenge_rating: '10', languages: 'Deep Speech', document__title: '5e Core Rules' },
-	{ name: 'Goblin', challenge_rating: '1/4', languages: 'Common, Goblin', document__title: '5e Core Rules' },
+	makeMonster({ document__title: 'Tome of Beasts' }),
+	makeMonster({ name: 'Aboleth', challenge_rating: '10', languages: 'Deep Speech', actions: [] }),
+	makeMonster(),
 ]);
-const names = (results) => results.map((monster) => `${monster.name} (${monster.document__title})`);
+const names = (results: Monster[]) => results.map((monster) => `${monster.name} (${monster.document__title})`);
 
 describe('filterMonsters', () => {
 	it('sorts by name, then document', () => {
@@ -50,7 +52,7 @@ describe('Monsters page', () => {
 		renderPage();
 		await screen.findByText('Results found: 3207');
 		fireEvent.change(screen.getByLabelText('Search:'), { target: { value: 'tarrasque' } });
-		fireEvent.change(document.getElementById('cr'), { target: { value: '30' } });
+		fireEvent.change(document.getElementById('cr') as HTMLSelectElement, { target: { value: '30' } });
 		const names = [...document.querySelectorAll('main ul.collapsible.no-autoinit > li h6')].map(
 			(heading) => heading.textContent
 		);
@@ -61,7 +63,7 @@ describe('Monsters page', () => {
 	it('shows a source pill only on monsters that share a name in the results', async () => {
 		renderPage();
 		await screen.findByText('Results found: 3207');
-		const search = (text) =>
+		const search = (text: string) =>
 			fireEvent.change(screen.getByLabelText('Search:'), { target: { value: text } });
 		const pills = () =>
 			[...document.querySelectorAll('main ul.collapsible.no-autoinit span[title]')].map(
@@ -70,7 +72,7 @@ describe('Monsters page', () => {
 
 		search('aboleth');
 		const abolethCards = [...document.querySelectorAll('main ul.collapsible.no-autoinit > li')].filter(
-			(card) => card.querySelector('h6').textContent === 'Aboleth'
+			(card) => card.querySelector('h6')?.textContent === 'Aboleth'
 		);
 		expect(abolethCards).toHaveLength(3);
 		expect(pills()).toEqual(expect.arrayContaining(['Core', 'Black Flag', 'A5e']));
