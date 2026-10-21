@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import materialize from 'materialize-css';
 
 import jsonFeats from '../../data/feats.json';
-import { FeatCard, FeatsSearch, Banner, Nav, CollapsibleList } from '../../components';
-import type { Feat } from '../../types/data';
+import { Banner, Nav, CollapsibleList } from '../../components';
+import FeatCard from './components/FeatCard';
+import FeatsSearch from './components/FeatsSearch';
+import type { Feat } from './types';
 
 export default function Feats() {
 	const [feats, setFeats] = useState<Feat[]>([]);
