@@ -1,7 +1,7 @@
 # Yggdramor
 
 <p align="center">
-    <img src="./public/images/../yggdramor-logo.png" width="200px">
+    <img src="./public/yggdramor-logo.png" width="200px">
 </p>
 
 ## **Table of contents**
@@ -36,7 +36,7 @@ Also includes pages for conditions, character feats and Monsters.
 This site uses a dark theme with a single bright red accent colour in keeping with D&Ds themes. The high contrast this provides aims to make navigating and reading the pages easy.
 
 <p align="center">
-    <img src="./public/images/yggdramor-colour-scheme.PNG" width="500px">
+    <img src="./docs/images/yggdramor-colour-scheme.PNG" width="500px">
 </p>
 
 ## **Features**
@@ -46,17 +46,17 @@ This site uses a dark theme with a single bright red accent colour in keeping wi
 - The Landing/Home page consists of links to each of the information pages.
 
 <p align="center">
-    <img src="./public/images/home-nav.PNG" width="200px">
+    <img src="./docs/images/home-nav.PNG" width="200px">
 </p>
 
 - Each of the information pages contains a quick nav section for traversal between pages without first returning to the Landing page.
 
 <p align="center">
-    <img src="./public/images/nav-closed.PNG" width="100px">
+    <img src="./docs/images/nav-closed.PNG" width="100px">
 </p>
 
 <p align="center">
-    <img src="./public/images/nav-open.PNG" width="100px">
+    <img src="./docs/images/nav-open.PNG" width="100px">
 </p>
 
 ### Pagination
@@ -64,7 +64,7 @@ This site uses a dark theme with a single bright red accent colour in keeping wi
 Any of the information pages that displays more than 100 results (adaptive to current search) splits the results into pages which can then be traversed via a navigational element at the bottom of the page.
 
 <p align="center">
-    <img src="./public/images/pagination.PNG" width="500px">
+    <img src="./docs/images/pagination.PNG" width="500px">
 </p>
 
 ### Spells
@@ -76,13 +76,13 @@ The primary feature of this site is the spell search/filter system which can be 
 - The number of spells matching the current search is shows at the bottom of this section and will update live along with the displayed spells.
 
 <p align="center">
-    <img src="./public/images/spell-search.PNG" width="400px">
+    <img src="./docs/images/spell-search.PNG" width="400px">
 </p>
 
 All spells are displayed in a list (30 to a page). Each item contains an icon to represent the spells school, name and level.
 
 <p align="center">
-    <img src="./public/images/spell-list.PNG" width="400px">
+    <img src="./docs/images/spell-list.PNG" width="400px">
 </p>
 
 Clicking on one of these items will expand the selection displaying further spell details. These include
@@ -99,7 +99,7 @@ Clicking on one of these items will expand the selection displaying further spel
 - Information source
 
 <p align="center">
-    <img src="./public/images/expanded-spell.PNG" width="400px">
+    <img src="./docs/images/expanded-spell.PNG" width="400px">
 </p>
 
 ### Other pages
@@ -125,6 +125,7 @@ npx playwright install chromium
 | --- | --- |
 | `npm run dev` | Starts the dev server on http://localhost:8080 |
 | `npm run build` | Builds the site into `build` |
+| `npm run preview` | Serves the production build on http://localhost:5050 |
 | `npm run lint` | Runs ESLint |
 | `npm test` | Runs the unit tests in watch mode (`npm run test:ci` runs them once) |
 | `npm run test:e2e` | Runs the Playwright smoke tests against `build` (run `npm run build` first) |
