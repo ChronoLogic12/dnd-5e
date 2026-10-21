@@ -1,9 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { getUniqueSpells, filterSpells } from '../utils/spells';
-import { getSharedNames } from '../utils/getSharedNames';
+import { getUniqueSpells, filterSpells } from '../utils';
 import { makeSpell } from './factories';
-import type { Spell } from '../types/data';
-
+import type { Spell } from '../types';
 
 describe('getUniqueSpells', () => {
 	it('keeps spells with the same name from different documents', () => {
@@ -63,16 +61,5 @@ describe('filterSpells', () => {
 			'Acid Arrow (5e Core Rules)',
 			'Acid Arrow (Level Up Advanced 5e)',
 		]);
-	});
-});
-
-describe('getSharedNames', () => {
-	it('returns only names that appear more than once', () => {
-		const shared = getSharedNames([
-			makeSpell(),
-			makeSpell({ document__title: 'Level Up Advanced 5e' }),
-			makeSpell({ name: 'Shield' }),
-		]);
-		expect([...shared]).toEqual(['Acid Arrow']);
 	});
 });
