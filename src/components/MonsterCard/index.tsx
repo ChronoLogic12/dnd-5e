@@ -2,8 +2,9 @@ import React from 'react';
 import css from './style.module.css';
 
 import SourcePill from '../SourcePill';
+import type { Monster } from '../../types/data';
 
-const prependPlusSymbol = (value) => {
+const prependPlusSymbol = (value: number) => {
 	if (value > 0) {
 		return `+${value}`;
 	} else {
@@ -11,15 +12,20 @@ const prependPlusSymbol = (value) => {
 	}
 };
 
-const calculateModifier = (score) => {
+const calculateModifier = (score: number) => {
 	return prependPlusSymbol(Math.floor((score - 10) / 2));
 };
 
-const calculateSavingThrow = (score, stat) => {
+const calculateSavingThrow = (score: number, stat: number | null) => {
 	return prependPlusSymbol(stat === null ? +calculateModifier(score) : +stat);
 };
 
-export default (props) => {
+interface MonsterCardProps {
+	monster: Monster;
+	showSource?: boolean;
+}
+
+export default function MonsterCard(props: MonsterCardProps) {
 	return (
 		<li>
 			<header className="collapsible-header valign-wrapper">
@@ -227,4 +233,4 @@ export default (props) => {
 			</div>
 		</li>
 	);
-};
+}

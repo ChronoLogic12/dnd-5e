@@ -7,9 +7,12 @@ import { HiHome } from 'react-icons/hi';
 
 import css from './style.module.css';
 
-export default () => {
+export default function Nav() {
 	const handleClick = () => {
-		const elements = document.getElementById('iconContainer').childNodes;
+		const elements = document.getElementById('iconContainer')?.children;
+		if (!elements) {
+			return;
+		}
 
 		let i = 4;
 		const toggleVisibility = () => {
@@ -22,7 +25,7 @@ export default () => {
 			}, 100);
 		};
 		toggleVisibility();
-		document.getElementById('navMenu').classList.toggle('close');
+		document.getElementById('navMenu')?.classList.toggle('close');
 	};
 
 	return (
@@ -59,11 +62,11 @@ export default () => {
 					</Link>
 				)}
 			</div>
-			<button href="#" onClick={handleClick} className={css.burger} id="navMenu">
+			<button onClick={handleClick} className={css.burger} id="navMenu">
 				<span className={css.one}></span>
 				<span className={css.two}></span>
 				<span className={css.three}></span>
 			</button>
 		</nav>
 	);
-};
+}

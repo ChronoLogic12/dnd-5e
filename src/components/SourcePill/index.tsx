@@ -1,7 +1,7 @@
 import React from 'react';
 import css from './style.module.css';
 
-const sources = {
+const sources: Record<string, { label: string; className: string }> = {
 	'5e Core Rules': { label: 'Core', className: css.core },
 	'Level Up Advanced 5e': { label: 'A5e', className: css.a5e },
 	'Level Up Advanced 5e Monstrous Menagerie': { label: 'A5e', className: css.a5e },
@@ -20,11 +20,15 @@ const sources = {
 	'Open5e Original Content': { label: 'Open5e', className: css.otherSource },
 };
 
-export default ({ source }) => {
+interface SourcePillProps {
+	source: string;
+}
+
+export default function SourcePill({ source }: SourcePillProps) {
 	const { label, className } = sources[source] || { label: source, className: css.otherSource };
 	return (
 		<span className={`${css.source} ${className}`} title={source}>
 			{label}
 		</span>
 	);
-};
+}

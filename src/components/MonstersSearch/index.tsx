@@ -39,12 +39,20 @@ const cRValues = [
 	'30',
 ];
 
-export default (props) => {
-	const handleSearchInputChange = ({ target }) => {
+interface MonstersSearchProps {
+	count: number;
+	search: string;
+	setSearch: (search: string) => void;
+	challengeRatingFilter: string;
+	setChallengeRatingFilter: (challengeRating: string) => void;
+}
+
+export default function MonstersSearch(props: MonstersSearchProps) {
+	const handleSearchInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
 		props.setSearch(target.value);
 	};
 
-	const handleChallengeRatingInputChange = ({ target }) => {
+	const handleChallengeRatingInputChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
 		props.setChallengeRatingFilter(target.value);
 	};
 
@@ -99,4 +107,4 @@ export default (props) => {
 			<p className="results">Results found: {props.count}</p>
 		</>
 	);
-};
+}

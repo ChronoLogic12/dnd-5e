@@ -1,7 +1,17 @@
 import React from 'react';
 
-export default ({ totalMonsters, paginate, currentPage }) => {
-	const pageNumbers = [];
+interface MonstersPaginationProps {
+	totalMonsters: number;
+	paginate: (page: number) => void;
+	currentPage: number;
+}
+
+export default function MonstersPagination({
+	totalMonsters,
+	paginate,
+	currentPage,
+}: MonstersPaginationProps) {
+	const pageNumbers: number[] = [];
 
 	for (let i = 1; i <= Math.ceil(totalMonsters / 50); i++) {
 		pageNumbers.push(i);
@@ -60,4 +70,4 @@ export default ({ totalMonsters, paginate, currentPage }) => {
 			</li>
 		</ul>
 	);
-};
+}

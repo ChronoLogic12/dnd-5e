@@ -5,33 +5,53 @@ import css from './style.module.css';
 import { getSelectedOptionValues } from '../../utils/getSelectedOptionValues';
 import { IoFilter } from 'react-icons/io5';
 
-export default (props) => {
-	const handleSearchInputChange = ({ target }) => {
+interface SpellSearchProps {
+	search: string;
+	levelFilter: string[];
+	classFilter: string[];
+	schoolFilter: string[];
+	castingFilter: string[];
+	documentFilter: string[];
+	concentrationFilter: boolean;
+	ritualFilter: boolean;
+	setSearch: (search: string) => void;
+	setLevelFilter: React.Dispatch<React.SetStateAction<string[]>>;
+	setClassFilter: React.Dispatch<React.SetStateAction<string[]>>;
+	setSchoolFilter: React.Dispatch<React.SetStateAction<string[]>>;
+	setCastingFilter: React.Dispatch<React.SetStateAction<string[]>>;
+	setDocumentFilter: React.Dispatch<React.SetStateAction<string[]>>;
+	setConcentrationFilter: React.Dispatch<React.SetStateAction<boolean>>;
+	setRitualFilter: React.Dispatch<React.SetStateAction<boolean>>;
+	spellCount: number;
+}
+
+export default function SpellSearch(props: SpellSearchProps) {
+	const handleSearchInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
 		props.setSearch(target.value);
 	};
 
-	const handleLevelInputChange = ({ target }) => {
-		let value = getSelectedOptionValues(target.options);
+	const handleLevelInputChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+		const value = getSelectedOptionValues(target.options);
 		props.setLevelFilter(value);
 	};
 
-	const handleClassInputChange = ({ target }) => {
-		let value = getSelectedOptionValues(target.options);
+	const handleClassInputChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+		const value = getSelectedOptionValues(target.options);
 		props.setClassFilter(value);
 	};
 
-	const handleSchoolInputChange = ({ target }) => {
-		let value = getSelectedOptionValues(target.options);
+	const handleSchoolInputChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+		const value = getSelectedOptionValues(target.options);
 		props.setSchoolFilter(value);
 	};
 
-	const handleCastingInputChange = ({ target }) => {
-		let value = getSelectedOptionValues(target.options);
+	const handleCastingInputChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+		const value = getSelectedOptionValues(target.options);
 		props.setCastingFilter(value);
 	};
 
-	const handleDocumentInputChange = ({ target }) => {
-		let value = getSelectedOptionValues(target.options);
+	const handleDocumentInputChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+		const value = getSelectedOptionValues(target.options);
 		props.setDocumentFilter(value);
 	};
 
@@ -186,7 +206,6 @@ export default (props) => {
 											type="checkbox"
 											name="concentration"
 											id="concentration"
-											value={props.concentrationFilter}
 											onChange={handleConcentrationCheckboxChange}
 											checked={props.concentrationFilter}
 										/>
@@ -199,7 +218,6 @@ export default (props) => {
 											type="checkbox"
 											name="ritual"
 											id="ritual"
-											value={props.ritualFilter}
 											onChange={handleRitualCheckboxChange}
 											checked={props.ritualFilter}
 										/>
@@ -214,4 +232,4 @@ export default (props) => {
 			<p className="results">Results found: {props.spellCount}</p>
 		</>
 	);
-};
+}

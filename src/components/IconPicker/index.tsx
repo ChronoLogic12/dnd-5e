@@ -8,8 +8,8 @@ import { GiDoubleFaceMask, GiSnake, GiChessKnight } from 'react-icons/gi';
 import { IoShieldSharp, IoSkullSharp } from 'react-icons/io5';
 import { SiMediafire } from 'react-icons/si';
 
-export const iconPicker = (school) => {
-	let colour = '';
+export const iconPicker = (school: string) => {
+	let colour: React.ReactElement | null;
 	switch (school.toLowerCase()) {
 		case 'abjuration':
 			colour = <IoShieldSharp className={`${css.spellIcon} cyan-text text-accent-3`} />;
