@@ -11,7 +11,7 @@ module.exports = defineConfig({
 	},
 	projects: [{ name: 'desktop', use: { ...devices['Desktop Chrome'] } }],
 	webServer: {
-		command: 'node scripts/serve-build.js build 5050',
+		command: 'npm run preview',
 		url: 'http://localhost:5050',
 		reuseExistingServer: !process.env.CI,
 	},
