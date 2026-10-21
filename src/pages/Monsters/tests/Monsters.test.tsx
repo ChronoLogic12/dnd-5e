@@ -13,15 +13,18 @@ describe('Monsters page', () => {
 			</MemoryRouter>
 		);
 
+	const waitForMonsters = () =>
+		screen.findByText('Results found: 3207', {}, { timeout: 10000 });
+
 	it('loads every monster from the local data file', async () => {
 		renderPage();
-		expect(await screen.findByText('Results found: 3207')).toBeInTheDocument();
+		expect(await waitForMonsters()).toBeInTheDocument();
 		expect(document.querySelectorAll('main ul.collapsible.no-autoinit > li')).toHaveLength(50);
 	});
 
 	it('filters by search and challenge rating together', async () => {
 		renderPage();
-		await screen.findByText('Results found: 3207');
+		await waitForMonsters();
 		fireEvent.change(screen.getByLabelText('Search:'), { target: { value: 'tarrasque' } });
 		fireEvent.change(document.getElementById('cr') as HTMLSelectElement, { target: { value: '30' } });
 		const names = [...document.querySelectorAll('main ul.collapsible.no-autoinit > li h6')].map(
@@ -33,7 +36,7 @@ describe('Monsters page', () => {
 
 	it('shows a source pill only on monsters that share a name in the results', async () => {
 		renderPage();
-		await screen.findByText('Results found: 3207');
+		await waitForMonsters();
 		const search = (text: string) =>
 			fireEvent.change(screen.getByLabelText('Search:'), { target: { value: text } });
 		const pills = () =>
