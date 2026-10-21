@@ -2,8 +2,8 @@ import React from 'react';
 import css from './style.module.css';
 
 import { iconPicker } from '../IconPicker';
-import SourcePill from '../SourcePill';
-import type { Spell } from '../../types/data';
+import SourcePill from '../../../../components/SourcePill';
+import type { Spell } from '../../types';
 
 interface SpellCardProps {
 	spell: Spell;

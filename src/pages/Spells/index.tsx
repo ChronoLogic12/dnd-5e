@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import materialize from 'materialize-css';
 
-import { SpellCard, Pagination, SpellSearch, Banner, Nav, CollapsibleList } from '../../components';
-import jsonSpells from '../../../src/data/spells.json';
-import spellsFromAPI from '../../../src/data/spells_from_api.json';
-import { getSpellKey, getUniqueSpells, filterSpells } from '../../utils/spells';
+import { Banner, Nav, CollapsibleList } from '../../components';
+import SpellCard from './components/SpellCard';
+import SpellSearch from './components/SpellSearch';
+import Pagination from './components/Pagination';
+import jsonSpells from '../../data/spells.json';
+import spellsFromAPI from '../../data/spells_from_api.json';
+import { getSpellKey, getUniqueSpells, filterSpells } from './utils';
 import { getSharedNames } from '../../utils/getSharedNames';
-import type { Spell } from '../../types/data';
+import type { Spell } from './types';
 
 export default function Spells() {
 	const [spells, setSpells] = useState<Spell[]>([]);

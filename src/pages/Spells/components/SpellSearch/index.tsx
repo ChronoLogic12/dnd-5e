@@ -2,7 +2,7 @@ import React from 'react';
 
 import css from './style.module.css';
 
-import { getSelectedOptionValues } from '../../utils/getSelectedOptionValues';
+import { getSelectedOptionValues } from './getSelectedOptionValues';
 import { IoFilter } from 'react-icons/io5';
 
 interface SpellSearchProps {

@@ -1,4 +1,4 @@
-import type { Spell } from '../types/data';
+import type { Spell } from './types';
 
 export interface SpellFilters {
 	search?: string;
