@@ -13,7 +13,7 @@
 		"preview": "vite preview",
 		"lint": "eslint .",
 		"typecheck": "tsc --noEmit",
-		"data:update": "node scripts/update-data.js",
+		"data:update": "node scripts/update-data.ts",
 		"test:ci": "vitest run",
 		"test:e2e": "playwright test"
 	},

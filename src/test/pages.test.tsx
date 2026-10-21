@@ -5,24 +5,30 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { Spells, Conditions, Feats } from '../pages';
 
-const renderPage = (Page) =>
+const renderPage = (Page: React.ComponentType) =>
 	render(
 		<MemoryRouter>
 			<Page />
 		</MemoryRouter>
 	);
 
-const search = (text) => fireEvent.change(screen.getByLabelText('Search:'), { target: { value: text } });
+const search = (text: string) => fireEvent.change(screen.getByLabelText('Search:'), { target: { value: text } });
 
-const selectOptions = (id, values) => {
-	const select = document.getElementById(id);
+const selectOptions = (id: string, values: string[]) => {
+	const select = document.getElementById(id) as HTMLSelectElement;
 	for (const option of select.options) {
 		option.selected = values.includes(option.value);
 	}
 	fireEvent.change(select);
 };
 
-const resultsList = () => document.querySelector('main ul.collapsible.no-autoinit');
+const resultsList = () => {
+	const list = document.querySelector<HTMLElement>('main ul.collapsible.no-autoinit');
+	if (!list) {
+		throw new Error('Results list not found');
+	}
+	return list;
+};
 
 const resultNames = () =>
 	[...resultsList().querySelectorAll(':scope > li h6')].map((heading) => heading.textContent);
@@ -58,7 +64,7 @@ describe('Conditions page', () => {
 		search('zzzz');
 		expect(screen.getByText('No results found')).toBeInTheDocument();
 		search('');
-		expect(resultsList().M_Collapsible).toBeDefined();
+		expect((resultsList() as HTMLElement & { M_Collapsible?: unknown }).M_Collapsible).toBeDefined();
 	});
 });
 

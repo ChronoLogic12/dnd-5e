@@ -3,46 +3,14 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import { MonsterCard } from '../components';
+import { makeMonster } from './factories';
+import type { Monster } from '../types/data';
 
-const monster = {
-	name: 'Goblin',
-	challenge_rating: '1/4',
-	size: 'Small',
-	type: 'humanoid',
-	alignment: 'neutral evil',
-	armor_class: 15,
-	hit_points: 7,
-	hit_dice: '2d6',
-	speed: { walk: 30 },
-	strength: 8,
-	dexterity: 14,
-	constitution: 10,
-	intelligence: 10,
-	wisdom: 8,
-	charisma: 8,
-	strength_save: null,
-	dexterity_save: null,
-	constitution_save: null,
-	intelligence_save: null,
-	wisdom_save: null,
-	charisma_save: null,
-	skills: { stealth: 6 },
-	damage_vulnerabilities: '',
-	damage_resistances: '',
-	damage_immunities: '',
-	senses: 'darkvision 60 ft.',
-	languages: 'Common, Goblin',
-	special_abilities: [],
-	actions: [{ name: 'Scimitar', desc: 'Melee Weapon Attack.' }],
-	reactions: [],
-	legendary_actions: [],
-	document__title: '5e Core Rules',
-};
 
-const renderCard = (overrides) =>
+const renderCard = (overrides: Partial<Monster> = {}) =>
 	render(
 		<ul>
-			<MonsterCard monster={{ ...monster, ...overrides }} />
+			<MonsterCard monster={makeMonster(overrides)} />
 		</ul>
 	);
 

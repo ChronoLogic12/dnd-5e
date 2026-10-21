@@ -1,18 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import { getUniqueSpells, filterSpells } from '../utils/spells';
 import { getSharedNames } from '../utils/getSharedNames';
+import { makeSpell } from './factories';
+import type { Spell } from '../types/data';
 
-const makeSpell = (overrides) => ({
-	name: 'Acid Arrow',
-	level_int: 2,
-	school: 'Evocation',
-	dnd_class: 'Wizard',
-	casting_time: '1 action',
-	concentration: 'no',
-	ritual: 'no',
-	document__title: '5e Core Rules',
-	...overrides,
-});
 
 describe('getUniqueSpells', () => {
 	it('keeps spells with the same name from different documents', () => {
@@ -40,7 +31,7 @@ describe('filterSpells', () => {
 		makeSpell({ name: 'Acid Arrow', document__title: 'Level Up Advanced 5e' }),
 		makeSpell({ name: 'Acid Arrow', dnd_class: 'Sorcerer' }),
 	];
-	const names = (results) => results.map((spell) => `${spell.name} (${spell.document__title})`);
+	const names = (results: Spell[]) => results.map((spell) => `${spell.name} (${spell.document__title})`);
 
 	it('searches regardless of letter case', () => {
 		expect(names(filterSpells(spells, { search: 'FIRE bolt' }))).toEqual(['Fire Bolt (5e Core Rules)']);
