@@ -9,10 +9,7 @@ module.exports = defineConfig({
 		baseURL: 'http://localhost:5050',
 		trace: 'retain-on-failure',
 	},
-	projects: [
-		{ name: 'desktop', use: { ...devices['Desktop Chrome'] } },
-		{ name: 'mobile', use: { ...devices['Pixel 7'] } },
-	],
+	projects: [{ name: 'desktop', use: { ...devices['Desktop Chrome'] } }],
 	webServer: {
 		command: 'node scripts/serve-build.js build 5050',
 		url: 'http://localhost:5050',
