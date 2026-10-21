@@ -4,7 +4,11 @@ import { Link, useLocation } from 'react-router-dom';
 import css from './style.module.css';
 
 
-export default (props) => {
+interface BannerProps {
+	page: string;
+}
+
+export default function Banner(props: BannerProps) {
 	return (
 		<div className={css.banner}>
 			<div className="container-fluid">
@@ -25,4 +29,4 @@ export default (props) => {
 			</div>
 		</div>
 	);
-};
+}

@@ -1,8 +1,14 @@
 import React from 'react';
 
 
-export default (props) => {
-	const handleSearchInputChange = ({ target }) => {
+interface FeatsSearchProps {
+	search: string;
+	setSearch: (search: string) => void;
+	featsCount: number;
+}
+
+export default function FeatsSearch(props: FeatsSearchProps) {
+	const handleSearchInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
 		props.setSearch(target.value);
 	};
 
@@ -21,7 +27,7 @@ export default (props) => {
 					/>
 				</div>
 			</form>
-			<p className="results">Results found: {props.conditionsCount}</p>
+			<p className="results">Results found: {props.featsCount}</p>
 		</>
 	);
-};
+}

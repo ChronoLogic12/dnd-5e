@@ -1,7 +1,19 @@
 import React from 'react';
 
-export default ({ spellsPerPage, totalSpells, paginate, currentPage }) => {
-	const pageNumbers = [];
+interface PaginationProps {
+	spellsPerPage: number;
+	totalSpells: number;
+	paginate: (page: number) => void;
+	currentPage: number;
+}
+
+export default function Pagination({
+	spellsPerPage,
+	totalSpells,
+	paginate,
+	currentPage,
+}: PaginationProps) {
+	const pageNumbers: number[] = [];
 
 	for (let i = 1; i <= Math.ceil(totalSpells / spellsPerPage); i++) {
 		pageNumbers.push(i);
@@ -60,4 +72,4 @@ export default ({ spellsPerPage, totalSpells, paginate, currentPage }) => {
 			</li>
 		</ul>
 	);
-};
+}

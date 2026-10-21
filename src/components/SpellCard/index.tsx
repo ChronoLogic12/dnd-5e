@@ -3,8 +3,14 @@ import css from './style.module.css';
 
 import { iconPicker } from '../IconPicker';
 import SourcePill from '../SourcePill';
+import type { Spell } from '../../types/data';
 
-export default (props) => {
+interface SpellCardProps {
+	spell: Spell;
+	showSource?: boolean;
+}
+
+export default function SpellCard(props: SpellCardProps) {
 	const renderDescription = () => {
 		return (
 			<p>
@@ -21,7 +27,7 @@ export default (props) => {
 		);
 	};
 
-	const renderBooleanIcon = (value) => {
+	const renderBooleanIcon = (value: string) => {
 		return value == 'no' ? (
 			<i className="material-icons red-text">cancel</i>
 		) : (
@@ -82,4 +88,4 @@ export default (props) => {
 			</div>
 		</li>
 	);
-};
+}
