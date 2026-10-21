@@ -167,7 +167,7 @@ export default (props) => {
 					</>
 				) : null}
 				{/* Actions */}
-				{props.monster.actions.length ? (
+				{props.monster.actions && props.monster.actions.length ? (
 					<>
 						<h5>
 							<strong>Actions</strong>
