@@ -17,6 +17,11 @@
 	color: #fff;
 }
 
+.outline {
+	box-shadow: inset 0 0 0 1px #171717;
+	color: #171717;
+}
+
 .otherSource {
 	background-color: #757575;
 	color: #fff;

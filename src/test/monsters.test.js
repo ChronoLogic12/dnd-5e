@@ -56,4 +56,28 @@ describe('Monsters page', () => {
 		expect(names).toContain('Tarrasque');
 		expect(screen.getByText(`Results found: ${names.length}`)).toBeInTheDocument();
 	});
+
+	it('shows a source pill only on monsters that share a name in the results', async () => {
+		renderPage();
+		await screen.findByText('Results found: 3207');
+		const search = (text) =>
+			fireEvent.change(screen.getByLabelText('Search:'), { target: { value: text } });
+		const pills = () =>
+			[...document.querySelectorAll('main ul.collapsible.no-autoinit span[title]')].map(
+				(pill) => pill.textContent
+			);
+
+		search('aboleth');
+		const abolethCards = [...document.querySelectorAll('main ul.collapsible.no-autoinit > li')].filter(
+			(card) => card.querySelector('h6').textContent === 'Aboleth'
+		);
+		expect(abolethCards).toHaveLength(3);
+		expect(pills()).toEqual(expect.arrayContaining(['Core', 'Black Flag', 'A5e']));
+
+		search('abominable beauty');
+		expect(pills()).toEqual(['ToB', 'ToB 2023']);
+
+		search('a-mi-kuk');
+		expect(pills()).toEqual([]);
+	});
 });

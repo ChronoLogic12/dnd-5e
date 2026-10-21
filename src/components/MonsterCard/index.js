@@ -1,6 +1,8 @@
 import React from 'react';
 import css from './style.module.css';
 
+import SourcePill from '../SourcePill';
+
 const prependPlusSymbol = (value) => {
 	if (value > 0) {
 		return `+${value}`;
@@ -22,6 +24,7 @@ export default (props) => {
 		<li>
 			<header className="collapsible-header valign-wrapper">
 				<h6>{props.monster.name}</h6>
+				{props.showSource ? <SourcePill source={props.monster.document__title} /> : null}
 				<p className={css.cr}>{props.monster.challenge_rating}</p>
 			</header>
 			<div className="collapsible-body white">

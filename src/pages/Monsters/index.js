@@ -10,6 +10,7 @@ import {
 	CollapsibleList,
 } from '../../components';
 import { prepareMonsters, filterMonsters } from '../../utils/monsters';
+import { getSharedNames } from '../../utils/getSharedNames';
 
 const MONSTERS_PER_PAGE = 50;
 
@@ -38,6 +39,7 @@ export default () => {
 
 	const renderSearchResults = () => {
 		const searchResults = filterMonsters(monsters, { search, challengeRatingFilter });
+		const sharedMonsterNames = getSharedNames(searchResults);
 		const indexOfLastMonster = currentPage * MONSTERS_PER_PAGE;
 		const currentMonsters = searchResults.slice(
 			indexOfLastMonster - MONSTERS_PER_PAGE,
@@ -58,7 +60,11 @@ export default () => {
 					<>
 						<CollapsibleList>
 							{currentMonsters.map((monster) => (
-								<MonsterCard key={monster.slug} monster={monster} />
+								<MonsterCard
+									key={monster.slug}
+									monster={monster}
+									showSource={sharedMonsterNames.has(monster.name)}
+								/>
 							))}
 						</CollapsibleList>
 						<MonstersPagination
