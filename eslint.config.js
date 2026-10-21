@@ -1,12 +1,14 @@
-const js = require('@eslint/js');
-const react = require('eslint-plugin-react');
-const globals = require('globals');
+import js from '@eslint/js';
+import react from 'eslint-plugin-react';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
-module.exports = [
+export default tseslint.config(
 	{
-		ignores: ['build/**', 'coverage/**', '**/*.test.{js,jsx}'],
+		ignores: ['build/**', 'coverage/**', '**/*.test.{js,jsx,ts,tsx}'],
 	},
 	js.configs.recommended,
+	tseslint.configs.recommended,
 	react.configs.flat.recommended,
 	{
 		languageOptions: {
@@ -23,10 +25,8 @@ module.exports = [
 		rules: {
 			curly: 'error',
 			quotes: ['warn', 'single', { allowTemplateLiterals: true, avoidEscape: true }],
-			'no-unused-vars': ['error'],
 			semi: ['error'],
 			'no-use-before-define': 'error',
-			'no-undef': 'error',
 			'no-multi-spaces': 'warn',
 			'react/prop-types': 'off',
 			'react/display-name': 'off',
@@ -34,4 +34,10 @@ module.exports = [
 			indent: ['warn', 'tab', { SwitchCase: 1 }],
 		},
 	},
-];
+	{
+		files: ['**/*.{js,jsx}'],
+		rules: {
+			'no-undef': 'error',
+		},
+	}
+);

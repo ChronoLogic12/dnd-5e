@@ -1,6 +1,6 @@
-const { defineConfig, devices } = require('@playwright/test');
+import { defineConfig, devices } from '@playwright/test';
 
-module.exports = defineConfig({
+export default defineConfig({
 	testDir: './e2e',
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 1 : 0,

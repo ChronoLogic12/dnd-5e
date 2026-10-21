@@ -1,8 +1,8 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'node:fs';
+import path from 'node:path';
 
 const API = 'https://api.open5e.com/v1';
-const DATA_DIRECTORY = path.join(__dirname, '../src/data');
+const DATA_DIRECTORY = path.join(import.meta.dirname, '../src/data');
 
 const MONSTER_FIELDS = [
 	'slug',
