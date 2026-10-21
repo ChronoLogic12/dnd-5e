@@ -1,4 +1,4 @@
-import type { Monster } from '../types/data';
+import type { Monster } from './types';
 
 export interface PreparedMonster {
 	monster: Monster;

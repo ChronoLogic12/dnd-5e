@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 
-import { MonsterCard } from '../components';
-import { makeMonster } from './factories';
-import type { Monster } from '../types/data';
+import MonsterCard from '..';
+import { makeMonster } from '../../../tests/factories';
+import type { Monster } from '../../../types';
 
 
 const renderCard = (overrides: Partial<Monster> = {}) =>

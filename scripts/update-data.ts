@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import type { Monster } from '../src/types/data';
+import type { Monster } from '../src/pages/Monsters/types';
 
 type ApiRecord = Record<string, unknown>;
 
