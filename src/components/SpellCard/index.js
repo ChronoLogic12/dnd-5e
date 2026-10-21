@@ -2,32 +2,9 @@ import React from 'react';
 import css from './style.module.css';
 
 import { iconPicker } from '../IconPicker';
-
-const sourcePills = {
-	'5e Core Rules': { label: 'Core', className: css.core },
-	'Level Up Advanced 5e': { label: 'A5e', className: css.a5e },
-	'Deep Magic 5e': { label: 'Deep Magic', className: css.otherSource },
-	'Deep Magic Extended': { label: 'DM Extended', className: css.otherSource },
-	'Warlock Archives': { label: 'Warlock', className: css.otherSource },
-	'Kobold Press Compilation': { label: 'Kobold Press', className: css.otherSource },
-	'Tome of Heroes': { label: 'Tome of Heroes', className: css.otherSource },
-	'Open5e Original Content': { label: 'Open5e', className: css.otherSource },
-};
+import SourcePill from '../SourcePill';
 
 export default (props) => {
-	const renderSourcePill = () => {
-		const source = props.spell.document__title;
-		const { label, className } = sourcePills[source] || {
-			label: source,
-			className: css.otherSource,
-		};
-		return (
-			<span className={`${css.source} ${className}`} title={source}>
-				{label}
-			</span>
-		);
-	};
-
 	const renderDescription = () => {
 		return (
 			<p>
@@ -57,7 +34,7 @@ export default (props) => {
 			<header className="collapsible-header valign-wrapper">
 				{iconPicker(props.spell.school)}
 				<h6>{props.spell.name}</h6>
-				{props.showSource ? renderSourcePill() : null}
+				{props.showSource ? <SourcePill source={props.spell.document__title} /> : null}
 				<p className={css.level}>{props.spell.level}</p>
 			</header>
 			<div className="collapsible-body white">

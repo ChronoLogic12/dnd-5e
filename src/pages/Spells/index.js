@@ -4,7 +4,8 @@ import materialize from 'materialize-css';
 import { SpellCard, Pagination, SpellSearch, Banner, Nav, CollapsibleList } from '../../components';
 import jsonSpells from '../../../src/data/spells.json';
 import spellsFromAPI from '../../../src/data/spells_from_api.json';
-import { getSpellKey, getUniqueSpells, filterSpells, getSharedSpellNames } from '../../utils/spells';
+import { getSpellKey, getUniqueSpells, filterSpells } from '../../utils/spells';
+import { getSharedNames } from '../../utils/getSharedNames';
 
 export default () => {
 	const [spells, setSpells] = useState([]);
@@ -62,7 +63,7 @@ export default () => {
 		return [
 			allSearchResults.slice(indexOfFirstSpell, indexOfLastSpell),
 			allSearchResults.length,
-			getSharedSpellNames(allSearchResults),
+			getSharedNames(allSearchResults),
 		];
 	};
 

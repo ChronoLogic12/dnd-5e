@@ -50,12 +50,3 @@ export const filterSpells = (spells, filters) => {
 			a.document__title.localeCompare(b.document__title)
 	);
 };
-
-export const getSharedSpellNames = (spells) => {
-	const seenNames = new Set();
-	const sharedNames = new Set();
-	for (const { name } of spells) {
-		(seenNames.has(name) ? sharedNames : seenNames).add(name);
-	}
-	return sharedNames;
-};

@@ -1,4 +1,5 @@
-import { getUniqueSpells, filterSpells, getSharedSpellNames } from '../utils/spells';
+import { getUniqueSpells, filterSpells } from '../utils/spells';
+import { getSharedNames } from '../utils/getSharedNames';
 
 const makeSpell = (overrides) => ({
 	name: 'Acid Arrow',
@@ -73,9 +74,9 @@ describe('filterSpells', () => {
 	});
 });
 
-describe('getSharedSpellNames', () => {
+describe('getSharedNames', () => {
 	it('returns only names that appear more than once', () => {
-		const shared = getSharedSpellNames([
+		const shared = getSharedNames([
 			makeSpell(),
 			makeSpell({ document__title: 'Level Up Advanced 5e' }),
 			makeSpell({ name: 'Shield' }),
