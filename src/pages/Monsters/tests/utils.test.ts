@@ -2,14 +2,15 @@ import { describe, it, expect } from 'vitest';
 
 import { prepareMonsters, filterMonsters } from '../utils';
 import { makeMonster } from './factories';
+import { sources } from '../../../data/sources';
 import type { Monster } from '../types';
 
 const monsters = prepareMonsters([
-	makeMonster({ document__title: 'Tome of Beasts' }),
-	makeMonster({ name: 'Aboleth', challenge_rating: '10', languages: 'Deep Speech', actions: [] }),
+	makeMonster({ id: 'tob/goblin', source: 'tob' }),
+	makeMonster({ id: 'srd-2014/aboleth', name: 'Aboleth', challengeRating: '10', languages: 'Deep Speech', actions: [] }),
 	makeMonster(),
 ]);
-const names = (results: Monster[]) => results.map((monster) => `${monster.name} (${monster.document__title})`);
+const names = (results: Monster[]) => results.map((monster) => `${monster.name} (${sources[monster.source].title})`);
 
 describe('filterMonsters', () => {
 	it('sorts by name, then document', () => {

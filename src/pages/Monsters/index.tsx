@@ -8,6 +8,20 @@ import MonstersPagination from './components/MonstersPagination';
 import { prepareMonsters, filterMonsters } from './utils';
 import type { PreparedMonster } from './utils';
 import { getSharedNames } from '../../utils/getSharedNames';
+import type { SourceKey } from '../../data/sources';
+import type { Monster } from './types';
+
+const SHOWN_SOURCES: SourceKey[] = [
+	'srd-2014',
+	'a5e-mm',
+	'bfrd',
+	'ccdx',
+	'tdcs',
+	'tob',
+	'tob-2023',
+	'tob2',
+	'tob3',
+];
 
 const MONSTERS_PER_PAGE = 50;
 
@@ -21,7 +35,11 @@ export default function Monsters() {
 
 	useEffect(() => {
 		import('../../data/monsters.json')
-			.then(({ default: data }) => setMonsters(prepareMonsters(data)))
+			.then(({ default: data }) =>
+				setMonsters(
+					prepareMonsters((data as Monster[]).filter((monster) => SHOWN_SOURCES.includes(monster.source)))
+				)
+			)
 			.catch(() => setError('Monsters could not be loaded. Try refreshing the page.'))
 			.finally(() => setIsLoading(false));
 	}, []);
@@ -58,7 +76,7 @@ export default function Monsters() {
 						<CollapsibleList>
 							{currentMonsters.map((monster) => (
 								<MonsterCard
-									key={monster.slug}
+									key={monster.id}
 									monster={monster}
 									showSource={sharedMonsterNames.has(monster.name)}
 								/>

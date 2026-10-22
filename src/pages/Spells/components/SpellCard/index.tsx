@@ -44,7 +44,7 @@ export default function SpellCard(props: SpellCardProps) {
 			<header className="collapsible-header valign-wrapper">
 				{iconPicker(props.spell.school)}
 				<h6>{props.spell.name}</h6>
-				{props.showSource ? <SourcePill source={sourceTitle} /> : null}
+				{props.showSource ? <SourcePill source={getDisplaySource(props.spell.source)} /> : null}
 				<p className={css.level}>{getLevelLabel(props.spell.level)}</p>
 			</header>
 			<div className="collapsible-body white">
