@@ -18,6 +18,7 @@
   - [**Development**](#development)
     - [Setup](#setup)
     - [Scripts](#scripts)
+    - [Data](#data)
     - [Making changes](#making-changes)
   - [**Credits**](#credits)
     - [API](#api)
@@ -130,7 +131,16 @@ npx playwright install chromium
 | `npm run typecheck` | Checks types with TypeScript |
 | `npm test` | Runs the unit tests in watch mode (`npm run test:ci` runs them once) |
 | `npm run test:e2e` | Runs the Playwright smoke tests against `build` (run `npm run build` first) |
-| `npm run data:update` | Refreshes spells, conditions and monsters from the Open5e API |
+| `npm run data:update` | Refreshes the generated data from the Open5e API (see [Data](#data)) |
+
+### Data
+
+All site data is stored in `src/data` and bundled with the site, so nothing is fetched from Open5e at runtime.
+
+- **Generated** (`spells.json`, `monsters.json`, `conditions.json`, `feats.json`): written by `npm run data:update`. 2014 content comes from Open5e's v1 API, which has more complete 2014 data, and 2024 content from its v2 API.
+- **Hand-made** (`src/data/handmade`): Player's Handbook spells and feats from Player's Handbook, Tasha's and Xanathar's. Edit these by hand; the script never overwrites them.
+
+Every record uses one typed format with an `id`, a `source` and an `edition` (`2014` or `2024`). Sources and their display names, pill labels and editions are listed in `src/data/sources.ts`. Each page lists the sources it shows, so content can be stored before it's shown.
 
 ### Making changes
 
