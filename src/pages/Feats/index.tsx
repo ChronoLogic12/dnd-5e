@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import materialize from 'materialize-css';
 
-import jsonFeats from '../../data/feats.json';
+import handmadeFeats from '../../data/handmade/feats.json';
+import openFeats from '../../data/feats.json';
+import { sources } from '../../data/sources';
+import type { SourceKey } from '../../data/sources';
 import { Banner, Nav, CollapsibleList } from '../../components';
 import FeatCard from './components/FeatCard';
 import FeatsSearch from './components/FeatsSearch';
 import type { Feat } from './types';
+
+const SHOWN_SOURCES: SourceKey[] = ['phb-2014', 'tce', 'xge'];
+
+const allFeats = [...(handmadeFeats as Feat[]), ...(openFeats as Feat[])].filter((feat) =>
+	SHOWN_SOURCES.includes(feat.source)
+);
+
+const getSearchText = (feat: Feat) =>
+	[feat.name, feat.prerequisite, feat.desc, sources[feat.source].title].join(' ').toLowerCase();
 
 export default function Feats() {
 	const [feats, setFeats] = useState<Feat[]>([]);
@@ -14,7 +26,7 @@ export default function Feats() {
 
 	//Get Feats
 	useEffect(() => {
-		setFeats(jsonFeats);
+		setFeats(allFeats);
 		setIsLoading(false);
 	}, []);
 
@@ -24,8 +36,7 @@ export default function Feats() {
 
 	const getSearchResults = () => {
 		return feats.filter((feat) => {
-			const featString = JSON.stringify(feat).toLowerCase();
-			return search.length > 0 ? featString.includes(search.toLowerCase()) : true;
+			return search.length > 0 ? getSearchText(feat).includes(search.toLowerCase()) : true;
 		});
 	};
 
@@ -42,7 +53,7 @@ export default function Feats() {
 					<>
 						<CollapsibleList>
 							{currentFeats.map((feat) => (
-								<FeatCard key={feat.name} feat={feat} />
+								<FeatCard key={feat.id} feat={feat} />
 							))}
 						</CollapsibleList>
 					</>

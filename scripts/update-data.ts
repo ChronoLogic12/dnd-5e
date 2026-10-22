@@ -3,6 +3,7 @@ import path from 'node:path';
 
 import type { Monster } from '../src/pages/Monsters/types.ts';
 import { conditionFromV1, conditionsFromV2 } from './conditions.ts';
+import { featFromV2 } from './feats.ts';
 import { fetchV1, fetchV2 } from './open5e.ts';
 import type { ApiRecord } from './open5e.ts';
 
@@ -59,6 +60,10 @@ const main = async () => {
 		...(await fetchV1('conditions')).map(conditionFromV1),
 		...(await fetchV2('conditions')).flatMap((condition) => conditionsFromV2(condition, ['srd-2014'])),
 	]);
+	save(
+		'feats.json',
+		(await fetchV2('feats')).map(featFromV2).filter((feat) => feat !== null)
+	);
 	const monsters = await fetchV1('monsters');
 	save(
 		'monsters.json',
