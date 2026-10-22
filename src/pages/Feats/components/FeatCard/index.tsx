@@ -1,4 +1,5 @@
 import React from 'react';
+import { sources } from '../../../../data/sources';
 import type { Feat } from '../../types';
 
 import './style.module.css';
@@ -37,7 +38,7 @@ export default function FeatCard(props: FeatCardProps) {
 				) : null}
 				{renderDescription()}
 				<div className="center">
-					<small className="grey-text">Source: {props.feat.document__title}</small>
+					<small className="grey-text">Source: {sources[props.feat.source].title}</small>
 				</div>
 			</div>
 		</li>
