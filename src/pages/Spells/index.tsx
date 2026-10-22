@@ -5,11 +5,28 @@ import { Banner, Nav, CollapsibleList } from '../../components';
 import SpellCard from './components/SpellCard';
 import SpellSearch from './components/SpellSearch';
 import Pagination from './components/Pagination';
-import jsonSpells from '../../data/spells.json';
-import spellsFromAPI from '../../data/spells_from_api.json';
-import { getSpellKey, getUniqueSpells, filterSpells } from './utils';
+import handmadeSpells from '../../data/handmade/spells.json';
+import openSpells from '../../data/spells.json';
+import type { SourceKey } from '../../data/sources';
+import { filterSpells } from './utils';
 import { getSharedNames } from '../../utils/getSharedNames';
 import type { Spell } from './types';
+
+const SHOWN_SOURCES: SourceKey[] = [
+	'srd-2014',
+	'phb-2014',
+	'a5e-ag',
+	'deepm',
+	'deepmx',
+	'wz',
+	'kp',
+	'toh',
+	'open5e',
+];
+
+const allSpells = [...(handmadeSpells as Spell[]), ...(openSpells as Spell[])].filter((spell) =>
+	SHOWN_SOURCES.includes(spell.source)
+);
 
 export default function Spells() {
 	const [spells, setSpells] = useState<Spell[]>([]);
@@ -22,12 +39,12 @@ export default function Spells() {
 	const [castingFilter, setCastingFilter] = useState<string[]>([]);
 	const [concentrationFilter, setConcentrationFilter] = useState(false);
 	const [ritualFilter, setRitualFilter] = useState(false);
-	const [documentFilter, setDocumentFilter] = useState(['5e Core Rules']);
+	const [documentFilter, setDocumentFilter] = useState<string[]>(['srd-2014']);
 	const [isLoading, setIsLoading] = useState(true);
 
 	//Set spell list to all unique spells
 	useEffect(() => {
-		setSpells(getUniqueSpells(jsonSpells, spellsFromAPI));
+		setSpells(allSpells);
 		setIsLoading(false);
 	}, []);
 
@@ -101,7 +118,7 @@ export default function Spells() {
 						<CollapsibleList>
 							{currentSpells.map((spell) => (
 								<SpellCard
-									key={getSpellKey(spell)}
+									key={spell.id}
 									spell={spell}
 									showSource={sharedSpellNames.has(spell.name)}
 								/>
