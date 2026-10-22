@@ -4,8 +4,10 @@ import path from 'node:path';
 import type { Monster } from '../src/pages/Monsters/types.ts';
 import { conditionFromV1, conditionsFromV2 } from './conditions.ts';
 import { featFromV2 } from './feats.ts';
+import { spellFromV1, spellFromV2 } from './spells.ts';
 import { fetchV1, fetchV2 } from './open5e.ts';
 import type { ApiRecord } from './open5e.ts';
+import type { SourceKey } from '../src/data/sources.ts';
 
 const DATA_DIRECTORY = path.join(import.meta.dirname, '../src/data');
 
@@ -55,7 +57,13 @@ const save = (fileName: string, data: unknown[]) => {
 };
 
 const main = async () => {
-	save('spells_from_api.json', await fetchV1('spells'));
+	const v1Spells = (await fetchV1('spells')).map((spell) => spellFromV1(spell));
+	const v1SpellSources = new Set(v1Spells.map((spell) => spell.source));
+	const v2Spells = (await fetchV2('spells'))
+		.filter((spell) => !v1SpellSources.has((spell.document as { key: string }).key as SourceKey))
+		.map(spellFromV2)
+		.filter((spell) => spell !== null);
+	save('spells.json', [...v1Spells, ...v2Spells]);
 	save('conditions.json', [
 		...(await fetchV1('conditions')).map(conditionFromV1),
 		...(await fetchV2('conditions')).flatMap((condition) => conditionsFromV2(condition, ['srd-2014'])),

@@ -189,14 +189,14 @@ export default function SpellSearch(props: SpellSearchProps) {
 									<option defaultValue="" disabled>
 										Select document sources
 									</option>
-									<option value="5e Core Rules">5e Core Rules</option>
-									<option value="Level Up Advanced 5e">Level Up Advanced 5e</option>
-									<option value="Deep Magic 5e">Deep Magic 5e</option>
-									<option value="Deep Magic Extended">Deep Magic Extended</option>
-									<option value="Warlock Archives">Warlock Archives</option>
-									<option value="Kobold Press Compilation">Kobold Press Compilation</option>
-									<option value="Tome of Heroes">Tome of Heroes</option>
-									<option value="Open5e Original Content">Open5e Original Content</option>
+									<option value="srd-2014">5e Core Rules</option>
+									<option value="a5e-ag">Level Up Advanced 5e</option>
+									<option value="deepm">Deep Magic 5e</option>
+									<option value="deepmx">Deep Magic Extended</option>
+									<option value="wz">Warlock Archives</option>
+									<option value="kp">Kobold Press Compilation</option>
+									<option value="toh">Tome of Heroes</option>
+									<option value="open5e">Open5e Original Content</option>
 								</select>
 							</div>
 							<div className="container">

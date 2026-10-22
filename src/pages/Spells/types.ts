@@ -1,18 +1,24 @@
+import type { Edition, SourceKey } from '../../data/sources';
+
 export interface Spell {
-	slug: string;
+	id: string;
 	name: string;
-	desc: string;
-	higher_level: string;
-	range: string;
-	components: string;
-	material: string;
-	ritual: string;
-	duration: string;
-	concentration: string;
-	casting_time: string;
-	level: string;
-	level_int: number;
+	source: SourceKey;
+	edition: Edition;
+	level: number;
 	school: string;
-	dnd_class: string;
-	document__title: string;
+	classes: string[];
+	castingTime: string;
+	range: string;
+	components: {
+		verbal: boolean;
+		somatic: boolean;
+		material: boolean;
+	};
+	material: string;
+	ritual: boolean;
+	concentration: boolean;
+	duration: string;
+	desc: string;
+	higherLevel: string;
 }

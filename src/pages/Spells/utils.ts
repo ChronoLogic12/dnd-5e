@@ -1,3 +1,5 @@
+import { sources } from '../../data/sources';
+import type { SourceKey } from '../../data/sources';
 import type { Spell } from './types';
 
 export interface SpellFilters {
@@ -11,24 +13,31 @@ export interface SpellFilters {
 	ritualFilter?: boolean;
 }
 
-export const getSpellKey = (spell: Pick<Spell, 'name' | 'document__title'>) =>
-	`${spell.document__title}/${spell.name}`;
+const ordinalSuffix = (level: number) => (level === 1 ? 'st' : level === 2 ? 'nd' : level === 3 ? 'rd' : 'th');
 
-export const getUniqueSpells = (...spellLists: Spell[][]): Spell[] => {
-	const uniqueSpells: Spell[] = [];
-	const seenKeys = new Set<string>();
-	for (const spell of spellLists.flat()) {
-		const key = getSpellKey(spell);
-		if (!seenKeys.has(key)) {
-			seenKeys.add(key);
-			uniqueSpells.push({
-				...spell,
-				dnd_class: spell.dnd_class.replace(/sorceror/gi, 'Sorcerer'),
-			});
-		}
-	}
-	return uniqueSpells;
-};
+export const getLevelLabel = (level: number) => (level === 0 ? 'Cantrip' : `${level}${ordinalSuffix(level)}-level`);
+
+export const getComponentsLabel = ({ verbal, somatic, material }: Spell['components']) =>
+	[verbal && 'V', somatic && 'S', material && 'M'].filter(Boolean).join(', ');
+
+export const getDisplaySource = (source: SourceKey): SourceKey => (source === 'phb-2014' ? 'srd-2014' : source);
+
+const getSearchText = (spell: Spell) =>
+	[
+		spell.name,
+		spell.desc,
+		spell.higherLevel,
+		spell.school,
+		spell.classes.join(' '),
+		spell.castingTime,
+		spell.range,
+		spell.duration,
+		spell.material,
+		getLevelLabel(spell.level),
+		sources[getDisplaySource(spell.source)].title,
+	]
+		.join(' ')
+		.toLowerCase();
 
 export const filterSpells = (spells: Spell[], filters: SpellFilters): Spell[] => {
 	const {
@@ -41,26 +50,26 @@ export const filterSpells = (spells: Spell[], filters: SpellFilters): Spell[] =>
 		concentrationFilter = false,
 		ritualFilter = false,
 	} = filters;
+	const lowerCaseSearch = search.toLowerCase();
 
 	const searchResults = spells.filter((spell) => {
-		const spellString = JSON.stringify(spell).toLowerCase();
-		const spellClasses = spell.dnd_class.split(', ').map((s) => s.toLowerCase());
-		const castingTime = spell.casting_time.toLowerCase().replaceAll('reaction,', 'reaction');
+		const spellClasses = spell.classes.map((name) => name.toLowerCase());
+		const castingTime = spell.castingTime.toLowerCase().replaceAll('reaction,', 'reaction');
 		return (
-			(search.length > 0 ? spellString.includes(search.toLocaleLowerCase()) : true) &&
-			(levelFilter.length ? levelFilter.includes(spell.level_int.toString()) : true) &&
+			(lowerCaseSearch ? getSearchText(spell).includes(lowerCaseSearch) : true) &&
+			(levelFilter.length ? levelFilter.includes(spell.level.toString()) : true) &&
 			(classFilter.length ? classFilter.some((r) => spellClasses.includes(r)) : true) &&
 			(schoolFilter.length ? schoolFilter.includes(spell.school.toLowerCase()) : true) &&
 			(castingFilter.length ? castingFilter.some((r) => castingTime.includes(r)) : true) &&
-			(documentFilter.length ? documentFilter.includes(spell.document__title) : true) &&
-			(concentrationFilter ? spell.concentration == 'yes' : true) &&
-			(ritualFilter ? spell.ritual == 'yes' : true)
+			(documentFilter.length ? documentFilter.includes(getDisplaySource(spell.source)) : true) &&
+			(concentrationFilter ? spell.concentration : true) &&
+			(ritualFilter ? spell.ritual : true)
 		);
 	});
 	return searchResults.sort(
 		(a, b) =>
-			a.level_int - b.level_int ||
+			a.level - b.level ||
 			a.name.localeCompare(b.name) ||
-			a.document__title.localeCompare(b.document__title)
+			sources[getDisplaySource(a.source)].title.localeCompare(sources[getDisplaySource(b.source)].title)
 	);
 };

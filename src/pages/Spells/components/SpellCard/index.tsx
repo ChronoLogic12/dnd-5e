@@ -3,7 +3,9 @@ import css from './style.module.css';
 
 import { iconPicker } from '../IconPicker';
 import SourcePill from '../../../../components/SourcePill';
+import { sources } from '../../../../data/sources';
 import type { Spell } from '../../types';
+import { getComponentsLabel, getDisplaySource, getLevelLabel } from '../../utils';
 
 interface SpellCardProps {
 	spell: Spell;
@@ -11,6 +13,8 @@ interface SpellCardProps {
 }
 
 export default function SpellCard(props: SpellCardProps) {
+	const sourceTitle = sources[getDisplaySource(props.spell.source)].title;
+
 	const renderDescription = () => {
 		return (
 			<p>
@@ -27,8 +31,8 @@ export default function SpellCard(props: SpellCardProps) {
 		);
 	};
 
-	const renderBooleanIcon = (value: string) => {
-		return value == 'no' ? (
+	const renderBooleanIcon = (value: boolean) => {
+		return !value ? (
 			<i className="material-icons red-text">cancel</i>
 		) : (
 			<i className="material-icons green-text">check_circle</i>
@@ -40,18 +44,18 @@ export default function SpellCard(props: SpellCardProps) {
 			<header className="collapsible-header valign-wrapper">
 				{iconPicker(props.spell.school)}
 				<h6>{props.spell.name}</h6>
-				{props.showSource ? <SourcePill source={props.spell.document__title} /> : null}
-				<p className={css.level}>{props.spell.level}</p>
+				{props.showSource ? <SourcePill source={sourceTitle} /> : null}
+				<p className={css.level}>{getLevelLabel(props.spell.level)}</p>
 			</header>
 			<div className="collapsible-body white">
 				<div className={css.spellInfo}>
 					<em>
-						Components: <strong>{props.spell.components}</strong>
+						Components: <strong>{getComponentsLabel(props.spell.components)}</strong>
 					</em>
-					{props.spell.components.includes('M') ? <em> {props.spell.material}</em> : null}
+					{props.spell.components.material ? <em> {props.spell.material}</em> : null}
 					<br />
 					<em>
-						Casting Time: <strong>{props.spell.casting_time}</strong>
+						Casting Time: <strong>{props.spell.castingTime}</strong>
 					</em>
 					<br />
 					<em>
@@ -76,14 +80,14 @@ export default function SpellCard(props: SpellCardProps) {
 					<br />
 				</div>
 				{renderDescription()}
-				{props.spell.higher_level ? <p>{props.spell.higher_level}</p> : null}
+				{props.spell.higherLevel ? <p>{props.spell.higherLevel}</p> : null}
 				<em className={css.spellInfo}>
-					Classes: <strong>{props.spell.dnd_class}</strong>
+					Classes: <strong>{props.spell.classes.join(', ')}</strong>
 				</em>
 				<br />
 				<br />
 				<div className="center">
-					<small className="grey-text">Source: {props.spell.document__title}</small>
+					<small className="grey-text">Source: {sourceTitle}</small>
 				</div>
 			</div>
 		</li>

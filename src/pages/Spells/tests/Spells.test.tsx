@@ -7,7 +7,7 @@ import { renderPage, search, selectOptions, resultsList, resultNames } from '../
 describe('Spells page', () => {
 	it('shows only Core spells by default', () => {
 		renderPage(Spells);
-		expect(screen.getByText('Results found: 369')).toBeInTheDocument();
+		expect(screen.getByText('Results found: 368')).toBeInTheDocument();
 	});
 
 	it('shows a source pill only on spells that share a name in the results', () => {
