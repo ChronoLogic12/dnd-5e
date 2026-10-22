@@ -22,7 +22,7 @@ describe('MonsterCard', () => {
 	});
 
 	it('renders monsters with no actions in the data', () => {
-		renderCard({ name: 'Frog', actions: null, special_abilities: null, reactions: null, legendary_actions: null });
+		renderCard({ name: 'Frog', actions: [], specialAbilities: [], reactions: [], legendaryActions: [] });
 		expect(screen.getAllByText('Frog').length).toBeGreaterThan(0);
 		expect(screen.queryByText('Actions')).not.toBeInTheDocument();
 	});
@@ -30,7 +30,7 @@ describe('MonsterCard', () => {
 	it('shows Reactions and Legendary Actions when there are some', () => {
 		renderCard({
 			reactions: [{ name: 'Parry', desc: 'Adds 2 to its AC.' }],
-			legendary_actions: [{ name: 'Detect', desc: 'Makes a Perception check.' }],
+			legendaryActions: [{ name: 'Detect', desc: 'Makes a Perception check.' }],
 		});
 		expect(screen.getByText('Reactions')).toBeInTheDocument();
 		expect(screen.getByText('Legendary Actions')).toBeInTheDocument();

@@ -1,3 +1,4 @@
+import { sources } from '../../data/sources';
 import type { Monster } from './types';
 
 export interface PreparedMonster {
@@ -10,13 +11,38 @@ export interface MonsterFilters {
 	challengeRatingFilter?: string;
 }
 
+const getSearchText = (monster: Monster) =>
+	[
+		monster.name,
+		monster.size,
+		monster.type,
+		monster.alignment,
+		monster.languages,
+		monster.senses,
+		monster.damageVulnerabilities,
+		monster.damageResistances,
+		monster.damageImmunities,
+		monster.legendaryDescription,
+		Object.keys(monster.speed).join(' '),
+		Object.keys(monster.skills).join(' '),
+		...[
+			...monster.specialAbilities,
+			...monster.actions,
+			...monster.reactions,
+			...monster.legendaryActions,
+		].flatMap(({ name, desc }) => [name, desc]),
+		sources[monster.source].title,
+	]
+		.join(' ')
+		.toLowerCase();
+
 export const prepareMonsters = (monsters: Monster[]): PreparedMonster[] =>
 	monsters
-		.map((monster) => ({ monster, searchText: JSON.stringify(monster).toLowerCase() }))
+		.map((monster) => ({ monster, searchText: getSearchText(monster) }))
 		.sort(
 			(a, b) =>
 				a.monster.name.localeCompare(b.monster.name) ||
-				a.monster.document__title.localeCompare(b.monster.document__title)
+				sources[a.monster.source].title.localeCompare(sources[b.monster.source].title)
 		);
 
 export const filterMonsters = (
@@ -28,7 +54,7 @@ export const filterMonsters = (
 		.filter(
 			({ monster, searchText }) =>
 				(lowerCaseSearch ? searchText.includes(lowerCaseSearch) : true) &&
-				(challengeRatingFilter ? monster.challenge_rating === challengeRatingFilter : true)
+				(challengeRatingFilter ? monster.challengeRating === challengeRatingFilter : true)
 		)
 		.map(({ monster }) => monster);
 };

@@ -2,6 +2,7 @@ import React from 'react';
 import css from './style.module.css';
 
 import SourcePill from '../../../../components/SourcePill';
+import { sources } from '../../../../data/sources';
 import type { Monster } from '../../types';
 
 const prependPlusSymbol = (value: number) => {
@@ -30,8 +31,8 @@ export default function MonsterCard(props: MonsterCardProps) {
 		<li>
 			<header className="collapsible-header valign-wrapper">
 				<h6>{props.monster.name}</h6>
-				{props.showSource ? <SourcePill source={props.monster.document__title} /> : null}
-				<p className={css.cr}>{props.monster.challenge_rating}</p>
+				{props.showSource ? <SourcePill source={props.monster.source} /> : null}
+				<p className={css.cr}>{props.monster.challengeRating}</p>
 			</header>
 			<div className="collapsible-body white">
 				<h5>
@@ -41,11 +42,11 @@ export default function MonsterCard(props: MonsterCardProps) {
 				<hr className="rule" />
 				<p>
 					<strong>Armor Class: </strong>
-					{props.monster.armor_class}
+					{props.monster.armorClass}
 				</p>
 				<p>
 					<strong>Hit Points: </strong>
-					{props.monster.hit_points} ({props.monster.hit_dice})
+					{props.monster.hitPoints} ({props.monster.hitDice})
 				</p>
 				<div>
 					<strong>Speed: </strong>
@@ -86,22 +87,22 @@ export default function MonsterCard(props: MonsterCardProps) {
 						</tr>
 						<tr>
 							<td className="center-align">
-								{props.monster.strength} ({calculateModifier(props.monster.strength)})
+								{props.monster.abilities.strength} ({calculateModifier(props.monster.abilities.strength)})
 							</td>
 							<td className="center-align">
-								{props.monster.dexterity} ({calculateModifier(props.monster.dexterity)})
+								{props.monster.abilities.dexterity} ({calculateModifier(props.monster.abilities.dexterity)})
 							</td>
 							<td className="center-align">
-								{props.monster.constitution} ({calculateModifier(props.monster.constitution)})
+								{props.monster.abilities.constitution} ({calculateModifier(props.monster.abilities.constitution)})
 							</td>
 							<td className="center-align">
-								{props.monster.intelligence} ({calculateModifier(props.monster.intelligence)})
+								{props.monster.abilities.intelligence} ({calculateModifier(props.monster.abilities.intelligence)})
 							</td>
 							<td className="center-align">
-								{props.monster.wisdom} ({calculateModifier(props.monster.wisdom)})
+								{props.monster.abilities.wisdom} ({calculateModifier(props.monster.abilities.wisdom)})
 							</td>
 							<td className="center-align">
-								{props.monster.charisma} ({calculateModifier(props.monster.charisma)})
+								{props.monster.abilities.charisma} ({calculateModifier(props.monster.abilities.charisma)})
 							</td>
 						</tr>
 					</tbody>
@@ -109,12 +110,12 @@ export default function MonsterCard(props: MonsterCardProps) {
 				<hr className="rule" />
 				<p>
 					<strong>Saving Throws: </strong>
-					Str {calculateSavingThrow(props.monster.strength, props.monster.strength_save)}, Dex{' '}
-					{calculateSavingThrow(props.monster.dexterity, props.monster.dexterity_save)}, Con{' '}
-					{calculateSavingThrow(props.monster.constitution, props.monster.constitution_save)}, Int{' '}
-					{calculateSavingThrow(props.monster.intelligence, props.monster.intelligence_save)}, Wis{' '}
-					{calculateSavingThrow(props.monster.wisdom, props.monster.wisdom_save)}, Cha{' '}
-					{calculateSavingThrow(props.monster.charisma, props.monster.charisma_save)}
+					Str {calculateSavingThrow(props.monster.abilities.strength, props.monster.savingThrows.strength)}, Dex{' '}
+					{calculateSavingThrow(props.monster.abilities.dexterity, props.monster.savingThrows.dexterity)}, Con{' '}
+					{calculateSavingThrow(props.monster.abilities.constitution, props.monster.savingThrows.constitution)}, Int{' '}
+					{calculateSavingThrow(props.monster.abilities.intelligence, props.monster.savingThrows.intelligence)}, Wis{' '}
+					{calculateSavingThrow(props.monster.abilities.wisdom, props.monster.savingThrows.wisdom)}, Cha{' '}
+					{calculateSavingThrow(props.monster.abilities.charisma, props.monster.savingThrows.charisma)}
 				</p>
 				{/* Skills */}
 				{Object.keys(props.monster.skills).length ? (
@@ -128,21 +129,21 @@ export default function MonsterCard(props: MonsterCardProps) {
 					</p>
 				) : null}
 				{/* Vulnerabilities */}
-				{props.monster.damage_vulnerabilities.length ? (
+				{props.monster.damageVulnerabilities.length ? (
 					<p>
-						<strong>Damage Vulnerabilities: </strong> {props.monster.damage_vulnerabilities}
+						<strong>Damage Vulnerabilities: </strong> {props.monster.damageVulnerabilities}
 					</p>
 				) : null}
 				{/* Resistances */}
-				{props.monster.damage_resistances.length ? (
+				{props.monster.damageResistances.length ? (
 					<p>
-						<strong>Damage Resistances: </strong> {props.monster.damage_resistances}
+						<strong>Damage Resistances: </strong> {props.monster.damageResistances}
 					</p>
 				) : null}
 				{/* Immunities */}
-				{props.monster.damage_immunities.length ? (
+				{props.monster.damageImmunities.length ? (
 					<p>
-						<strong>Damage Immunities: </strong> {props.monster.damage_immunities}
+						<strong>Damage Immunities: </strong> {props.monster.damageImmunities}
 					</p>
 				) : null}
 				<p>
@@ -155,13 +156,13 @@ export default function MonsterCard(props: MonsterCardProps) {
 				</p>
 				<p>
 					<strong>Challenge Rating: </strong>
-					{props.monster.challenge_rating}
+					{props.monster.challengeRating}
 				</p>
 				<hr className="rule" />
 				{/* Special Abilities */}
-				{props.monster.special_abilities ? (
+				{props.monster.specialAbilities ? (
 					<>
-						{props.monster.special_abilities.map((ability) => {
+						{props.monster.specialAbilities.map((ability) => {
 							return (
 								<p key={ability.name}>
 									<strong key={ability.name}>{ability.name}: </strong>
@@ -209,14 +210,14 @@ export default function MonsterCard(props: MonsterCardProps) {
 					</>
 				) : null}
 				{/* Legendary Actions */}
-				{props.monster.legendary_actions && props.monster.legendary_actions.length ? (
+				{props.monster.legendaryActions && props.monster.legendaryActions.length ? (
 					<>
 						<h5>
 							<strong>Legendary Actions</strong>
 						</h5>
 						<hr className="rule" />
-						<p>{props.monster.legendary_desc}</p>
-						{props.monster.legendary_actions.map((action) => {
+						<p>{props.monster.legendaryDescription}</p>
+						{props.monster.legendaryActions.map((action) => {
 							return (
 								<p key={action.name}>
 									<strong key={action.name}>{action.name}: </strong>
@@ -228,7 +229,7 @@ export default function MonsterCard(props: MonsterCardProps) {
 					</>
 				) : null}
 				<div className="center">
-					<small className="grey-text">Source: {props.monster.document__title}</small>
+					<small className="grey-text">Source: {sources[props.monster.source].title}</small>
 				</div>
 			</div>
 		</li>
