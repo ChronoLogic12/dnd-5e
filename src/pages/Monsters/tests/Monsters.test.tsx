@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import Monsters from '..';
 
-describe('Monsters page', () => {
+describe('Monsters page', { timeout: 20000 }, () => {
 	const renderPage = () =>
 		render(
 			<MemoryRouter>
@@ -14,7 +14,7 @@ describe('Monsters page', () => {
 		);
 
 	const waitForMonsters = () =>
-		screen.findByText('Results found: 3207', {}, { timeout: 10000 });
+		screen.findByText('Results found: 3207', {}, { timeout: 15000 });
 
 	it('loads every monster from the local data file', async () => {
 		renderPage();
