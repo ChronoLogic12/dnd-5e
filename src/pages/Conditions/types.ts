@@ -1,6 +1,9 @@
+import type { Edition, SourceKey } from '../../data/sources';
+
 export interface Condition {
-	slug: string;
+	id: string;
 	name: string;
 	desc: string;
-	document__title: string;
+	source: SourceKey;
+	edition: Edition;
 }

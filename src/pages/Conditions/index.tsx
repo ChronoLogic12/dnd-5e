@@ -4,7 +4,19 @@ import materialize from 'materialize-css';
 import { Banner, Nav, CollapsibleList } from '../../components';
 import ConditionCard from './components/ConditionCard';
 import ConditionsSearch from './components/ConditionsSearch';
-import conditions from '../../data/conditions.json';
+import conditionsData from '../../data/conditions.json';
+import { sources } from '../../data/sources';
+import type { SourceKey } from '../../data/sources';
+import type { Condition } from './types';
+
+const SHOWN_SOURCES: SourceKey[] = ['srd-2014'];
+
+const conditions = (conditionsData as Condition[]).filter((condition) =>
+	SHOWN_SOURCES.includes(condition.source)
+);
+
+const getSearchText = (condition: Condition) =>
+	[condition.name, condition.desc, sources[condition.source].title].join(' ').toLowerCase();
 
 export default function Conditions() {
 	const [search, setSearch] = useState('');
@@ -15,8 +27,7 @@ export default function Conditions() {
 
 	const getSearchResults = () => {
 		return conditions.filter((condition) => {
-			const conditionString = JSON.stringify(condition).toLowerCase();
-			return search.length > 0 ? conditionString.includes(search.toLowerCase()) : true;
+			return search.length > 0 ? getSearchText(condition).includes(search.toLowerCase()) : true;
 		});
 	};
 
@@ -32,7 +43,7 @@ export default function Conditions() {
 					<>
 						<CollapsibleList>
 							{currentConditions.map((condition) => (
-								<ConditionCard key={condition.name} condition={condition} />
+								<ConditionCard key={condition.id} condition={condition} />
 							))}
 						</CollapsibleList>
 					</>
