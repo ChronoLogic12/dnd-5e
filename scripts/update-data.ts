@@ -1,11 +1,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import type { Monster } from '../src/pages/Monsters/types';
+import type { Monster } from '../src/pages/Monsters/types.ts';
+import { conditionFromV1, conditionsFromV2 } from './conditions.ts';
+import { fetchV1, fetchV2 } from './open5e.ts';
+import type { ApiRecord } from './open5e.ts';
 
-type ApiRecord = Record<string, unknown>;
-
-const API = 'https://api.open5e.com/v1';
 const DATA_DIRECTORY = path.join(import.meta.dirname, '../src/data');
 
 const MONSTER_FIELDS: (keyof Monster)[] = [
@@ -45,18 +45,6 @@ const MONSTER_FIELDS: (keyof Monster)[] = [
 	'document__title',
 ];
 
-const fetchAll = async (resource: string): Promise<ApiRecord[]> => {
-	const response = await fetch(`${API}/${resource}/?limit=10000`);
-	if (!response.ok) {
-		throw new Error(`${resource}: ${response.status} ${response.statusText}`);
-	}
-	const { count, results } = (await response.json()) as { count: number; results: ApiRecord[] };
-	if (results.length !== count) {
-		throw new Error(`${resource}: received ${results.length} of ${count}`);
-	}
-	return results;
-};
-
 const pick = (item: ApiRecord, fields: string[]) =>
 	Object.fromEntries(fields.map((field) => [field, item[field]]));
 
@@ -66,9 +54,12 @@ const save = (fileName: string, data: unknown[]) => {
 };
 
 const main = async () => {
-	save('spells_from_api.json', await fetchAll('spells'));
-	save('conditions.json', await fetchAll('conditions'));
-	const monsters = await fetchAll('monsters');
+	save('spells_from_api.json', await fetchV1('spells'));
+	save('conditions.json', [
+		...(await fetchV1('conditions')).map(conditionFromV1),
+		...(await fetchV2('conditions')).flatMap((condition) => conditionsFromV2(condition, ['srd-2014'])),
+	]);
+	const monsters = await fetchV1('monsters');
 	save(
 		'monsters.json',
 		monsters.map((monster) => pick(monster, MONSTER_FIELDS))

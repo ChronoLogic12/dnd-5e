@@ -1,122 +1,352 @@
 [
 	{
-		"slug": "blinded",
+		"id": "srd-2014/blinded",
 		"name": "Blinded",
 		"desc": "* A blinded creature can't see and automatically fails any ability check that requires sight.\n* Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "charmed",
+		"id": "srd-2014/charmed",
 		"name": "Charmed",
 		"desc": "* A charmed creature can't attack the charmer or target the charmer with harmful abilities or magical effects.\n* The charmer has advantage on any ability check to interact socially with the creature.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "deafened",
+		"id": "srd-2014/deafened",
 		"name": "Deafened",
 		"desc": "* A deafened creature can't hear and automatically fails any ability check that requires hearing.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "exhaustion",
+		"id": "srd-2014/exhaustion",
 		"name": "Exhaustion",
 		"desc": "* Some special abilities and environmental hazards, such as starvation and the long-term effects of freezing or scorching temperatures, can lead to a special condition called exhaustion. Exhaustion is measured in six levels. An effect can give a creature one or more levels of exhaustion, as specified in the effect's description.\n\n| Level | Effect                                         |\n|-------|------------------------------------------------|\n| 1     | Disadvantage on ability checks                 |\n| 2     | Speed halved                                   |\n| 3     | Disadvantage on attack rolls and saving throws |\n| 4     | Hit point maximum halved                       |\n| 5     | Speed reduced to 0                             |\n| 6     | Death                                          |\n\nIf an already exhausted creature suffers another effect that causes exhaustion, its current level of exhaustion increases by the amount specified in the effect's description.\n\nA creature suffers the effect of its current level of exhaustion as well as all lower levels. For example, a creature suffering level 2 exhaustion has its speed halved and has disadvantage on ability checks.\n\nAn effect that removes exhaustion reduces its level as specified in the effect's description, with all exhaustion effects ending if a creature's exhaustion level is reduced below 1.\n\nFinishing a long rest reduces a creature's exhaustion level by 1, provided that the creature has also ingested some food and drink.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "frightened",
+		"id": "srd-2014/frightened",
 		"name": "Frightened",
 		"desc": "* A frightened creature has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight.\n* The creature can't willingly move closer to the source of its fear.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "grappled",
+		"id": "srd-2014/grappled",
 		"name": "Grappled",
 		"desc": "* A grappled creature's speed becomes 0, and it can't benefit from any bonus to its speed.\n* The condition ends if the grappler is incapacitated (see the condition).\n* The condition also ends if an effect removes the grappled creature from the reach of the grappler or grappling effect, such as when a creature is hurled away by the *thunder-wave* spell.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "incapacitated",
+		"id": "srd-2014/incapacitated",
 		"name": "Incapacitated",
 		"desc": "* An incapacitated creature can't take actions or reactions.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "invisible",
+		"id": "srd-2014/invisible",
 		"name": "Invisible",
 		"desc": "* An invisible creature is impossible to see without the aid of magic or a special sense. For the purpose of hiding, the creature is heavily obscured. The creature's location can be detected by any noise it makes or any tracks it leaves.\n* Attack rolls against the creature have disadvantage, and the creature's attack rolls have advantage.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "paralyzed",
+		"id": "srd-2014/paralyzed",
 		"name": "Paralyzed",
 		"desc": "* A paralyzed creature is incapacitated (see the condition) and can't move or speak.\n* The creature automatically fails Strength and Dexterity saving throws.\n* Attack rolls against the creature have advantage.\n* Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "petrified",
+		"id": "srd-2014/petrified",
 		"name": "Petrified",
 		"desc": "* A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone). Its weight increases by a factor of ten, and it ceases aging.\n* The creature is incapacitated (see the condition), can't move or speak, and is unaware of its surroundings.\n* Attack rolls against the creature have advantage.\n* The creature automatically fails Strength and Dexterity saving throws.\n* The creature has resistance to all damage.\n* The creature is immune to poison and disease, although a poison or disease already in its system is suspended, not neutralized.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "poisoned",
+		"id": "srd-2014/poisoned",
 		"name": "Poisoned",
 		"desc": "* A poisoned creature has disadvantage on attack rolls and ability checks.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "prone",
+		"id": "srd-2014/prone",
 		"name": "Prone",
 		"desc": "* A prone creature's only movement option is to crawl, unless it stands up and thereby ends the condition.\n* The creature has disadvantage on attack rolls.\n* An attack roll against the creature has advantage if the attacker is within 5 feet of the creature. Otherwise, the attack roll has disadvantage.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "restrained",
+		"id": "srd-2014/restrained",
 		"name": "Restrained",
 		"desc": "* A restrained creature's speed becomes 0, and it can't benefit from any bonus to its speed.\n* Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.\n* The creature has disadvantage on Dexterity saving throws.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "stunned",
+		"id": "srd-2014/stunned",
 		"name": "Stunned",
 		"desc": "* A stunned creature is incapacitated (see the condition), can't move, and can speak only falteringly.\n* The creature automatically fails Strength and Dexterity saving throws.\n* Attack rolls against the creature have advantage.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
 	},
 	{
-		"slug": "unconscious",
+		"id": "srd-2014/unconscious",
 		"name": "Unconscious",
 		"desc": "* An unconscious creature is incapacitated (see the condition), can't move or speak, and is unaware of its surroundings\n* The creature drops whatever it's holding and falls prone.\n* The creature automatically fails Strength and Dexterity saving throws.\n* Attack rolls against the creature have advantage.\n* Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.",
-		"document__slug": "wotc-srd",
-		"document__title": "5e Core Rules",
-		"document__url": "http://dnd.wizards.com/articles/features/systems-reference-document-srd"
+		"source": "srd-2014",
+		"edition": "2014"
+	},
+	{
+		"id": "a5e-ag/bloodied",
+		"name": "Bloodied",
+		"desc": "* A creature is bloodied when reduced to half its hit points or less.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "a5e-ag/confused",
+		"name": "Confused",
+		"desc": "* A confused creature can't take reactions. \n\n* On its turn a confused creature rolls a d8 to determine what it does.\n\n* On a 1 to 4, a confused creature does nothing. \n\n* On a 5 or 6, a confused creature takes no action or bonus action and uses all its movement to move in a randomly determined direction.\n\n* On a 7 or 8, a confused creature makes a melee attack against a randomly determined creature within its reach or does nothing if it can't make such an attack.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "a5e-ag/doomed",
+		"name": "Doomed",
+		"desc": "* A doomed creature dies at a time determined by the Narrator, or within 13 (2d12) hours.\n\n* A doomed creature continues to be doomed even after it dies. Magic equivalent to a 7th-level or higher spell can remove the doomed condition (such as regenerate cast on a living creature, resurrection, true resurrection, or wish).",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "a5e-ag/encumbered",
+		"name": "Encumbered",
+		"desc": "* An encumbered creature’s Speed is reduced to 5 feet.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "a5e-ag/rattled",
+		"name": "Rattled",
+		"desc": "*A rattled creature cannot benefit from expertise dice.\n\n* A rattled creature cannot take reactions.\n\n* A creature that is immune to being stunned is immune to being rattled.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "a5e-ag/slowed",
+		"name": "Slowed",
+		"desc": "* A slowed creature's Speed is halved. \n\n* A slowed creature takes a −2 penalty to AC and Dexterity saving throws. \n\n* A slowed creature cannot take reactions. \n\n* On its turn, a slowed creature can take either an action or a bonus action, not both. In addition, it can't make more than one melee or ranged attack during its turn.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "a5e-ag/blinded",
+		"name": "Blinded",
+		"desc": "* A blinded creature can’t see and it automatically fails ability checks that require sight.\n\n* Attack rolls against a blinded creature are made with advantage, and the creature’s attack rolls are made with disadvantage.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/blinded",
+		"name": "Blinded",
+		"desc": "While you have the Blinded condition, you experience the following effects.\n * Can’t See. You can’t see and automatically fail any ability check that requires sight.\n * Attacks Affected. Attack rolls against you have Advantage, and your attack rolls have Disadvantage.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/charmed",
+		"name": "Charmed",
+		"desc": "* A charmed creature can’t take any hostile action against the charmer.\n\n* Ability checks the charmer makes to socially interact with the charmed creature have advantage.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/charmed",
+		"name": "Charmed",
+		"desc": "While you have the Charmed condition, you experience the following effects. \n* Can’t Harm the Charmer. You can’t attack the charmer or target the charmer with damaging abilities or magical effects. \n* Social Advantage. The charmer has Advantage on any ability check to interact with you socially.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/deafened",
+		"name": "Deafened",
+		"desc": "* A deafened creature can’t hear and automatically fails ability checks that require hearing.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/deafened",
+		"name": "Deafened",
+		"desc": "While you have the Deafened condition, you experience the following effect.\n* Can’t Hear. You can’t hear and automatically fail any ability check that requires hearing.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "srd-2024/exhaustion",
+		"name": "Exhaustion",
+		"desc": "While you have the Exhaustion condition, you experience the following effects. \n* Exhaustion Levels. This condition is cumulative. Each time you receive it, you gain 1 Exhaustion level. You die if your Exhaustion level is 6.\n* D20 Tests Affected. When you make a D20 Test, the roll is reduced by 2 times your Exhaustion level.\n* Speed Reduced. Your Speed is reduced by a number of feet equal to 5 times your Exhaustion level.\n* Removing Exhaustion Levels. Finishing a Long Rest removes 1 of your Exhaustion levels. When your Exhaustion level reaches 0, the condition ends.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/frightened",
+		"name": "Frightened",
+		"desc": "* A frightened creature has disadvantage on ability checks and attack rolls while it is able to see the source of its fear.\n\n* A frightened creature can’t willingly move closer to the source of its fear.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/frightened",
+		"name": "Frightened",
+		"desc": "While you have the Frightened condition, you experience the following effects. \n* Ability Checks and Attacks Affected. You have Disadvantage on ability checks and attack rolls while the source of fear is within line of sight. \n * Can’t Approach. You can’t willingly move closer to the source of fear.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/grappled",
+		"name": "Grappled",
+		"desc": "* A grappled creature’s Speed becomes 0, and it can’t benefit from bonuses to movement speeds.\n\n* If the grappler becomes incapacitated the condition ends. \n\n* If an effect removes the grappled creature from the reach of the grappler or grappling effect (such as when a creature is shoved away by the Doubleteam combat maneuver) the condition ends.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/grappled",
+		"name": "Grappled",
+		"desc": "While you have the Grappled condition, you experience the following effects. \n* Speed 0. Your Speed is 0 and can’t increase. \n* Attacks Affected. You have Disadvantage on attack rolls against any target other than the grappler. \n* Movable. The grappler can drag or carry you when it moves, but every foot of movement costs it 1 extra foot unless you are Tiny or two or more sizes smaller than it.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/incapacitated",
+		"name": "Incapacitated",
+		"desc": "* An incapacitated creature can’t take actions, bonus actions, or reactions.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/incapacitated",
+		"name": "Incapacitated",
+		"desc": "While you have the Incapacitated condition, you experience the following effects. \n* Inactive. You can’t take any action, Bonus Action, or Reaction. \n* No Concentration. Your Concentration is broken. \n* Speechless. You can’t speak. \n* Surprised. If you’re Incapacitated when you roll Initiative, you have Disadvantage on the roll.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/invisible",
+		"name": "Invisible",
+		"desc": "* An invisible creature is impossible to see without the aid of magic or a special sense (it gains no benefits from this condition against creatures still able to see it). \n\n* An invisible creature is heavily obscured for the purpose of hiding. \n\n* An invisible creature’s location can be detected by noises it makes or tracks it leaves. \n\n* Attack rolls against an invisible creature are made with disadvantage. \n\n* An invisible creature makes attack rolls with advantage.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/invisible",
+		"name": "Invisible",
+		"desc": "While you have the Invisible condition, you experience the following effects. \n* Surprise. If you’re Invisible when you roll Initiative, you have Advantage on the roll. \n* Concealed. You aren’t affected by any effect that requires its target to be seen unless the effect’s creator can somehow see you. Any equipment you are wearing or carrying is also concealed.\n*Attacks Affected. Attack rolls against you have Disadvantage, and your attack rolls have Advantage. If a creature can somehow see you, you don’t gain this benefit against that creature.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/paralyzed",
+		"name": "Paralyzed",
+		"desc": "* A paralyzed creature is incapacitated and can’t move or speak.\n\n* A paralyzed creature automatically fails Strength and Dexterity saving throws.\n\n* Attack rolls against a paralyzed creature have advantage.\n\n* Any attack that hits a paralyzed creature is a critical hit if the attacker is within 5 feet.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/paralyzed",
+		"name": "Paralyzed",
+		"desc": "While you have the Paralyzed condition, you experience the following effects. \n* Incapacitated. You have the Incapacitated condition. \n* Speed 0. Your Speed is 0 and can’t increase. \n* Saving Throws Affected. You automatically fail Strength and Dexterity saving throws. \n* Attacks Affected. Attack rolls against you have Advantage.\n* Automatic Critical Hits. Any attack roll that hits you is a Critical Hit if the attacker is within 5 feet of you.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/petrified",
+		"name": "Petrified",
+		"desc": "* A petrified creature (and all of its mundane possessions) is transformed into a solid inanimate substance (usually stone). \n\n* A petrified creature’s weight is increased by a factor of ten and it ceases aging.\n\n* A petrified creature is incapacitated, can’t move or speak, and is unaware of its surroundings.\n\n* A petrified creature automatically fails Strength and Dexterity saving throws. \n\n* A petrified creature has resistance to all damage.\n\n* A petrified creature is immune to poison and disease (time spent petrified does not affect the duration of a poison or disease already in its system).",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/petrified",
+		"name": "Petrified",
+		"desc": "While you have the Petrified condition, you experience the following effects. \n* Turned to Inanimate Substance. You are transformed, along with any nonmagical objects you are wearing and carrying, into a solid inanimate substance (usually stone). Your weight increases by a factor of ten, and you cease aging. \n* Incapacitated. You have the Incapacitated condition. \n* Speed 0. Your Speed is 0 and can’t increase.\n* Attacks Affected. Attack rolls against you have Advantage. \n* Saving Throws Affected. You automatically fail Strength and Dexterity saving throws. \n* Resist Damage. You have Resistance to all damage. \n* Poison Immunity. You have Immunity to the Poisoned condition.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/poisoned",
+		"name": "Poisoned",
+		"desc": "* A poisoned creature has disadvantage on attack rolls and ability checks.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/poisoned",
+		"name": "Poisoned",
+		"desc": "While you have the Poisoned condition, you experience the following effect. \n* Ability Checks and Attacks Affected. You have Disadvantage on attack rolls and ability checks.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/prone",
+		"name": "Prone",
+		"desc": "*A prone creature’s only movement option is to crawl (every 1 foot of movement while crawling costs 1 extra foot) until it stands up. \n\n* Standing up requires half a creature’s movement. \n\n* A prone creature makes melee attack rolls with disadvantage.\n\n* An attack roll against a prone creature is made with advantage if the attacker is within 5 feet. Otherwise, the attack roll is made with disadvantage.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/prone",
+		"name": "Prone",
+		"desc": "While you have the Prone condition, you experience the following effects. \n* Restricted Movement. Your only movement options are to crawl or to spend an amount of move- ment equal to half your Speed (round down) to right yourself and thereby end the condition. If your Speed is 0, you can’t right yourself. \n* Attacks Affected. You have Disadvantage on attack rolls. An attack roll against you has Advantage if the attacker is within 5 feet of you. Otherwise, that attack roll has Disadvantage.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/restrained",
+		"name": "Restrained",
+		"desc": "* A restrained creature's speed becomes 0, and it can't benefit from bonuses to Speed.\n\n* Attack rolls against a restrained creature are made with advantage.\n\n* A restrained creature makes attacks rolls with disadvantage. \n\n* The restrained creature has disadvantage on Dexterity saving throws.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/restrained",
+		"name": "Restrained",
+		"desc": "While you have the Restrained condition, you experience the following effects.\n* Speed 0. Your Speed is 0 and can’t increase.\n* Attacks Affected. Attack rolls against you have Advantage, and your attack rolls have Disadvantage. \n* Saving Throws Affected. You have Disadvantage on Dexterity saving throws.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/stunned",
+		"name": "Stunned",
+		"desc": "* A stunned creature is incapacitated (see the condition), can’t move, and can speak only falteringly.\n\n* The creature automatically fails Strength and Dexterity saving throws. \n\n* Attack rolls against the creature have advantage. \n\n* A creature that is immune to being stunned is immune to being rattled.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/stunned",
+		"name": "Stunned",
+		"desc": "While you have the Stunned condition, you experience the following effects. \n* Incapacitated. You have the Incapacitated condition. \n* Saving Throws Affected. You automatically fail Strength and Dexterity saving throws. \n* Attacks Affected. Attack rolls against you have Advantage.",
+		"source": "srd-2024",
+		"edition": "2024"
+	},
+	{
+		"id": "a5e-ag/unconscious",
+		"name": "Unconscious",
+		"desc": "* An unconscious creature is incapacitated, can’t move or speak, and is unaware of its surroundings. \n\n* An unconscious creature drops whatever it’s holding and falls prone.\n\n* An unconscious creature automatically fails Strength and Dexterity saving throws. \n\n* Attack rolls against an unconscious creature are made with advantage.\n\n* Any attack that hits an unconscious creature is a critical hit if the attacker is within 5 feet.",
+		"source": "a5e-ag",
+		"edition": "2014"
+	},
+	{
+		"id": "srd-2024/unconscious",
+		"name": "Unconscious",
+		"desc": "While you have the Unconscious condition, you experience the following effects. \n* Inert. You have the Incapacitated and Prone conditions, and you drop whatever you’re holding. When this condition ends, you remain Prone. \n* Speed 0. Your Speed is 0 and can’t increase.\n* Attacks Affected. Attack rolls against you have Advantage. \n* Saving Throws Affected. You automatically fail Strength and Dexterity saving throws. \n* Automatic Critical Hits. Any attack roll that hits you is a Critical Hit if the attacker is within 5 feet of you. Unaware. You’re unaware of your surroundings.",
+		"source": "srd-2024",
+		"edition": "2024"
 	}
 ]

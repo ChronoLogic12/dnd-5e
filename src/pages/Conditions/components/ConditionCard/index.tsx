@@ -1,4 +1,5 @@
 import React from 'react';
+import { sources } from '../../../../data/sources';
 import type { Condition } from '../../types';
 
 interface ConditionCardProps {
@@ -30,7 +31,7 @@ export default function ConditionCard(props: ConditionCardProps) {
 			<div className="collapsible-body white">
 				{renderDescription()}
 				<div className="center">
-					<small className="grey-text">Source: {props.condition.document__title}</small>
+					<small className="grey-text">Source: {sources[props.condition.source].title}</small>
 				</div>
 			</div>
 		</li>
