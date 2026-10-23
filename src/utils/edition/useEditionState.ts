@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { parseAsStringLiteral, useQueryState } from 'nuqs';
 
 import type { Edition } from '../../data/sources';
 
 export const EDITION_STORAGE_KEY = 'yggdramor-edition';
 
-const isEdition = (value: unknown): value is Edition => value === '2014' || value === '2024';
+const editions = ['2014', '2024'] as const satisfies readonly Edition[];
+
+const isEdition = (value: unknown): value is Edition => editions.includes(value as Edition);
 
 export const readStoredEdition = (): Edition => {
 	try {
@@ -24,11 +27,26 @@ const storeEdition = (edition: Edition) => {
 };
 
 export const useEditionState = () => {
-	const [edition, setEditionState] = useState<Edition>(readStoredEdition);
+	const [urlEdition, setUrlEdition] = useQueryState('edition', parseAsStringLiteral(editions));
+	const [edition, setEditionState] = useState<Edition>(() => urlEdition ?? readStoredEdition());
+
+	useEffect(() => {
+		if (urlEdition) {
+			setEditionState(urlEdition);
+			storeEdition(urlEdition);
+		}
+	}, [urlEdition]);
+
+	useEffect(() => {
+		if (!urlEdition && edition === '2024') {
+			setUrlEdition('2024');
+		}
+	}, [urlEdition, edition, setUrlEdition]);
 
 	const setEdition = (next: Edition) => {
 		setEditionState(next);
 		storeEdition(next);
+		setUrlEdition(next === '2024' ? next : null);
 	};
 
 	return { edition, setEdition };
