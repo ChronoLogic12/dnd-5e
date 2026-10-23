@@ -1,0 +1,94 @@
+html {
+	font-size: 14px;
+	line-height: 1.5;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+@media only screen and (min-width: 992px) {
+	html {
+		font-size: 14.5px;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	html {
+		font-size: 15px;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 400;
+	line-height: 110%;
+}
+
+h1 {
+	font-size: 4.2rem;
+	margin: 2.8rem 0 1.68rem;
+}
+
+h2 {
+	font-size: 3.56rem;
+	margin: 2.37rem 0 1.42rem;
+}
+
+h4 {
+	font-size: 2.28rem;
+	margin: 1.52rem 0 0.91rem;
+}
+
+h5 {
+	font-size: 1.64rem;
+	margin: 1.09rem 0 0.66rem;
+}
+
+h6 {
+	font-size: 1.15rem;
+	margin: 0.77rem 0 0.46rem;
+}
+
+a {
+	color: #039be5;
+	text-decoration: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+ul {
+	padding-left: 0;
+	list-style-type: none;
+}
+
+strong {
+	font-weight: 500;
+}
+
+small {
+	font-size: 75%;
+}
+
+button,
+input {
+	font-family: inherit;
+}
+
+.container {
+	width: 90%;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+@media only screen and (min-width: 601px) {
+	.container {
+		width: 85%;
+	}
+}
+
+@media only screen and (min-width: 993px) {
+	.container {
+		width: 70%;
+	}
+}

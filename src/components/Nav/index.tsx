@@ -32,32 +32,32 @@ export default function Nav() {
 		<nav className={css.nav}>
 			<div className={`${css.iconContainer}`} id="iconContainer">
 				{useLocation().pathname == '/' ? null : (
-					<Link to="/" className={`${css.icon} hidden white-text`}>
+					<Link to="/" className={`${css.icon} ${css.white} hidden`}>
 						<HiHome />
 					</Link>
 				)}
 				{useLocation().pathname == '/spells' ? null : (
-					<Link to="/spells" className={`${css.icon} hidden purple-text`}>
+					<Link to="/spells" className={`${css.icon} ${css.purple} hidden`}>
 						<BsStars />
 					</Link>
 				)}
 				{useLocation().pathname == '/conditions' ? null : (
-					<Link to="/conditions" className={`${css.icon} hidden red-text`}>
+					<Link to="/conditions" className={`${css.icon} ${css.red} hidden`}>
 						<GiBackPain />
 					</Link>
 				)}
 				{useLocation().pathname == '/feats' ? null : (
-					<Link to="/feats" className={`${css.icon} hidden indigo-text`}>
+					<Link to="/feats" className={`${css.icon} ${css.indigo} hidden`}>
 						<GiStrong />
 					</Link>
 				)}
 				{useLocation().pathname == '/monsters' ? null : (
-					<Link to="/monsters" className={`${css.icon} hidden green-text`}>
+					<Link to="/monsters" className={`${css.icon} ${css.green} hidden`}>
 						<GiIceCube />
 					</Link>
 				)}
 				{useLocation().pathname == '/about' ? null : (
-					<Link to="/about" className={`${css.icon} hidden brown-text`}>
+					<Link to="/about" className={`${css.icon} ${css.brown} hidden`}>
 						<GiBookmark />
 					</Link>
 				)}

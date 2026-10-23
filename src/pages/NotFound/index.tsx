@@ -13,7 +13,7 @@ export default function NotFound() {
 			<main className={styles.main}>
 				<h1>Page not found!</h1>
 				<Link to="/" className="hover">
-					<h4 className="custombtn valign-wrapper">
+					<h4 className="custombtn">
 						<IoHomeSharp />
 						<span>Return home</span>
 					</h4>

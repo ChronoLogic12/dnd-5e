@@ -1,4 +1,4 @@
-nav {
+.nav {
 	height: 0 !important;
 	display: flex;
 	flex-direction: column;
@@ -187,4 +187,28 @@ nav {
 	.icon:nth-child(1) {
 		bottom: 18rem;
 	}
+}
+
+.white {
+	color: #fff;
+}
+
+.purple {
+	color: #9c27b0;
+}
+
+.red {
+	color: #f44336;
+}
+
+.indigo {
+	color: #3f51b5;
+}
+
+.green {
+	color: #4caf50;
+}
+
+.brown {
+	color: #795548;
 }

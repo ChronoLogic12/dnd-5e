@@ -1,6 +1,7 @@
 import * as Pages from './pages';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import './styles/base.css';
 import './styles/styles.css';
 
 function App() {
