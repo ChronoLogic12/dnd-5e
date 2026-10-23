@@ -6,11 +6,14 @@ import MonsterFilters from './components/MonsterFilters';
 import { prepareMonsters, filterMonsters } from './utils';
 import type { PreparedMonster } from './utils';
 import { getSharedNames } from '../../utils/getSharedNames';
+import { isShownInEdition } from '../../data/sources';
 import type { SourceKey } from '../../data/sources';
+import { useEdition } from '../../utils/edition';
 import type { Monster } from './types';
 
 const SHOWN_SOURCES: SourceKey[] = [
 	'srd-2014',
+	'srd-2024',
 	'a5e-mm',
 	'bfrd',
 	'ccdx',
@@ -30,6 +33,13 @@ export default function Monsters() {
 	const [challengeRatingFilter, setChallengeRatingFilter] = useState<string[]>([]);
 	const [error, setError] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
+	const { edition } = useEdition();
+	const [pageEdition, setPageEdition] = useState(edition);
+
+	if (pageEdition !== edition) {
+		setPageEdition(edition);
+		setCurrentPage(1);
+	}
 
 	useEffect(() => {
 		import('../../data/monsters.json')
@@ -52,7 +62,10 @@ export default function Monsters() {
 		setCurrentPage(1);
 	};
 
-	const results = filterMonsters(monsters, { search, challengeRatingFilter });
+	const results = filterMonsters(
+		monsters.filter(({ monster }) => isShownInEdition(monster.source, edition)),
+		{ search, challengeRatingFilter }
+	);
 	const sharedNames = getSharedNames(results);
 	const pageResults = results.slice((currentPage - 1) * MONSTERS_PER_PAGE, currentPage * MONSTERS_PER_PAGE);
 

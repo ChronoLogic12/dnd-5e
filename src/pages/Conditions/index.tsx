@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { Banner, Nav, CardList, ResultsCount, SearchBar } from '../../components';
 import ConditionCard from './components/ConditionCard';
 import conditionsData from '../../data/conditions.json';
-import { sources } from '../../data/sources';
+import { isShownInEdition, sources } from '../../data/sources';
 import type { SourceKey } from '../../data/sources';
 import type { Condition } from './types';
+import { useEdition } from '../../utils/edition';
 
-const SHOWN_SOURCES: SourceKey[] = ['srd-2014'];
+const SHOWN_SOURCES: SourceKey[] = ['srd-2014', 'srd-2024'];
 
 const conditions = (conditionsData as Condition[]).filter((condition) =>
 	SHOWN_SOURCES.includes(condition.source)
@@ -18,10 +19,13 @@ const getSearchText = (condition: Condition) =>
 
 export default function Conditions() {
 	const [search, setSearch] = useState('');
+	const { edition } = useEdition();
 
-	const results = search
-		? conditions.filter((condition) => getSearchText(condition).includes(search.toLowerCase()))
-		: conditions;
+	const results = conditions.filter(
+		(condition) =>
+			isShownInEdition(condition.source, edition) &&
+			(!search || getSearchText(condition).includes(search.toLowerCase()))
+	);
 
 	return (
 		<>

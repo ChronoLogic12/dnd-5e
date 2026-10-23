@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { screen, fireEvent } from '@testing-library/react';
 
 import Conditions from '..';
-import { renderPage, search, resultNames } from '../../../test/pageHelpers';
+import { renderPage, search, resultNames, switchEdition } from '../../../test/pageHelpers';
 
 describe('Conditions page', () => {
 	it('searches regardless of letter case', () => {
@@ -28,5 +28,13 @@ describe('Conditions page', () => {
 		fireEvent.click(charmed);
 		expect(charmed).toHaveAttribute('aria-expanded', 'true');
 		expect(blinded).toHaveAttribute('aria-expanded', 'false');
+	});
+
+	it('swaps to the 2024 conditions when the edition changes', () => {
+		renderPage(Conditions);
+		switchEdition('2024');
+		expect(screen.getByText('Results found: 15')).toBeInTheDocument();
+		fireEvent.click(screen.getByRole('button', { name: 'Prone' }));
+		expect(screen.getByText(/Restricted Movement/)).toBeInTheDocument();
 	});
 });

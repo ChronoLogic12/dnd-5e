@@ -9,6 +9,7 @@ import {
 	chooseOptions,
 	resultsList,
 	resultNames,
+	switchEdition,
 } from '../../../test/pageHelpers';
 
 describe('Monsters page', { timeout: 20000 }, () => {
@@ -46,5 +47,15 @@ describe('Monsters page', { timeout: 20000 }, () => {
 
 		search('a-mi-kuk');
 		expect(pills()).toEqual([]);
+	});
+
+	it('swaps the core monsters in 2024 and keeps third-party ones', async () => {
+		renderPage(Monsters);
+		await waitForMonsters();
+		switchEdition('2024');
+		expect(screen.getByText('Results found: 3216')).toBeInTheDocument();
+		search('aboleth');
+		expect(pills()).toEqual(expect.arrayContaining(['Core 2024', 'Black Flag', 'A5e']));
+		expect(pills()).not.toContain('Core');
 	});
 });

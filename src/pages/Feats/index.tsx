@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 
 import handmadeFeats from '../../data/handmade/feats.json';
 import openFeats from '../../data/feats.json';
-import { sources } from '../../data/sources';
+import { isShownInEdition, sources } from '../../data/sources';
 import type { SourceKey } from '../../data/sources';
 import { Banner, Nav, CardList, ResultsCount, SearchBar } from '../../components';
 import FeatCard from './components/FeatCard';
 import type { Feat } from './types';
+import { useEdition } from '../../utils/edition';
 
-const SHOWN_SOURCES: SourceKey[] = ['phb-2014', 'tce', 'xge'];
+const SHOWN_SOURCES: SourceKey[] = ['phb-2014', 'tce', 'xge', 'srd-2024'];
 
 const feats = [...(handmadeFeats as Feat[]), ...(openFeats as Feat[])].filter((feat) =>
 	SHOWN_SOURCES.includes(feat.source)
@@ -19,8 +20,12 @@ const getSearchText = (feat: Feat) =>
 
 export default function Feats() {
 	const [search, setSearch] = useState('');
+	const { edition } = useEdition();
 
-	const results = search ? feats.filter((feat) => getSearchText(feat).includes(search.toLowerCase())) : feats;
+	const results = feats.filter(
+		(feat) =>
+			isShownInEdition(feat.source, edition) && (!search || getSearchText(feat).includes(search.toLowerCase()))
+	);
 
 	return (
 		<>
