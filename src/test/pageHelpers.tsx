@@ -9,7 +9,7 @@ export const renderPage = (Page: React.ComponentType) =>
 		</MemoryRouter>
 	);
 
-export const search = (text: string) => fireEvent.change(screen.getByLabelText('Search:'), { target: { value: text } });
+export const search = (text: string) => fireEvent.change(screen.getByLabelText(/^Search:?$/), { target: { value: text } });
 
 export const selectOptions = (id: string, values: string[]) => {
 	const select = document.getElementById(id) as HTMLSelectElement;
@@ -19,13 +19,8 @@ export const selectOptions = (id: string, values: string[]) => {
 	fireEvent.change(select);
 };
 
-export const resultsList = () => {
-	const list = document.querySelector<HTMLElement>('main ul.collapsible.no-autoinit');
-	if (!list) {
-		throw new Error('Results list not found');
-	}
-	return list;
-};
+export const resultsList = () =>
+	screen.queryByTestId('card-list') ?? (document.querySelector('main ul.collapsible.no-autoinit') as HTMLElement);
 
 export const resultNames = () =>
-	[...resultsList().querySelectorAll(':scope > li h6')].map((heading) => heading.textContent);
+	[...resultsList().querySelectorAll('[data-card-title], :scope > li h6')].map((title) => title.textContent);

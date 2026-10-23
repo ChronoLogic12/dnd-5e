@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { screen } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 
 import Conditions from '..';
-import { renderPage, search, resultsList, resultNames } from '../../../test/pageHelpers';
+import { renderPage, search, resultNames } from '../../../test/pageHelpers';
 
 describe('Conditions page', () => {
 	it('searches regardless of letter case', () => {
@@ -11,11 +11,22 @@ describe('Conditions page', () => {
 		expect(resultNames()).toContain('Prone');
 	});
 
-	it('sets up a new results list after a search with no results', () => {
+	it('shows a message when nothing matches and recovers after clearing the search', () => {
 		renderPage(Conditions);
 		search('zzzz');
 		expect(screen.getByText('No results found')).toBeInTheDocument();
 		search('');
-		expect((resultsList() as HTMLElement & { M_Collapsible?: unknown }).M_Collapsible).toBeDefined();
+		expect(resultNames()).toContain('Prone');
+	});
+
+	it('opens one card at a time', () => {
+		renderPage(Conditions);
+		const blinded = screen.getByRole('button', { name: 'Blinded' });
+		const charmed = screen.getByRole('button', { name: 'Charmed' });
+		fireEvent.click(blinded);
+		expect(blinded).toHaveAttribute('aria-expanded', 'true');
+		fireEvent.click(charmed);
+		expect(charmed).toHaveAttribute('aria-expanded', 'true');
+		expect(blinded).toHaveAttribute('aria-expanded', 'false');
 	});
 });

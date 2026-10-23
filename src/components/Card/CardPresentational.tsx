@@ -27,7 +27,9 @@ export default function CardPresentational({
 			<Accordion.Header className={css.header}>
 				<Accordion.Trigger className={css.trigger}>
 					{icon ? <span className={css.icon}>{icon}</span> : null}
-					<span className={css.title}>{title}</span>
+					<span className={css.title} data-card-title>
+						{title}
+					</span>
 					{tags}
 					{meta ? <span className={css.meta}>{meta}</span> : null}
 				</Accordion.Trigger>
