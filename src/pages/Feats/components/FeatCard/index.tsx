@@ -1,46 +1,22 @@
 import React from 'react';
+
+import { Card, Description } from '../../../../components';
 import { sources } from '../../../../data/sources';
 import type { Feat } from '../../types';
-
-import './style.module.css';
 
 interface FeatCardProps {
 	feat: Feat;
 }
 
-export default function FeatCard(props: FeatCardProps) {
-	const renderDescription = () => {
-		return (
-			<p>
-				{props.feat.desc
-					.replace(/(\]{1,4}|\[{1,4}|\*{2}|\/{2})/g, '')
-					.split('\n')
-					.map((str, index) => (
-						<React.Fragment key={index}>
-							{str}
-							<br />
-						</React.Fragment>
-					))}
-			</p>
-		);
-	};
-
+export default function FeatCard({ feat }: FeatCardProps) {
 	return (
-		<li>
-			<header className="collapsible-header valign-wrapper">
-				<h6>{props.feat.name}</h6>
-			</header>
-			<div className="collapsible-body white">
-				{props.feat.prerequisite ? (
-					<p>
-						Prerequisite: <strong>{props.feat.prerequisite}</strong>
-					</p>
-				) : null}
-				{renderDescription()}
-				<div className="center">
-					<small className="grey-text">Source: {sources[props.feat.source].title}</small>
-				</div>
-			</div>
-		</li>
+		<Card value={feat.id} title={feat.name} footer={`Source: ${sources[feat.source].title}`}>
+			{feat.prerequisite ? (
+				<p>
+					Prerequisite: <strong>{feat.prerequisite}</strong>
+				</p>
+			) : null}
+			<Description text={feat.desc} />
+		</Card>
 	);
 }
