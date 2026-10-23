@@ -41,3 +41,10 @@ export const sources = {
 export type SourceKey = keyof typeof sources;
 
 export const isSourceKey = (key: string): key is SourceKey => key in sources;
+
+const officialSources: SourceKey[] = ['srd-2014', 'srd-2024', 'phb-2014', 'tce', 'xge'];
+
+export const isShownInEdition = (source: SourceKey, edition: Edition) =>
+	!officialSources.includes(source) || sources[source].edition === edition;
+
+export const coreSource = (edition: Edition): SourceKey => (edition === '2024' ? 'srd-2024' : 'srd-2014');

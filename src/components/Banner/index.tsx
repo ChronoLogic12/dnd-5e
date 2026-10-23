@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import css from './style.module.css';
-
+import EditionSwitch from '../EditionSwitch';
 
 interface BannerProps {
 	page: string;
@@ -25,6 +25,9 @@ export default function Banner(props: BannerProps) {
 					<span className={css.page}>
 						<h2> {props.page}</h2>
 					</span>
+				</div>
+				<div className={css.edition}>
+					<EditionSwitch />
 				</div>
 			</div>
 		</div>
