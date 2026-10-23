@@ -12,16 +12,17 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	min-width: 2.25rem;
-	height: 2.25rem;
-	padding: 0 0.5rem;
+	min-width: 2.5rem;
+	height: 2.5rem;
+	padding: 0 0.6rem;
 	border: none;
 	border-radius: 60px;
 	background: none;
 	color: var(--colour-surface);
 	font: inherit;
-	font-size: 1rem;
+	font-size: 1.2rem;
 	cursor: pointer;
+	transition: background-color 0.2s ease-out;
 }
 
 .page:hover,
@@ -36,7 +37,7 @@
 }
 
 .arrow {
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 }
 
 .arrow:disabled {

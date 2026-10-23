@@ -1,5 +1,5 @@
 .panel {
-	margin-top: 0.75rem;
+	margin-top: 1rem;
 	border-radius: 8px;
 	background-color: var(--colour-surface);
 	color: var(--colour-text);
@@ -8,17 +8,18 @@
 .trigger {
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
+	gap: 1rem;
 	width: 100%;
-	padding: 0.8rem 1rem;
+	padding: 1rem 2rem;
 	border: none;
 	border-radius: 8px;
 	background: none;
 	color: inherit;
 	font: inherit;
-	font-size: 1rem;
+	font-size: 16px;
 	text-align: left;
 	cursor: pointer;
+	transition: box-shadow 0.3s ease-out;
 }
 
 .trigger:focus-visible {
@@ -33,7 +34,7 @@
 }
 
 .filterIcon {
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 }
 
 .end {
@@ -44,16 +45,16 @@
 }
 
 .badge {
-	padding: 0 0.6rem;
+	padding: 0 0.65rem;
 	border-radius: 60px;
 	background-color: var(--colour-accent);
 	color: #fff;
-	font-size: 0.75rem;
-	line-height: 1.4rem;
+	font-size: 0.85rem;
+	line-height: 1.6rem;
 }
 
 .chevron {
-	transition: transform 0.15s ease-out;
+	transition: transform 0.3s ease-out;
 }
 
 .trigger[data-panel-open] .chevron {
@@ -61,23 +62,34 @@
 }
 
 .body {
-	padding: 1rem;
+	height: var(--collapsible-panel-height);
+	overflow: hidden;
+	transition: height 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.body[data-starting-style],
+.body[data-ending-style] {
+	height: 0;
+}
+
+.content {
+	padding: 1.25rem 2rem 1.5rem;
 }
 
 .fields {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-	gap: 0.9rem 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+	gap: 1rem 1.25rem;
 }
 
 .toggles {
-	margin-top: 1rem;
+	margin-top: 1.25rem;
 }
 
 .togglesLabel {
 	display: block;
 	margin-bottom: 0.4rem;
-	font-size: 0.85rem;
+	font-size: 0.95rem;
 }
 
 .toggleRow {

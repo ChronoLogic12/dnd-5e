@@ -22,13 +22,15 @@ export default function FilterPanelPresentational({ activeCount, fields, toggles
 				</span>
 			</Collapsible.Trigger>
 			<Collapsible.Panel className={css.body} keepMounted>
-				<div className={css.fields}>{fields}</div>
-				{toggles ? (
-					<div className={css.toggles}>
-						<span className={css.togglesLabel}>Show only</span>
-						<div className={css.toggleRow}>{toggles}</div>
-					</div>
-				) : null}
+				<div className={css.content}>
+					<div className={css.fields}>{fields}</div>
+					{toggles ? (
+						<div className={css.toggles}>
+							<span className={css.togglesLabel}>Show only</span>
+							<div className={css.toggleRow}>{toggles}</div>
+						</div>
+					) : null}
+				</div>
 			</Collapsible.Panel>
 		</Collapsible.Root>
 	);
