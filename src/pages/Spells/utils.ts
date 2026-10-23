@@ -1,17 +1,8 @@
 import { sources } from '../../data/sources';
 import type { SourceKey } from '../../data/sources';
-import type { Spell } from './types';
+import type { Spell, SpellFilterValues } from './types';
 
-export interface SpellFilters {
-	search?: string;
-	levelFilter?: string[];
-	classFilter?: string[];
-	schoolFilter?: string[];
-	castingFilter?: string[];
-	documentFilter?: string[];
-	concentrationFilter?: boolean;
-	ritualFilter?: boolean;
-}
+export type SpellFilters = Partial<SpellFilterValues> & { search?: string };
 
 const ordinalSuffix = (level: number) => (level === 1 ? 'st' : level === 2 ? 'nd' : level === 3 ? 'rd' : 'th');
 
@@ -73,3 +64,13 @@ export const filterSpells = (spells: Spell[], filters: SpellFilters): Spell[] =>
 			sources[getDisplaySource(a.source)].title.localeCompare(sources[getDisplaySource(b.source)].title)
 	);
 };
+
+export const getMaterialNote = (material: string) => {
+	const note = material.trim().replace(/\.$/, '');
+	return note.charAt(0).toLowerCase() + note.slice(1);
+};
+
+export const countActiveFilters = (filters: SpellFilters) =>
+	Object.entries(filters).filter(
+		([key, value]) => key !== 'search' && (Array.isArray(value) ? value.length > 0 : Boolean(value))
+	).length;

@@ -1,95 +1,55 @@
 import React from 'react';
-import css from './style.module.css';
+import { TbClock, TbHandFinger, TbHourglass, TbRulerMeasure } from 'react-icons/tb';
 
-import { iconPicker } from '../IconPicker';
-import SourcePill from '../../../../components/SourcePill';
+import css from './style.module.css';
+import SchoolIcon from '../SchoolIcon';
+import SpellTags from '../SpellTags';
+import { Card, Description, SourcePill } from '../../../../components';
 import { sources } from '../../../../data/sources';
 import type { Spell } from '../../types';
-import { getComponentsLabel, getDisplaySource, getLevelLabel } from '../../utils';
+import { getComponentsLabel, getDisplaySource, getLevelLabel, getMaterialNote } from '../../utils';
 
 interface SpellCardProps {
 	spell: Spell;
 	showSource?: boolean;
 }
 
-export default function SpellCard(props: SpellCardProps) {
-	const sourceTitle = sources[getDisplaySource(props.spell.source)].title;
-
-	const renderDescription = () => {
-		return (
-			<p>
-				{props.spell.desc
-					.replace(/(\]{1,4}|\[{1,4}|\*{2}|\/{2})/g, '')
-					.split('\n')
-					.map((str, index) => (
-						<React.Fragment key={index}>
-							{str}
-							<br />
-						</React.Fragment>
-					))}
-			</p>
-		);
-	};
-
-	const renderBooleanIcon = (value: boolean) => {
-		return !value ? (
-			<i className="material-icons red-text">cancel</i>
-		) : (
-			<i className="material-icons green-text">check_circle</i>
-		);
-	};
+export default function SpellCard({ spell, showSource }: SpellCardProps) {
+	const source = getDisplaySource(spell.source);
+	const components = getComponentsLabel(spell.components);
+	const material = spell.components.material ? getMaterialNote(spell.material) : '';
+	const stats = [
+		{ icon: <TbClock />, label: 'Casting time', value: spell.castingTime },
+		{ icon: <TbRulerMeasure />, label: 'Range', value: spell.range },
+		{ icon: <TbHourglass />, label: 'Duration', value: spell.duration },
+		{ icon: <TbHandFinger />, label: 'Components', value: material ? `${components} (${material})` : components },
+	];
 
 	return (
-		<li>
-			<header className="collapsible-header valign-wrapper">
-				{iconPicker(props.spell.school)}
-				<h6>{props.spell.name}</h6>
-				{props.showSource ? <SourcePill source={getDisplaySource(props.spell.source)} /> : null}
-				<p className={css.level}>{getLevelLabel(props.spell.level)}</p>
-			</header>
-			<div className="collapsible-body white">
-				<div className={css.spellInfo}>
-					<em>
-						Components: <strong>{getComponentsLabel(props.spell.components)}</strong>
-					</em>
-					{props.spell.components.material ? <em> {props.spell.material}</em> : null}
-					<br />
-					<em>
-						Casting Time: <strong>{props.spell.castingTime}</strong>
-					</em>
-					<br />
-					<em>
-						Range: <strong>{props.spell.range}</strong>
-					</em>
-					<br />
-					<em className="valign-wrapper">
-						Ritual:
-						{renderBooleanIcon(props.spell.ritual)}
-					</em>
-					<em className="valign-wrapper">
-						Concentration:
-						{renderBooleanIcon(props.spell.concentration)}
-					</em>
-					<em>
-						Duration: <strong>{props.spell.duration}</strong>
-					</em>
-					<br />
-					<em>
-						School: <strong className="capitalize">{props.spell.school}</strong>
-					</em>
-					<br />
-				</div>
-				{renderDescription()}
-				{props.spell.higherLevel ? <p>{props.spell.higherLevel}</p> : null}
-				<em className={css.spellInfo}>
-					Classes: <strong>{props.spell.classes.join(', ')}</strong>
-				</em>
-				<br />
-				<br />
-				<div className="center">
-					<small className="grey-text">Source: {sourceTitle}</small>
-				</div>
-			</div>
-		</li>
+		<Card
+			value={spell.id}
+			title={spell.name}
+			icon={<SchoolIcon school={spell.school} />}
+			tags={showSource ? <SourcePill source={source} /> : null}
+			meta={getLevelLabel(spell.level)}
+			footer={[spell.classes.join(', '), sources[source].title].filter(Boolean).join(' · ')}
+		>
+			<SpellTags spell={spell} />
+			<dl className={css.stats}>
+				{stats.map((stat) => (
+					<div key={stat.label} className={css.stat}>
+						<span className={css.statIcon} aria-hidden>
+							{stat.icon}
+						</span>
+						<div>
+							<dt className={css.statLabel}>{stat.label}</dt>
+							<dd className={css.statValue}>{stat.value}</dd>
+						</div>
+					</div>
+				))}
+			</dl>
+			<Description text={spell.desc} />
+			{spell.higherLevel ? <p>{spell.higherLevel}</p> : null}
+		</Card>
 	);
 }

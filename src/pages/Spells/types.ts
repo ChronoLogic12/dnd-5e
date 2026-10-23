@@ -22,3 +22,13 @@ export interface Spell {
 	desc: string;
 	higherLevel: string;
 }
+
+export interface SpellFilterValues {
+	levelFilter: string[];
+	classFilter: string[];
+	schoolFilter: string[];
+	castingFilter: string[];
+	documentFilter: string[];
+	concentrationFilter: boolean;
+	ritualFilter: boolean;
+}

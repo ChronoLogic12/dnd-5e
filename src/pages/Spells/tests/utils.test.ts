@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { filterSpells, getComponentsLabel, getDisplaySource, getLevelLabel } from '../utils';
+import { filterSpells, getComponentsLabel, getDisplaySource, getLevelLabel, getMaterialNote, countActiveFilters } from '../utils';
 import { makeSpell } from './factories';
 import type { Spell } from '../types';
 
@@ -19,6 +19,19 @@ describe('getLevelLabel', () => {
 describe('getComponentsLabel', () => {
 	it('lists components in V, S, M order', () => {
 		expect(getComponentsLabel({ verbal: true, somatic: false, material: true })).toBe('V, M');
+	});
+});
+
+describe('getMaterialNote', () => {
+	it('drops the full stop and lowercases the first letter', () => {
+		expect(getMaterialNote('A bit of fleece.')).toBe('a bit of fleece');
+		expect(getMaterialNote('a drop of acid')).toBe('a drop of acid');
+	});
+});
+
+describe('countActiveFilters', () => {
+	it('counts filters with a value and ignores the search text', () => {
+		expect(countActiveFilters({ search: 'fire', levelFilter: ['1'], classFilter: [], ritualFilter: true, concentrationFilter: false })).toBe(2);
 	});
 });
 
