@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import materialize from 'materialize-css';
 
-import { Banner, Nav, CollapsibleList } from '../../components';
+import { Banner, Nav, CardList, Pagination, ResultsCount, SearchBar } from '../../components';
 import MonsterCard from './components/MonsterCard';
-import MonstersSearch from './components/MonstersSearch';
-import MonstersPagination from './components/MonstersPagination';
+import MonsterFilters from './components/MonsterFilters';
 import { prepareMonsters, filterMonsters } from './utils';
 import type { PreparedMonster } from './utils';
 import { getSharedNames } from '../../utils/getSharedNames';
@@ -29,7 +27,7 @@ export default function Monsters() {
 	const [monsters, setMonsters] = useState<PreparedMonster[]>([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [search, setSearch] = useState('');
-	const [challengeRatingFilter, setChallengeRatingFilter] = useState('');
+	const [challengeRatingFilter, setChallengeRatingFilter] = useState<string[]>([]);
 	const [error, setError] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -44,66 +42,55 @@ export default function Monsters() {
 			.finally(() => setIsLoading(false));
 	}, []);
 
-	useEffect(() => {
+	const updateSearch = (value: string) => {
+		setSearch(value);
 		setCurrentPage(1);
-	}, [search, challengeRatingFilter]);
+	};
 
-	useEffect(() => {
-		materialize.AutoInit();
-	}, []);
+	const updateChallengeRatingFilter = (value: string[]) => {
+		setChallengeRatingFilter(value);
+		setCurrentPage(1);
+	};
 
-	const renderSearchResults = () => {
-		const searchResults = filterMonsters(monsters, { search, challengeRatingFilter });
-		const sharedMonsterNames = getSharedNames(searchResults);
-		const indexOfLastMonster = currentPage * MONSTERS_PER_PAGE;
-		const currentMonsters = searchResults.slice(
-			indexOfLastMonster - MONSTERS_PER_PAGE,
-			indexOfLastMonster
-		);
+	const results = filterMonsters(monsters, { search, challengeRatingFilter });
+	const sharedNames = getSharedNames(results);
+	const pageResults = results.slice((currentPage - 1) * MONSTERS_PER_PAGE, currentPage * MONSTERS_PER_PAGE);
 
-		return (
-			<>
-				<MonstersSearch
-					count={searchResults.length}
-					search={search}
-					setSearch={setSearch}
-					challengeRatingFilter={challengeRatingFilter}
-					setChallengeRatingFilter={setChallengeRatingFilter}
-				/>
-				<hr className="rule" />
-				{currentMonsters.length ? (
-					<>
-						<CollapsibleList>
-							{currentMonsters.map((monster) => (
-								<MonsterCard
-									key={monster.id}
-									monster={monster}
-									showSource={sharedMonsterNames.has(monster.name)}
-								/>
-							))}
-						</CollapsibleList>
-						<MonstersPagination
-							totalMonsters={searchResults.length}
-							paginate={setCurrentPage}
-							currentPage={currentPage}
-						/>
-					</>
-				) : error ? (
-					<p>{error}</p>
-				) : isLoading ? (
-					<div className="loader"></div>
-				) : (
-					<div>No results found</div>
-				)}
-			</>
-		);
+	const renderResults = () => {
+		if (pageResults.length) {
+			return (
+				<>
+					<CardList>
+						{pageResults.map((monster) => (
+							<MonsterCard key={monster.id} monster={monster} showSource={sharedNames.has(monster.name)} />
+						))}
+					</CardList>
+					<Pagination
+						totalItems={results.length}
+						perPage={MONSTERS_PER_PAGE}
+						currentPage={currentPage}
+						onPageChange={setCurrentPage}
+					/>
+				</>
+			);
+		}
+		if (error) {
+			return <p className="results">{error}</p>;
+		}
+		return isLoading ? <div className="loader"></div> : <p className="results">No results found</p>;
 	};
 
 	return (
 		<>
 			<Banner page="Monsters" />
 			<main className="container">
-				{renderSearchResults()}
+				<SearchBar value={search} onChange={updateSearch} />
+				<MonsterFilters
+					challengeRatingFilter={challengeRatingFilter}
+					setChallengeRatingFilter={updateChallengeRatingFilter}
+				/>
+				<ResultsCount count={results.length} />
+				{renderResults()}
 				<div className="spacing"></div>
 			</main>
 			<Nav />

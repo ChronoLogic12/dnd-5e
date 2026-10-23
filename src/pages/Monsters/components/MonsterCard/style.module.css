@@ -1,33 +1,41 @@
-.cr {
-	margin: 0 0 0 auto !important;
-	padding-left: 0.75rem;
-	white-space: nowrap;
+.body p {
+	margin: 0.5rem 0;
 }
 
-h5 {
-	margin-top: 0 !important;
+.heading {
+	margin: 0.25rem 0;
+	color: var(--colour-accent);
+	font-size: 1.5rem;
+	font-weight: 500;
+	line-height: 1.2;
 }
 
-h5 > strong {
-	color: rgb(187, 2, 2) !important;
-}
-
-p {
-	margin-top: 0.5rem;
-	margin-bottom: 0.5rem;
-}
-
-th,
-td {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
+.body .type {
+	margin-top: 0;
 }
 
 .speed {
 	display: flex;
 	flex-direction: column;
+	margin: 0.25rem 0 0.5rem;
+	padding: 0;
 }
+
 .speed li {
-	list-style-type: disc !important;
-	list-style-position: inside;
+	list-style: disc inside;
+}
+
+.abilities {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.abilities th,
+.abilities td {
+	padding: 0.5rem 0.25rem;
+	text-align: center;
+}
+
+.abilities th {
+	font-weight: 500;
 }

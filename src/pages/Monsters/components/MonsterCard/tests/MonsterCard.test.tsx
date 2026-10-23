@@ -3,15 +3,15 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import MonsterCard from '..';
+import { CardList } from '../../../../../components';
 import { makeMonster } from '../../../tests/factories';
 import type { Monster } from '../../../types';
 
-
 const renderCard = (overrides: Partial<Monster> = {}) =>
 	render(
-		<ul>
+		<CardList>
 			<MonsterCard monster={makeMonster(overrides)} />
-		</ul>
+		</CardList>
 	);
 
 describe('MonsterCard', () => {

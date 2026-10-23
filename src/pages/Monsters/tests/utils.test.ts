@@ -26,7 +26,8 @@ describe('filterMonsters', () => {
 	});
 
 	it('filters by challenge rating', () => {
-		expect(filterMonsters(monsters, { challengeRatingFilter: '1/4' })).toHaveLength(2);
-		expect(filterMonsters(monsters, { challengeRatingFilter: '30' })).toHaveLength(0);
+		expect(filterMonsters(monsters, { challengeRatingFilter: ['1/4'] })).toHaveLength(2);
+		expect(filterMonsters(monsters, { challengeRatingFilter: ['1/4', '10'] })).toHaveLength(3);
+		expect(filterMonsters(monsters, { challengeRatingFilter: ['30'] })).toHaveLength(0);
 	});
 });
