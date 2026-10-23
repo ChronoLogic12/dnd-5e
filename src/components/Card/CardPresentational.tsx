@@ -2,6 +2,7 @@ import React from 'react';
 import { Accordion } from '@base-ui/react/accordion';
 
 import css from './style.module.css';
+import { getCardId } from '../CardList/useCardList';
 
 interface CardPresentationalProps {
 	value: string;
@@ -23,7 +24,7 @@ export default function CardPresentational({
 	children,
 }: CardPresentationalProps) {
 	return (
-		<Accordion.Item value={value} className={css.card}>
+		<Accordion.Item value={value} id={getCardId(value)} className={css.card}>
 			<Accordion.Header className={css.header}>
 				<Accordion.Trigger className={css.trigger}>
 					{icon ? <span className={css.icon}>{icon}</span> : null}

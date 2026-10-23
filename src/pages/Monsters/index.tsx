@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { parseAsArrayOf, parseAsString, useQueryStates } from 'nuqs';
 
 import { Banner, Nav, CardList, Pagination, ResultsCount, SearchBar } from '../../components';
 import MonsterCard from './components/MonsterCard';
@@ -9,6 +10,8 @@ import { getSharedNames } from '../../utils/getSharedNames';
 import { isShownInEdition } from '../../data/sources';
 import type { SourceKey } from '../../data/sources';
 import { useEdition } from '../../utils/edition';
+import { usePagedResults } from '../../utils/usePagedResults';
+import { listParams, listUrlKeys } from '../../utils/listParams';
 import type { Monster } from './types';
 
 const SHOWN_SOURCES: SourceKey[] = [
@@ -26,20 +29,19 @@ const SHOWN_SOURCES: SourceKey[] = [
 
 const MONSTERS_PER_PAGE = 50;
 
+const monsterParams = {
+	...listParams,
+	challengeRatingFilter: parseAsArrayOf(parseAsString).withDefault([]),
+};
+
+const urlKeys = { ...listUrlKeys, challengeRatingFilter: 'cr' };
+
 export default function Monsters() {
 	const [monsters, setMonsters] = useState<PreparedMonster[]>([]);
-	const [currentPage, setCurrentPage] = useState(1);
-	const [search, setSearch] = useState('');
-	const [challengeRatingFilter, setChallengeRatingFilter] = useState<string[]>([]);
+	const [{ search, challengeRatingFilter, page, open }, setParams] = useQueryStates(monsterParams, { urlKeys });
 	const [error, setError] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState(true);
 	const { edition } = useEdition();
-	const [pageEdition, setPageEdition] = useState(edition);
-
-	if (pageEdition !== edition) {
-		setPageEdition(edition);
-		setCurrentPage(1);
-	}
 
 	useEffect(() => {
 		import('../../data/monsters.json')
@@ -52,28 +54,30 @@ export default function Monsters() {
 			.finally(() => setIsLoading(false));
 	}, []);
 
-	const updateSearch = (value: string) => {
-		setSearch(value);
-		setCurrentPage(1);
-	};
-
-	const updateChallengeRatingFilter = (value: string[]) => {
-		setChallengeRatingFilter(value);
-		setCurrentPage(1);
-	};
+	const setPage = (value: number) => setParams({ page: value });
+	const setOpen = (value: string | null) => setParams({ open: value });
 
 	const results = filterMonsters(
 		monsters.filter(({ monster }) => isShownInEdition(monster.source, edition)),
 		{ search, challengeRatingFilter }
 	);
 	const sharedNames = getSharedNames(results);
-	const pageResults = results.slice((currentPage - 1) * MONSTERS_PER_PAGE, currentPage * MONSTERS_PER_PAGE);
+	const { currentPage, pageResults } = usePagedResults({
+		results,
+		perPage: MONSTERS_PER_PAGE,
+		page,
+		setPage,
+		open,
+		setOpen,
+		edition,
+		isLoading,
+	});
 
 	const renderResults = () => {
 		if (pageResults.length) {
 			return (
 				<>
-					<CardList>
+					<CardList open={open} onOpenChange={setOpen}>
 						{pageResults.map((monster) => (
 							<MonsterCard key={monster.id} monster={monster} showSource={sharedNames.has(monster.name)} />
 						))}
@@ -82,7 +86,7 @@ export default function Monsters() {
 						totalItems={results.length}
 						perPage={MONSTERS_PER_PAGE}
 						currentPage={currentPage}
-						onPageChange={setCurrentPage}
+						onPageChange={setPage}
 					/>
 				</>
 			);
@@ -97,10 +101,10 @@ export default function Monsters() {
 		<>
 			<Banner page="Monsters" />
 			<main className="container">
-				<SearchBar value={search} onChange={updateSearch} />
+				<SearchBar value={search} onChange={(value) => setParams({ search: value, page: null })} />
 				<MonsterFilters
 					challengeRatingFilter={challengeRatingFilter}
-					setChallengeRatingFilter={updateChallengeRatingFilter}
+					setChallengeRatingFilter={(value) => setParams({ challengeRatingFilter: value, page: null })}
 				/>
 				<ResultsCount count={results.length} />
 				{renderResults()}
