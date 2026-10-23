@@ -197,6 +197,8 @@ label {
 }
 
 .custombtn {
+	display: flex;
+	align-items: center;
 	color: #ededed;
 	border: 2px solid #ededed;
 	border-radius: 60px;
