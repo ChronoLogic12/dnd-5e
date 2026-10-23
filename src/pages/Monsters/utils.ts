@@ -8,7 +8,7 @@ export interface PreparedMonster {
 
 export interface MonsterFilters {
 	search?: string;
-	challengeRatingFilter?: string;
+	challengeRatingFilter?: string[];
 }
 
 const getSearchText = (monster: Monster) =>
@@ -47,14 +47,14 @@ export const prepareMonsters = (monsters: Monster[]): PreparedMonster[] =>
 
 export const filterMonsters = (
 	preparedMonsters: PreparedMonster[],
-	{ search = '', challengeRatingFilter = '' }: MonsterFilters
+	{ search = '', challengeRatingFilter = [] }: MonsterFilters
 ): Monster[] => {
 	const lowerCaseSearch = search.toLowerCase();
 	return preparedMonsters
 		.filter(
 			({ monster, searchText }) =>
 				(lowerCaseSearch ? searchText.includes(lowerCaseSearch) : true) &&
-				(challengeRatingFilter ? monster.challengeRating === challengeRatingFilter : true)
+				(challengeRatingFilter.length ? challengeRatingFilter.includes(monster.challengeRating) : true)
 		)
 		.map(({ monster }) => monster);
 };

@@ -1,54 +1,44 @@
 import { describe, it, expect } from 'vitest';
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { screen } from '@testing-library/react';
 
 import Monsters from '..';
+import {
+	renderPage,
+	search,
+	openFilters,
+	chooseOptions,
+	resultsList,
+	resultNames,
+} from '../../../test/pageHelpers';
 
 describe('Monsters page', { timeout: 20000 }, () => {
-	const renderPage = () =>
-		render(
-			<MemoryRouter>
-				<Monsters />
-			</MemoryRouter>
-		);
+	const waitForMonsters = () => screen.findByText('Results found: 3207', {}, { timeout: 15000 });
 
-	const waitForMonsters = () =>
-		screen.findByText('Results found: 3207', {}, { timeout: 15000 });
+	const pills = () => [...resultsList().querySelectorAll('span[title]')].map((pill) => pill.textContent);
 
 	it('loads every monster from the local data file', async () => {
-		renderPage();
+		renderPage(Monsters);
 		expect(await waitForMonsters()).toBeInTheDocument();
-		expect(document.querySelectorAll('main ul.collapsible.no-autoinit > li')).toHaveLength(50);
+		expect(resultNames()).toHaveLength(50);
 	});
 
 	it('filters by search and challenge rating together', async () => {
-		renderPage();
+		renderPage(Monsters);
 		await waitForMonsters();
-		fireEvent.change(screen.getByLabelText('Search:'), { target: { value: 'tarrasque' } });
-		fireEvent.change(document.getElementById('cr') as HTMLSelectElement, { target: { value: '30' } });
-		const names = [...document.querySelectorAll('main ul.collapsible.no-autoinit > li h6')].map(
-			(heading) => heading.textContent
-		);
+		search('tarrasque');
+		openFilters();
+		await chooseOptions('Challenge rating', ['30']);
+		const names = resultNames();
 		expect(names).toContain('Tarrasque');
 		expect(screen.getByText(`Results found: ${names.length}`)).toBeInTheDocument();
 	});
 
 	it('shows a source pill only on monsters that share a name in the results', async () => {
-		renderPage();
+		renderPage(Monsters);
 		await waitForMonsters();
-		const search = (text: string) =>
-			fireEvent.change(screen.getByLabelText('Search:'), { target: { value: text } });
-		const pills = () =>
-			[...document.querySelectorAll('main ul.collapsible.no-autoinit span[title]')].map(
-				(pill) => pill.textContent
-			);
 
 		search('aboleth');
-		const abolethCards = [...document.querySelectorAll('main ul.collapsible.no-autoinit > li')].filter(
-			(card) => card.querySelector('h6')?.textContent === 'Aboleth'
-		);
-		expect(abolethCards).toHaveLength(3);
+		expect(resultNames().filter((name) => name === 'Aboleth')).toHaveLength(3);
 		expect(pills()).toEqual(expect.arrayContaining(['Core', 'Black Flag', 'A5e']));
 
 		search('abominable beauty');
