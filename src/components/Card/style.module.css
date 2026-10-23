@@ -15,16 +15,17 @@
 .trigger {
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
+	gap: 1rem;
 	width: 100%;
-	min-height: 3.4rem;
-	padding: 0.5rem 1rem;
+	min-height: 4.5rem;
+	padding: 0.75rem 2rem;
 	border: none;
 	background: none;
 	color: inherit;
 	font: inherit;
 	text-align: left;
 	cursor: pointer;
+	transition: box-shadow 0.3s ease-out;
 }
 
 .trigger:focus-visible {
@@ -39,34 +40,42 @@
 .icon {
 	display: inline-flex;
 	flex-shrink: 0;
-	font-size: 1.6rem;
+	font-size: 2rem;
 }
 
 .title {
-	font-size: 1.1rem;
-}
-
-.trigger[data-panel-open] .title {
-	font-weight: 500;
+	font-size: 1.15rem;
 }
 
 .meta {
 	margin-left: auto;
 	padding-left: 0.75rem;
 	white-space: nowrap;
-	font-size: 0.95rem;
+	font-size: 16px;
 }
 
 .panel {
-	padding: 0.9rem 1rem 1rem;
+	height: var(--accordion-panel-height);
+	overflow: hidden;
+	transition: height 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.panel[data-starting-style],
+.panel[data-ending-style] {
+	height: 0;
+}
+
+.content {
+	padding: 1.25rem 2rem 1.5rem;
+	font-size: 16px;
 	line-height: 1.6;
 }
 
-.panel p {
+.content p {
 	margin: 0 0 0.75rem;
 }
 
-.panel .footer {
+.content .footer {
 	margin: 0.75rem 0 0;
 	color: var(--colour-muted);
 	font-size: 0.9rem;

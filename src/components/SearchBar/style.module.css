@@ -2,9 +2,9 @@
 	display: flex;
 	align-items: center;
 	gap: 0.75rem;
-	height: 3rem;
+	height: 3.6rem;
 	margin-top: 1rem;
-	padding: 0 1.25rem;
+	padding: 0 1.5rem;
 	border-radius: 60px;
 	background-color: var(--colour-surface);
 	color: var(--colour-text);
@@ -17,7 +17,7 @@
 
 .icon {
 	flex-shrink: 0;
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 }
 
 .label {
@@ -37,6 +37,6 @@
 	background: none;
 	color: inherit;
 	font: inherit;
-	font-size: 1rem;
+	font-size: 16px;
 	outline: none;
 }

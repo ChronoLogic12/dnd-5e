@@ -15,12 +15,12 @@
 	display: inline-flex;
 	flex-shrink: 0;
 	color: var(--colour-accent);
-	font-size: 1.4rem;
+	font-size: 1.5rem;
 }
 
 .statLabel {
 	color: var(--colour-muted);
-	font-size: 0.75rem;
+	font-size: 0.8rem;
 	line-height: 1.2;
 }
 

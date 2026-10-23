@@ -2,15 +2,19 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 0.4rem;
-	height: 2.1rem;
-	padding: 0 0.9rem;
+	height: 2.5rem;
+	padding: 0 1.1rem;
 	border: 1px solid var(--colour-text);
 	border-radius: 60px;
 	background-color: transparent;
 	color: var(--colour-text);
 	font: inherit;
-	font-size: 0.9rem;
+	font-size: 15px;
 	cursor: pointer;
+	transition:
+		background-color 0.2s ease-out,
+		border-color 0.2s ease-out,
+		color 0.2s ease-out;
 }
 
 .pill[data-pressed] {
@@ -26,5 +30,5 @@
 
 .icon {
 	display: inline-flex;
-	font-size: 1.1rem;
+	font-size: 1.2rem;
 }

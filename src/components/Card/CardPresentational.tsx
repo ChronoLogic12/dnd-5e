@@ -29,14 +29,16 @@ export default function CardPresentational({
 					{icon ? <span className={css.icon}>{icon}</span> : null}
 					<span className={css.title} data-card-title>
 						{title}
-					</span>
+					</span>{' '}
 					{tags}{' '}
 					{meta ? <span className={css.meta}>{meta}</span> : null}
 				</Accordion.Trigger>
 			</Accordion.Header>
 			<Accordion.Panel className={css.panel}>
-				{children}
-				{footer ? <p className={css.footer}>{footer}</p> : null}
+				<div className={css.content}>
+					{children}
+					{footer ? <p className={css.footer}>{footer}</p> : null}
+				</div>
 			</Accordion.Panel>
 		</Accordion.Item>
 	);
