@@ -1,18 +1,25 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { NuqsAdapter } from 'nuqs/adapters/react-router/v7';
 import userEvent from '@testing-library/user-event';
 
 import { EditionProvider } from '../utils/edition';
 
-export const renderPage = (Page: React.ComponentType) =>
-	render(
-		<MemoryRouter>
-			<EditionProvider>
-				<Page />
-			</EditionProvider>
-		</MemoryRouter>
+export const renderPage = (Page: React.ComponentType, path = '/') => {
+	window.history.replaceState(null, '', path);
+	return render(
+		<BrowserRouter>
+			<NuqsAdapter>
+				<EditionProvider>
+					<Page />
+				</EditionProvider>
+			</NuqsAdapter>
+		</BrowserRouter>
 	);
+};
+
+export const currentQuery = () => new URLSearchParams(window.location.search);
 
 export const search = (text: string) => fireEvent.change(screen.getByLabelText('Search'), { target: { value: text } });
 
