@@ -3,14 +3,21 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 
+import { EditionProvider } from '../utils/edition';
+
 export const renderPage = (Page: React.ComponentType) =>
 	render(
 		<MemoryRouter>
-			<Page />
+			<EditionProvider>
+				<Page />
+			</EditionProvider>
 		</MemoryRouter>
 	);
 
 export const search = (text: string) => fireEvent.change(screen.getByLabelText('Search'), { target: { value: text } });
+
+export const switchEdition = (edition: '2014' | '2024') =>
+	fireEvent.click(screen.getByRole('button', { name: edition }));
 
 export const openFilters = () => fireEvent.click(screen.getByRole('button', { name: /^Filter/ }));
 
