@@ -1,5 +1,6 @@
 .card {
 	overflow: hidden;
+	scroll-margin-top: 1rem;
 	border-radius: 8px;
 	background-color: var(--colour-surface);
 	color: var(--colour-text);

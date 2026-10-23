@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { screen, within, fireEvent } from '@testing-library/react';
+import { screen, within, fireEvent, waitFor } from '@testing-library/react';
 
 import Spells from '..';
-import { renderPage, search, openFilters, chooseOptions, resultsList, resultNames, switchEdition } from '../../../test/pageHelpers';
+import { renderPage, search, openFilters, chooseOptions, resultsList, resultNames, switchEdition, currentQuery } from '../../../test/pageHelpers';
 
 describe('Spells page', () => {
 	it('shows only Core spells by default', () => {
@@ -65,5 +65,41 @@ describe('Spells page', () => {
 		expect(screen.getByText('Results found: 710')).toBeInTheDocument();
 		switchEdition('2014');
 		expect(screen.getByText('Results found: 739')).toBeInTheDocument();
+	});
+
+	it('writes filters to the URL and leaves defaults out', async () => {
+		renderPage(Spells, '/spells');
+		openFilters();
+		await chooseOptions('Level', ['Cantrip']);
+		fireEvent.click(screen.getByRole('button', { name: 'Ritual' }));
+		search('light');
+		await waitFor(() =>
+			expect(Object.fromEntries(currentQuery())).toEqual({ q: 'light', level: '0', ritual: 'true' })
+		);
+	});
+
+	it('reads filters from the URL', () => {
+		renderPage(Spells, '/spells?q=bolt&level=0&class=wizard');
+		expect(resultNames()).toEqual(['Fire Bolt']);
+		expect(screen.getByRole('searchbox', { name: 'Search' })).toHaveValue('bolt');
+	});
+
+	it('opens the card named in the URL on the right page', async () => {
+		renderPage(Spells, '/spells?open=srd-2014/wish');
+		await waitFor(() => expect(screen.getByRole('button', { name: /^Wish/ })).toHaveAttribute('aria-expanded', 'true'));
+		expect(screen.getByRole('button', { name: /^13$/ })).toHaveAttribute('aria-current', 'page');
+	});
+
+	it('follows an edition in the URL', () => {
+		renderPage(Spells, '/spells?edition=2024');
+		expect(screen.getByText('Results found: 339')).toBeInTheDocument();
+	});
+
+	it('closes the open spell when a filter removes it', async () => {
+		renderPage(Spells, '/spells?open=srd-2014/fire-bolt');
+		openFilters();
+		await chooseOptions('Level', ['1']);
+		await waitFor(() => expect(currentQuery().get('open')).toBeNull());
+		expect(currentQuery().get('level')).toBe('1');
 	});
 });
