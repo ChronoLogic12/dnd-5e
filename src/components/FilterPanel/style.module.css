@@ -1,0 +1,87 @@
+.panel {
+	margin-top: 0.75rem;
+	border-radius: 8px;
+	background-color: var(--colour-surface);
+	color: var(--colour-text);
+}
+
+.trigger {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	width: 100%;
+	padding: 0.8rem 1rem;
+	border: none;
+	border-radius: 8px;
+	background: none;
+	color: inherit;
+	font: inherit;
+	font-size: 1rem;
+	text-align: left;
+	cursor: pointer;
+}
+
+.trigger:focus-visible {
+	outline: 2px solid var(--colour-accent);
+	outline-offset: 2px;
+}
+
+.trigger[data-panel-open] {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	box-shadow: inset 0 -1px 0 var(--colour-divider);
+}
+
+.filterIcon {
+	font-size: 1.3rem;
+}
+
+.end {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin-left: auto;
+}
+
+.badge {
+	padding: 0 0.6rem;
+	border-radius: 60px;
+	background-color: var(--colour-accent);
+	color: #fff;
+	font-size: 0.75rem;
+	line-height: 1.4rem;
+}
+
+.chevron {
+	transition: transform 0.15s ease-out;
+}
+
+.trigger[data-panel-open] .chevron {
+	transform: rotate(180deg);
+}
+
+.body {
+	padding: 1rem;
+}
+
+.fields {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+	gap: 0.9rem 1rem;
+}
+
+.toggles {
+	margin-top: 1rem;
+}
+
+.togglesLabel {
+	display: block;
+	margin-bottom: 0.4rem;
+	font-size: 0.85rem;
+}
+
+.toggleRow {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+}
