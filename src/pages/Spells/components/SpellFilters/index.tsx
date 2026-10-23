@@ -40,8 +40,9 @@ const castingOptions: SelectOption[] = [
 	{ value: 'reaction', label: 'Reaction' },
 ];
 
-const sourceOptions: SelectOption[] = [
-	{ value: 'srd-2014', label: '5e Core Rules' },
+export const CORE_FILTER = 'core';
+
+const thirdPartySourceOptions: SelectOption[] = [
 	{ value: 'a5e-ag', label: 'Level Up Advanced 5e' },
 	{ value: 'deepm', label: 'Deep Magic 5e' },
 	{ value: 'deepmx', label: 'Deep Magic Extended' },
@@ -53,10 +54,13 @@ const sourceOptions: SelectOption[] = [
 
 interface SpellFiltersProps {
 	filters: SpellFilterValues;
+	coreLabel: string;
 	onChange: <K extends keyof SpellFilterValues>(key: K, value: SpellFilterValues[K]) => void;
 }
 
-export default function SpellFilters({ filters, onChange }: SpellFiltersProps) {
+export default function SpellFilters({ filters, coreLabel, onChange }: SpellFiltersProps) {
+	const sourceOptions = [{ value: CORE_FILTER, label: coreLabel }, ...thirdPartySourceOptions];
+
 	return (
 		<FilterPanel
 			activeCount={countActiveFilters(filters)}
