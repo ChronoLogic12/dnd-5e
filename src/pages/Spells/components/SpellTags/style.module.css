@@ -1,0 +1,27 @@
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	margin-bottom: 0.9rem;
+}
+
+.tag {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.35rem;
+	padding: 0 0.75rem 0 0.6rem;
+	border-radius: 60px;
+	font-size: 0.85rem;
+	line-height: 1.7rem;
+}
+
+.school {
+	border: 1px solid;
+	background-color: var(--colour-raised);
+	color: var(--colour-text);
+}
+
+.flag {
+	background-color: var(--colour-page);
+	color: var(--colour-surface);
+}

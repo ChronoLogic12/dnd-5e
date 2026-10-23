@@ -1,19 +1,30 @@
-.level {
-	margin: 0 0 0 auto !important;
-	padding-left: 0.75rem;
-	white-space: nowrap;
+.stats {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.75rem 1.25rem;
+	margin: 0 0 1rem;
 }
 
-.spellInfo strong {
-	font-weight: bold !important;
+.stat {
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
 }
 
-.spellIcon {
-	height: 2rem;
-	width: 2rem;
-	margin-right: 1rem;
+.statIcon {
+	display: inline-flex;
+	flex-shrink: 0;
+	color: var(--colour-accent);
+	font-size: 1.4rem;
 }
 
-i {
-	margin-left: 0.5rem;
+.statLabel {
+	color: var(--colour-muted);
+	font-size: 0.75rem;
+	line-height: 1.2;
+}
+
+.statValue {
+	margin: 0;
+	line-height: 1.35;
 }

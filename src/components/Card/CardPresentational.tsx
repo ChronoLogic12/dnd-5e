@@ -30,7 +30,7 @@ export default function CardPresentational({
 					<span className={css.title} data-card-title>
 						{title}
 					</span>
-					{tags}
+					{tags}{' '}
 					{meta ? <span className={css.meta}>{meta}</span> : null}
 				</Accordion.Trigger>
 			</Accordion.Header>
