@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+:root {
+	--colour-page: #171717;
+	--colour-surface: #ededed;
+	--colour-raised: #fff;
+	--colour-text: #171717;
+	--colour-muted: #757575;
+	--colour-banner: #da0037;
+	--colour-accent: rgb(187, 2, 2);
+	--colour-divider: #cecece;
+}
+
 * {
 	box-sizing: border-box;
 }

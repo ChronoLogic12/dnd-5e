@@ -4,8 +4,8 @@ nav {
 	flex-direction: column;
 }
 
-button,
-button:focus {
+.burger,
+.burger:focus {
 	box-shadow: 0 0 0 2px #171717;
 	background-color: #171717;
 }
